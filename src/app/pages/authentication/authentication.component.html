@@ -1,0 +1,17 @@
+<div class="authForm w-[95%] sm:w-[35vw] m-auto mt-[10vh] sm:mt-[10vh]">
+  <h2>{{ isLogin ? "Login" : "Register" }}</h2>
+  <form class="w-full" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+    <div class="w-[90%] grid gap-y-[10px] m-auto">
+      <label>Email</label>
+      <input type="email" ngModel name="email" required email />
+    </div>
+    <div class="w-[90%] grid gap-y-[10px] m-auto">
+      <label>password</label>
+      <input type="password" name="password" ngModel required />
+    </div>
+    <button class="mt-5" [disabled]="!form.valid" type="submit">Submit</button>
+  </form>
+  <p class="mt-4" (click)="isLogin = !isLogin">
+    Click here to{{ isLogin ? " Create Account" : " Login" }}
+  </p>
+</div>

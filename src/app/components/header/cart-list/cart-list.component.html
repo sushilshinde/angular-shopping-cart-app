@@ -1,0 +1,37 @@
+<div class="p-4 divide-y divide-solid">
+  <div class="flex justify-between pb-2">
+    <span>Cart Item</span>
+    <a routerLink="/cart">View Cart</a>
+  </div>
+  <div class="py-3">
+    <mat-list *ngFor="let item of cartData" class="flex justify-between py-3">
+      <span
+        >{{ item.name | uppercase }} -
+        {{ item.price | currency : "INR" : "symbol" }}</span
+      >
+      <span class="mx-[10px]"> x {{ item.quantity }}</span>
+      <span>{{
+        item.price * item.quantity | currency : "INR" : "symbol"
+      }}</span>
+    </mat-list>
+  </div>
+  <div class="flex justify-between py-3">
+    <span>Total</span>
+    <span>{{ total | currency : "INR" : "symbol" }}</span>
+  </div>
+  <div class="flex justify-between pt-3">
+    <button
+      title="Clear Cart"
+      class="bg-rose-600 rounded-full text-white w-9 h-9"
+    >
+      <mat-icon color="white">remove_shopping_cart</mat-icon>
+    </button>
+    <button
+      routerLink="/cart"
+      title="Buy Now"
+      class="bg-green-600 rounded-full text-white w-9 h-9"
+    >
+      <mat-icon color="white">shopping_cart</mat-icon>
+    </button>
+  </div>
+</div>

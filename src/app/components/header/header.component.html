@@ -1,0 +1,18 @@
+<mat-toolbar *ngIf="showheader" class="justify-between px-[2vw]">
+  <span>App header</span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="showCart">
+    <mat-icon
+      [matBadge]="sampleProducts.length"
+      matBadgeColor="warn"
+      class="text-[grey]"
+      >shopping_cart</mat-icon
+    >
+  </button>
+  <mat-menu #menu="matMenu">
+    <app-cart-list
+      *ngIf="sampleProducts.length"
+      [cartData]="sampleProducts"
+    ></app-cart-list>
+    <p class="p-5" *ngIf="!sampleProducts.length">Cart is empty!</p>
+  </mat-menu>
+</mat-toolbar>

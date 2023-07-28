@@ -2,5 +2,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.error {
+  color: red;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.flex-items-center {
+  display: flex;
+  align-items: center;
+}
+.flex-justify-center {
+  display: flex;
+  justify-content: center;
+}

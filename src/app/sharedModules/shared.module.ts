@@ -4,7 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import {MatListModule} from '@angular/material/list';
     MatBadgeModule,
     MatMenuModule,
     FormsModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
   ],
   exports: [
     MatToolbarModule,
@@ -21,7 +25,9 @@ import {MatListModule} from '@angular/material/list';
     MatBadgeModule,
     MatMenuModule,
     FormsModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
   ],
 })
 export class SharedModules {}

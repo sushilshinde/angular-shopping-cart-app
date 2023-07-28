@@ -12,6 +12,7 @@ import { SharedModules } from './sharedModules/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModules,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

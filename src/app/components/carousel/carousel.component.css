@@ -1,0 +1,3 @@
+.scroll {
+  scroll-snap-type: x mandatory;
+}

@@ -1,0 +1,23 @@
+<div
+  class="rounded-sm w-full ease-in duration-500 h-full relative bg-[cover] flex flex-col justify-center text-[white] items-center gap-y-[3vh]"
+  [ngStyle]="{ background: 'url(' + content[current].imgUrl + ') no-repeat 0 0' }"
+>
+  <h4 class="text-[1.5rem] opacity-[0.8] font-[500] mt-[5vh]">
+    10% OFF YOUR FIRST ORDER
+  </h4>
+  <h2 class="text-[2rem] ease-in duration-500 opacity-[0.8] font-[600]">{{content[current].title}}</h2>
+  <a class="bg-[white] rounded-sm cursor-pointer text-black font-[800] py-3 px-4"> Shop Now</a>
+  <button
+    class="text-[white] absolute top-[45%] left-[20px]"
+    (click)="handleChange('prev')"
+  >
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <button
+    class="text-[white] absolute top-[45%] right-[20px]"
+    mat-icon-button
+    (click)="handleChange('next')"
+  >
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</div>

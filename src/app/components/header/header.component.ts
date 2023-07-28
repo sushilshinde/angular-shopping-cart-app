@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  ActivatedRoute,
   ActivationEnd,
-  NavigationEnd,
   Router,
 } from '@angular/router';
 
@@ -39,7 +37,6 @@ export class HeaderComponent {
   ngOnInit() {
     this.routerEvents = this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
-        console.log(event);
         if (event.snapshot.routeConfig?.['path'] === 'auth') {
           this.showheader = false;
         } else {

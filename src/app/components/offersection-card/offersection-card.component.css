@@ -1,0 +1,16 @@
+.offer-section-girl-image{
+    height:219px;
+    width:180px;
+    display: flex;
+    flex-direction: row;
+   justify-content: end;
+   align-items: end;
+   
+}
+
+.offer-section-container{
+    width: 600px;
+    height: 220px;
+    margin: 20px;
+    background-color:#edf1ff;
+}

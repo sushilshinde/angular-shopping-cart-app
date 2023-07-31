@@ -8,4 +8,12 @@ module.exports = {
   },
   important: true,
   plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        'custom-color': '#D19C97'
+        
+      }
+    }
+  },
 }

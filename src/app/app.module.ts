@@ -14,6 +14,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     BrowserAnimationsModule,
     SharedModules,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

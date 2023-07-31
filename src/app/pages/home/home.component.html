@@ -1,3 +1,43 @@
-<div class="w-[70vw] h-[70vh] absolute right-[2vw]">
-  <app-carousel></app-carousel>
+<div>
+  <div class="h-[45vh] w-full sm:w-[70vw] sm:h-[70vh] relative sm:left-[26vw]">
+    <app-carousel></app-carousel>
+  </div>
+  <div class="grid gap-y-3 sm:flex sm:mt-[15vh] p-1 justify-around">
+    <div
+      *ngFor="let item of featureList"
+      class="border-[1px] w-[97vw] sm:max-w-[22vw] px-[20px] p-5 sm:p-3 rounded-sm flex gap-x-[20px] sm:gap-x-[10px] items-center justify-start"
+    >
+      <mat-icon
+        class="mat-icon-size rounded-lg text-[10vw] sm:text-[3vw] h-full text-[#D19C97] font-[800] flex items-center min-w-[10%] sm:min-w-[30%]"
+        >{{ item.icon }}</mat-icon
+      >
+      <h1 class="font-[600] m-[0]">{{ item.name }}</h1>
+    </div>
+  </div>
+  <div class="flex mt-[5vh] sm:mt-[10vh] justify-around flex-wrap gap-y-[5vh]">
+    <a
+      routerLink="/cart"
+      *ngFor="let item of categories"
+      class="example-card w-[95%] sm:w-[27%]"
+    >
+      <mat-card class=" p-5 sm:p-2">
+        <mat-card-header class="mb-[2.5vh] text-[400]">
+          <h3 class="text-right w-full text-[grey] text-[30px] sm:text-[16px]">
+            {{ item.stocks }} products
+          </h3>
+        </mat-card-header>
+        <img
+          class="mb-[5.5vh]"
+          mat-card-image
+          src="../../../assets/images/cat-1.jpg"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <h2 class="text-[32px] sm:text-[18px]">
+            <b>{{ item.category }}</b>
+          </h2>
+        </mat-card-content>
+      </mat-card>
+    </a>
+  </div>
 </div>

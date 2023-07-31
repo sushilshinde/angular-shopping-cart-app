@@ -13,6 +13,9 @@ import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     CartComponent,
     AuthenticationComponent,
     CartListComponent,
+    NavbarComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SharedModules,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

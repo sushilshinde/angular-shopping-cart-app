@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
     CartListComponent,
     CarouselComponent,
     CatCardComponent,
+    NavbarComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
     SharedModules,
     RouterModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatTreeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

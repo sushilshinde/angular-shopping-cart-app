@@ -15,6 +15,7 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthenticationComponent,
     CartListComponent,
     CarouselComponent,
+    CatCardComponent,
   ],
   imports: [
     BrowserModule,

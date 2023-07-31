@@ -2,12 +2,11 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
-import { User } from './auth.model';
+import { LocalUser, User } from './auth.model';
 const headerDict = {
   'Content-Type': 'application/json',
 };
@@ -19,6 +18,7 @@ const requestOptions = {
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   user = new BehaviorSubject<User | null>(null);
+  localUser = new BehaviorSubject<LocalUser | null>(null);
   constructor(private http: HttpClient, private router: Router) {}
   private tokenExpiration: any;
 
@@ -87,7 +87,6 @@ export class AuthenticationService {
     if (err.error.error) {
       errMsg = err.error.error.message;
     }
-    console.log(err.error.error.message);
     return throwError(errMsg);
   }
 
@@ -97,5 +96,52 @@ export class AuthenticationService {
     this.user.next(user);
     this.autoLogout(+exp * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
+  }
+
+  handleLocalAuth(email, password, mode) {
+    if (mode === 'register') {
+      return this.http
+        .post('http://localhost:3000/users', {
+          email,
+          password,
+          cart: [],
+        })
+        .pipe(
+          tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
+          catchError((err) => throwError(err.message))
+        );
+    }
+    return this.http.get(`http://localhost:3000/users?email=${email}`).pipe(
+      tap((data: any) => {
+        if (!data.length) throw new Error('Invalid Username/Password');
+        if (data[0].password === password) {
+          this.handleLocalAuthSuccess(data[0].id, data[0].email);
+        } else {
+          throw new Error('Invalid Username/Password');
+        }
+      }),
+      catchError((err) => throwError(err.message))
+    );
+  }
+
+  handleLocalAuthSuccess(id: number, email: string) {
+    const newLocalUser = new LocalUser(id, email);
+    this.localUser.next(newLocalUser);
+    localStorage.setItem('local_user', JSON.stringify(newLocalUser));
+  }
+
+  localAutoLogin() {
+    const user = localStorage.getItem('local_user');
+    const parsedUser = user && JSON.parse(user);
+    if (!parsedUser) return;
+    const loadedUser = new LocalUser(parsedUser.id, parsedUser.email);
+    if (loadedUser) {
+      this.localUser.next(loadedUser);
+    }
+  }
+
+  localLogout() {
+    localStorage.removeItem('local_user');
+    this.router.navigate['/'];
   }
 }

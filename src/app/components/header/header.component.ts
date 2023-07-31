@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  ActivationEnd,
-  Router,
-} from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -32,7 +30,10 @@ export class HeaderComponent {
   showCart = true;
   total: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.routerEvents = this.router.events.subscribe((event: any) => {
@@ -46,5 +47,9 @@ export class HeaderComponent {
           this.showCart = event.snapshot.data?.['showCart'];
       }
     });
+  }
+
+  handleLogout() {
+    this.authService.localLogout();
   }
 }

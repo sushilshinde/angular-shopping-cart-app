@@ -1,0 +1,20 @@
+<mat-card class="p-5 sm:p-2 flex items-center">
+  <mat-card-header class="mb-[2vh] text-[400]">
+    <h3 class="text-right w-full text-[grey] m-[0] text-[30px] sm:text-[16px]">
+      {{ item.stocks }} products
+    </h3>
+  </mat-card-header>
+  <div class="w-[85%] overflow-hidden">
+    <img
+      class="mb-[5.5vh] hover:scale-125 ease-in duration-300"
+      mat-card-image
+      src="../../../assets/images/cat-{{ ind + 1 }}.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+  </div>
+  <mat-card-content>
+    <h2 class="text-[32px] sm:text-[18px]">
+      <b>{{ item.category }}</b>
+    </h2>
+  </mat-card-content>
+</mat-card>

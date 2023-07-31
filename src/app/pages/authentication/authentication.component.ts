@@ -22,6 +22,29 @@ export class AuthenticationComponent {
     private router: Router
   ) {}
 
+  // handleSubmit(formData: NgForm) {
+  //   this.isLoading = true;
+  //   const mode = this.isLogin ? 'login' : 'register';
+  //   if (!formData.valid) {
+  //     this.error = 'Please enter valid details.';
+  //     this.clearError();
+  //     return;
+  //   }
+  //   this.authService
+  //     .handleAuth(formData.value.email, formData.value.password, mode)
+  //     .subscribe({
+  //       next: (data: any) => {
+  //         this.isLoading = false;
+  //         this.router.navigate(['']);
+  //       },
+  //       error: (e: string) => {
+  //         console.log(e);
+  //         this.isLoading = false;
+  //         this.error = e;
+  //       },
+  //     });
+  // }
+
   handleSubmit(formData: NgForm) {
     this.isLoading = true;
     const mode = this.isLogin ? 'login' : 'register';
@@ -31,17 +54,13 @@ export class AuthenticationComponent {
       return;
     }
     this.authService
-      .handleAuth(formData.value.email, formData.value.password, mode)
+      .handleLocalAuth(formData.value.email, formData.value.password, mode)
       .subscribe({
-        next: (data: any) => {
+        next: (data) => {
           this.isLoading = false;
           this.router.navigate(['']);
         },
-        error: (e: string) => {
-          console.log(e);
-          this.isLoading = false;
-          this.error = e;
-        },
+        error: (err) => (this.error = err),
       });
   }
 }

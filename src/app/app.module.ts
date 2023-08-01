@@ -35,12 +35,9 @@ import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component
     CatCardComponent,
     NavbarComponent,
     CategoryListComponent,
-<<<<<<< HEAD
     OffersectionCardComponent,
-    TrandyComponent
-=======
-    TitlebBarComponent,
->>>>>>> staging/vicky
+    TrandyComponent,
+    TitlebBarComponent
   ],
   imports: [
     BrowserModule,

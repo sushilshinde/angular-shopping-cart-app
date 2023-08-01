@@ -23,6 +23,7 @@ import { TrandyComponent } from './components/trandy/trandy.component';
 import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EffectsModule } from '@ngrx/effects';
     CategoryListComponent,
     OffersectionCardComponent,
     TrandyComponent,
-    TitlebBarComponent
+    TitlebBarComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

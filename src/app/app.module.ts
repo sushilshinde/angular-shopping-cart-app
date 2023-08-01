@@ -19,6 +19,7 @@ import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatTreeModule } from '@angular/material/tree';
     CatCardComponent,
     NavbarComponent,
     CategoryListComponent,
+    TitlebBarComponent,
   ],
   imports: [
     BrowserModule,

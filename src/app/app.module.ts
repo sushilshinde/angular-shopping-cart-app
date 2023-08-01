@@ -24,6 +24,7 @@ import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+
 @NgModule({
   declarations: [
     AppComponent,

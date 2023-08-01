@@ -26,6 +26,7 @@ export class HeaderComponent {
       price: 400,
     },
   ];
+  search;
   showheader: boolean = true;
   showCart = true;
   total: number = 0;

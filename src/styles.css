@@ -3,10 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body,html {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 
 .error {
   color: red;

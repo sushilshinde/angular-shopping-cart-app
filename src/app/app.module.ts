@@ -20,6 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component
     HttpClientModule,
     NgbModule,
     MatTreeModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

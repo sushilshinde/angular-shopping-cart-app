@@ -2,5 +2,6 @@
     <h1 class="font-[800] text-[35px] font-serif">
         {{ title | uppercase }}
     </h1>
-    <p class="text-[16px] font-sans font-[600] text-[#D19C97]">Home - <span class="text-[gray]">{{subTitle}}</span></p>
+    <p><a class="text-[16px] font-sans font-[600] text-[#D19C97]" [routerLink]="['/home']"> Home - </a><span
+            class="text-[gray]">{{subTitle}}</span></p>
 </div>

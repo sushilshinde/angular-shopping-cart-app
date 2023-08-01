@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TitlebBarComponent } from './titleb-bar.component';
+import { TitlebBarComponent } from './title-bar.component';
 
 describe('TitlebBarComponent', () => {
   let component: TitlebBarComponent;

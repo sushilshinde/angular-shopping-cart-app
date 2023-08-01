@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './trandy.component.html',
   styleUrls: ['./trandy.component.css']
 })
-export class TrandyComponent  implements OnInit {
+export class TrandyComponent implements OnInit {
   products: any[];
 
   constructor(private modalService: NgbModal, private http: HttpClient) {
@@ -32,6 +32,6 @@ export class TrandyComponent  implements OnInit {
 
   public open(modal: any): void {
     this.modalService.open(modal);
-  }
+  } 
 }
 

@@ -34,7 +34,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.routerEvents = this.router.events.subscribe((event: any) => {

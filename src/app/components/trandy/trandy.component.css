@@ -1,0 +1,10 @@
+
+::ng-deep .product-container {
+    height:450px !important;
+    width:300px;
+  }
+  ::ng-deep.image-container{
+    height: 300px;
+    width: 300px;
+  }
+  

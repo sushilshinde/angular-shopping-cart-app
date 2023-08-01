@@ -20,9 +20,10 @@ import { CategoryListComponent } from './components/navbar/category-list/categor
 import { MatTreeModule } from '@angular/material/tree';
 import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
 import { TrandyComponent } from './components/trandy/trandy.component';
-import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
+import { TitlebBarComponent } from './components/title-bar/title-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EffectsModule } from '@ngrx/effects';
     CategoryListComponent,
     OffersectionCardComponent,
     TrandyComponent,
-    TitlebBarComponent
+    TitlebBarComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

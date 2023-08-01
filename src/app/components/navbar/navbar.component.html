@@ -1,41 +1,22 @@
-<nav class="bg-white-800">
-  <div class="px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <div
-        class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-      >
+<nav class="bg-white-800 w-full">
+  <div class="">
+    <div class="relative flex items-center justify-between">
+      <div class="flex sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
           <app-category-list> </app-category-list>
         </div>
-        <div class="hidden sm:ml-6 sm:block">
+        <div class="sm:ml-6">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a
-              href="#"
-              class="px-3 py-2 text-m mt-3 font-thin nav-item"
-              aria-current="page"
-              >Home</a
-            >
-            <a href="#" class="px-3 py-2 text-m mt-3 font-thin nav-item"
-              >Shop</a
-            >
-            <a href="#" class="px-3 py-2 text-m mt-3 font-thin nav-item"
-              >Shop Detail</a
-            >
-            <a href="#" class="px-3 py-2 text-m mt-3 font-thin nav-item"
-              >Pages</a
-            >
-            <a href="#" class="px-3 py-2 text-m mt-3 font-thin nav-item"
-              >Contact</a
-            >
+            <a [routerLink]="['home']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Home</a>
+            <a [routerLink]="['shop']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Shop</a>
+            <a [routerLink]="['cart']" routerLinkActive="active" href="#" class="px-3 py-2 text-[16px] mt-3">Cart</a>
+            <a [routerLink]="['contact']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Contact</a>
           </div>
         </div>
       </div>
-      <div
-        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-      >
-        <a href="#" class="px-3 py-2 text-m font-thin nav-item">Login</a>
-        <a href="#" class="px-3 py-2 text-m font-thin nav-item">Register</a>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 mt-[1.2vh]">
+        <a href="#" class="px-3 py-2 text-m">Login</a>
+        <a href="#" class="px-3 py-2 text-m">Register</a>
       </div>
     </div>
   </div>

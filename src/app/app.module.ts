@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,11 +14,12 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
+import { TrandyComponent } from './components/trandy/trandy.component';
 import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -36,7 +37,9 @@ import { EffectsModule } from '@ngrx/effects';
     CatCardComponent,
     NavbarComponent,
     CategoryListComponent,
-    TitlebBarComponent,
+    OffersectionCardComponent,
+    TrandyComponent,
+    TitlebBarComponent
   ],
   imports: [
     BrowserModule,

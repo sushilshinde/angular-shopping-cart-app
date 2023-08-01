@@ -20,6 +20,7 @@ import { CategoryListComponent } from './components/navbar/category-list/categor
 import { MatTreeModule } from '@angular/material/tree';
 import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
 import { TrandyComponent } from './components/trandy/trandy.component';
+import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,12 @@ import { TrandyComponent } from './components/trandy/trandy.component';
     CatCardComponent,
     NavbarComponent,
     CategoryListComponent,
+<<<<<<< HEAD
     OffersectionCardComponent,
     TrandyComponent
+=======
+    TitlebBarComponent,
+>>>>>>> staging/vicky
   ],
   imports: [
     BrowserModule,

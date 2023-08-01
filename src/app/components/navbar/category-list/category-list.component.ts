@@ -1,34 +1,40 @@
 import { Component } from '@angular/core';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
-
-interface CategoriesNode {
-  name: string;
-  children?: CategoriesNode[];
-}
-
-const TREE_DATA: CategoriesNode[] = [
-  {
-    name: 'Categories',
-    children: [{name: 'Dresses' ,children:[{name: 'Mens Dresses'},{name: 'Womens Dresses'},{name: 'Babys Dresses'}]}, {name: 'Shirts'}, {name: 'Jeans'},{name: 'Swimwear'},{name: 'Sleepwear'},{name: 'Sportswear'},{name: 'Jumpsuits'},{name: 'Blazers'},{name: 'Jackets'},{name:'Shoes'}],
-  }
-  
-];
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource, MatTreeModule } from '@angular/material/tree';
+import { ActivationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.css']
+  styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent {
-  treeControl = new NestedTreeControl<CategoriesNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<CategoriesNode>();
+  isCatOpen: boolean = true;
+  catList = [
+    'Shirts',
+    'Jeans',
+    'Swimwear',
+    'Sleepwear',
+    'Sportswear',
+    'Jumpsuits',
+    'Blazers',
+    'Jackets',
+    'Shoes',
+  ];
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(
+    private router: Router,
+  ) { }
+
+  ngOnInit() {
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof ActivationEnd) {
+        if (event.snapshot.routeConfig?.['path'] === 'home') {
+          this.isCatOpen = true;
+        } else {
+          this.isCatOpen = false;
+        }
+      }
+    });
   }
-
-  hasChild = (_: number, node: CategoriesNode) => !!node.children && node.children.length > 0;
-
-
 }

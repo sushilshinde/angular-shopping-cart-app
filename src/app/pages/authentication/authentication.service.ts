@@ -142,6 +142,6 @@ export class AuthenticationService {
 
   localLogout() {
     localStorage.removeItem('local_user');
-    this.router.navigate['/'];
+    this.router.navigate['/home'];
   }
 }

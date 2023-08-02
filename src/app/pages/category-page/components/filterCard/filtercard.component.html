@@ -1,0 +1,9 @@
+<div class="w-100% p-3">
+    <h3 class="text-[20px]"><b>{{cardTitle}}</b></h3>
+    <div class="grid gap-y-6 text-[18px] text-[grey]">
+        <label *ngFor="let item of filterList">
+            <input (change)="handleChange($event)" class="mr-2" type="checkbox" [value]="item?.['value']" />
+            {{item?.['name']}}
+        </label>
+    </div>
+</div>

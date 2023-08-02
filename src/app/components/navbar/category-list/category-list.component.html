@@ -1,11 +1,11 @@
-<div class="w-[20vw] relative hidden sm:block ">
+<div class="w-[20vw] relative hidden sm:block">
   <a (click)="isCatOpen = !isCatOpen" class="flex-center w-[20vw] py-3 bg-[#D19C97] cursor-pointer">
     <h3 class="m-[0]">Category</h3>
     <span class="ml-3 mt-[10px]">
       <mat-icon>{{ isCatOpen ? "arrow_drop_up" : "arrow_drop_down" }}</mat-icon>
     </span>
   </a>
-  <ul class="absolute w-full text-[16px] ease-out duration-300 overflow-hidden"
+  <ul class="absolute w-full text-[16px] ease-out duration-300 overflow-hidden bg-[white]"
     [ngStyle]="{ height: isCatOpen ? '70vh' : '0' }">
     <a class="hover:text-[#D19C97]" [routerLink]="['/products', cat]" *ngFor="let cat of catList">
       <li class="p-3 border-[1px]">

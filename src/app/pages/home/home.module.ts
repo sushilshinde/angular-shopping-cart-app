@@ -13,7 +13,7 @@ import { HomeComponent } from "./home.component";
         CatCardComponent, CarouselComponent,],
     imports: [
         CommonModule,
-        SharedModules
+        SharedModules,
     ],
     exports: [
         OffersectionCardComponent,

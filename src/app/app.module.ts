@@ -13,11 +13,15 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
-import { TitlebBarComponent } from './components/title-bar/title-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductsComponent } from './pages/products/products.component';
 import { HomeModule } from './pages/home/home.module';
+import { ProductModule } from './pages/products/products.module';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { catPageReducer } from './pages/category-page/category-store/cat-page.reducer';
+import { CatPageEffect } from './pages/category-page/category-store/cat-page.effects';
+import { FilterCard } from './pages/category-page/components/filterCard/filtercard.component';
+import { ProductCardComponent } from './pages/category-page/components/product-card/product-card.component';
 
 
 @NgModule({
@@ -30,8 +34,9 @@ import { HomeModule } from './pages/home/home.module';
     CartListComponent,
     NavbarComponent,
     CategoryListComponent,
-    TitlebBarComponent,
-    ProductsComponent
+    CategoryPageComponent,
+    FilterCard,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -41,10 +46,11 @@ import { HomeModule } from './pages/home/home.module';
     RouterModule,
     HttpClientModule,
     HomeModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    ProductModule,
+    StoreModule.forRoot({ catData: catPageReducer }),
+    EffectsModule.forRoot([CatPageEffect]),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

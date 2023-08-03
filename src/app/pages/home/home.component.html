@@ -12,11 +12,10 @@
     </div>
   </div>
   <div class="flex mt-[5vh] sm:mt-[10vh] justify-around flex-wrap gap-y-[5vh] p-3">
-    <a routerLink="/cart" *ngFor="let item of categories; let i = index" class="w-[95%] sm:w-[27%]">
+    <a [routerLink]="['/shop',item.link]" *ngFor="let item of categories; let i = index" class="w-[95%] sm:w-[27%]">
       <app-cat-card [item]="item" [ind]="i"></app-cat-card>
     </a>
   </div>
-  
   <app-offersection-card></app-offersection-card>
   <app-trandy></app-trandy>
 </div>

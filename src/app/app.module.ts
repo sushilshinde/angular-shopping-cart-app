@@ -9,7 +9,6 @@ import { CartComponent } from './pages/cart/cart.component';
 import { SharedModules } from './sharedModules/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
-import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
@@ -18,18 +17,25 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { ProductsComponent } from './pages/products/products.component';
+
+
+
+
+import { ColorsComponent } from './pages/product-details/colors/colors.component';
+
+
+
+
+import { HomeModule } from './pages/home/home.module';
+
+import { CategoryModule } from './pages/category-page/cat-page.module';
 
 import { RatingComponent } from './pages/product-details/rating/rating.component';
 import { SizeComponent } from './pages/product-details/size/size.component';
-import { ColorsComponent } from './pages/product-details/colors/colors.component';
-import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
-import { TrandyComponent } from './components/trandy/trandy.component';
-import { TitlebBarComponent } from './components/title-bar/title-bar.component';
-import { MatTreeModule } from '@angular/material/tree';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeModule } from './pages/home/home.module';
+
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+
+import { CartListComponent } from './components/header/cart-list/cart-list.component';
 
 
 
@@ -40,17 +46,18 @@ import { HomeModule } from './pages/home/home.module';
     DetailsComponent,
     CartComponent,
     AuthenticationComponent,
-    CartListComponent,
     NavbarComponent,
     CategoryListComponent,
     
-    TitlebBarComponent,
+    
     ShopComponent,
-    ProductsComponent,
+    
     ProductDetailsComponent,
     RatingComponent,
     SizeComponent,
-    ColorsComponent
+    ColorsComponent,
+    CategoryListComponent,
+    CartListComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,15 +66,15 @@ import { HomeModule } from './pages/home/home.module';
     SharedModules,
     RouterModule,
     HttpClientModule,
-    MatTreeModule,
+    
     StoreModule.forRoot({shop:shopReducer}),
     EffectsModule.forRoot([ShopEffects]),
-    NgbModule,
+   
     HomeModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    
+    CategoryModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

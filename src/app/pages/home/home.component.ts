@@ -25,11 +25,11 @@ export class HomeComponent {
     },
   ];
   categories = [
-    { stocks: 44, category: "Men's Dress" },
-    { stocks: 68, category: "Women's Dress" },
-    { stocks: 94, category: "Baby's Dress" },
-    { stocks: 44, category: 'Accerssories' },
-    { stocks: 144, category: 'Bags' },
-    { stocks: 424, category: 'Shoes' },
+    { stocks: 44, category: "Men's Dress", link: 'mens-dresses' },
+    { stocks: 68, category: "Women's Dress", link: 'womens-dresses' },
+    { stocks: 94, category: "Baby's Dress", link: 'baby-dresses' },
+    { stocks: 44, category: 'Accerssories', link: 'accessories' },
+    { stocks: 144, category: 'Bags', link: 'bags' },
+    { stocks: 424, category: 'Shoes', link: 'shoes' },
   ];
 }

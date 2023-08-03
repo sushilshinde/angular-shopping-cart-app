@@ -9,8 +9,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTreeModule } from '@angular/material/tree';
+import { CommonModule } from '@angular/common';
+import { TitlebBarComponent } from '../components/title-bar/title-bar.component';
+import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
+  declarations: [TitlebBarComponent],
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -23,6 +28,9 @@ import { MatTreeModule } from '@angular/material/tree';
     NgbCarouselModule,
     MatTreeModule,
     NgbModule,
+    CommonModule,
+    RouterModule,
+    MatSelectModule
   ],
   exports: [
     MatToolbarModule,
@@ -36,6 +44,10 @@ import { MatTreeModule } from '@angular/material/tree';
     NgbCarouselModule,
     MatTreeModule,
     NgbModule,
+    CommonModule,
+    TitlebBarComponent,
+    RouterModule,
+    MatSelectModule
   ],
 })
 export class SharedModules { }

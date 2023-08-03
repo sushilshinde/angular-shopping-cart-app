@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./title-bar.component.css']
 })
 export class TitlebBarComponent {
-  @Input() title;
+  @Input() pageTitle;
   @Input() subTitle;
 }

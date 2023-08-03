@@ -12,7 +12,7 @@ import { HomeComponent } from "./home.component";
         HomeComponent,
         CatCardComponent, CarouselComponent,],
     imports: [
-        CommonModule,
+      
         SharedModules
     ],
     exports: [

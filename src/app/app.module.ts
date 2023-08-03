@@ -17,11 +17,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeModule } from './pages/home/home.module';
 import { ProductModule } from './pages/products/products.module';
-import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { catPageReducer } from './pages/category-page/category-store/cat-page.reducer';
 import { CatPageEffect } from './pages/category-page/category-store/cat-page.effects';
-import { FilterCard } from './pages/category-page/components/filterCard/filtercard.component';
-import { ProductCardComponent } from './pages/category-page/components/product-card/product-card.component';
+import { CategoryModule } from './pages/category-page/cat-page.module';
 
 
 @NgModule({
@@ -33,10 +31,7 @@ import { ProductCardComponent } from './pages/category-page/components/product-c
     AuthenticationComponent,
     CartListComponent,
     NavbarComponent,
-    CategoryListComponent,
-    CategoryPageComponent,
-    FilterCard,
-    ProductCardComponent
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +42,9 @@ import { ProductCardComponent } from './pages/category-page/components/product-c
     HttpClientModule,
     HomeModule,
     ProductModule,
-    StoreModule.forRoot({ catData: catPageReducer }),
-    EffectsModule.forRoot([CatPageEffect]),
+    StoreModule.forRoot({  }),
+    EffectsModule.forRoot([]),
+    CategoryModule
   ],
   providers: [],
   bootstrap: [AppComponent],

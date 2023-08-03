@@ -1,7 +1,6 @@
 <app-title-bar title="Shop Details" subTitle="Shop Details"></app-title-bar>
 
-<div class="flex">
-    
+<div class="flex mt-[9vh]">
     <ngb-carousel  [showNavigationIndicators]="false">
         <ng-template ngbSlide *ngFor="let item of productData.images">
           <div
@@ -18,14 +17,15 @@
             text-[white] 
             items-center 
             gap-y-[2.5vh]
-            sm:gap-y-[5vh]"
+            sm:gap-y-[5vh]
+            ml-[9vh]"
           >
           <img [src]="item" class="h-full w-full absolute top-[0] object-cover z-0 brightness-75" alt="">
-           
           </div>
         </ng-template>
       </ngb-carousel>
-     <div class="col-lg-7 pb-5">
+
+     <div class="col-lg-7 pb-5 d-flex flex-column ml-[9vh]">
             <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
             <div class="d-flex mb-3">
                 <app-rating [rating]="productData.rating"></app-rating>

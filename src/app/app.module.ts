@@ -13,7 +13,6 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
-import { TitlebBarComponent } from './components/title-bar/title-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
@@ -21,10 +20,16 @@ import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { HomeModule } from './pages/home/home.module';
+
 import { RatingComponent } from './pages/product-details/rating/rating.component';
 import { SizeComponent } from './pages/product-details/size/size.component';
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
+import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
+import { TrandyComponent } from './components/trandy/trandy.component';
+import { TitlebBarComponent } from './components/title-bar/title-bar.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeModule } from './pages/home/home.module';
 
 
 
@@ -38,11 +43,9 @@ import { ColorsComponent } from './pages/product-details/colors/colors.component
     CartListComponent,
     NavbarComponent,
     CategoryListComponent,
-    OffersectionCardComponent,
-    TrandyComponent,
+    
     TitlebBarComponent,
-    ShopComponent
-    TitlebBarComponent,
+    ShopComponent,
     ProductsComponent,
     ProductDetailsComponent,
     RatingComponent,
@@ -56,10 +59,10 @@ import { ColorsComponent } from './pages/product-details/colors/colors.component
     SharedModules,
     RouterModule,
     HttpClientModule,
-    NgbModule,
     MatTreeModule,
     StoreModule.forRoot({shop:shopReducer}),
     EffectsModule.forRoot([ShopEffects]),
+    NgbModule,
     HomeModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),

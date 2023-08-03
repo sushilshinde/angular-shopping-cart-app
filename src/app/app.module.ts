@@ -9,17 +9,19 @@ import { CartComponent } from './pages/cart/cart.component';
 import { SharedModules } from './sharedModules/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
-import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HomeModule } from './pages/home/home.module';
-import { ProductModule } from './pages/products/products.module';
-import { catPageReducer } from './pages/category-page/category-store/cat-page.reducer';
-import { CatPageEffect } from './pages/category-page/category-store/cat-page.effects';
 import { CategoryModule } from './pages/category-page/cat-page.module';
+import { HomeModule } from './pages/home/home.module';
+import { RatingComponent } from './pages/product-details/rating/rating.component';
+import { SizeComponent } from './pages/product-details/size/size.component';
+import { ColorsComponent } from './pages/product-details/colors/colors.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
+import { CartListComponent } from './components/header/cart-list/cart-list.component';
+
 
 
 @NgModule({
@@ -29,9 +31,13 @@ import { CategoryModule } from './pages/category-page/cat-page.module';
     DetailsComponent,
     CartComponent,
     AuthenticationComponent,
-    CartListComponent,
     NavbarComponent,
-    CategoryListComponent
+    ProductDetailsComponent,
+    RatingComponent,
+    SizeComponent,
+    ColorsComponent,
+    CategoryListComponent,
+    CartListComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +47,7 @@ import { CategoryModule } from './pages/category-page/cat-page.module';
     RouterModule,
     HttpClientModule,
     HomeModule,
-    ProductModule,
-    StoreModule.forRoot({  }),
+    StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     CategoryModule
   ],

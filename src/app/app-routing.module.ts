@@ -4,7 +4,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/products/products.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -21,10 +21,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'shop',
-    component: ProductsComponent,
-  },
-  {
     path: 'shop/:cat',
     component: CategoryPageComponent,
   },
@@ -35,7 +31,10 @@ const routes: Routes = [
       showCart: false,
     },
 
-  },
+  },{
+  path: 'details',
+  component: ProductDetailsComponent,
+},
 ];
 
 @NgModule({

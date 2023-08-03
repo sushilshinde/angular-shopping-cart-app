@@ -23,6 +23,9 @@ import { TrandyComponent } from './components/trandy/trandy.component';
 import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ShopComponent } from './components/shop/shop.component';
+import { shopReducer } from './store/reducers/shop.reducers';
+import { ShopEffects } from './store/shop.effects';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { EffectsModule } from '@ngrx/effects';
     CategoryListComponent,
     OffersectionCardComponent,
     TrandyComponent,
-    TitlebBarComponent
+    TitlebBarComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +55,8 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     NgbModule,
     MatTreeModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({shop:shopReducer}),
+    EffectsModule.forRoot([ShopEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

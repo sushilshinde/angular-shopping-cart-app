@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-color': '#D19C97'
+        'custom-color': '#D19C97',
+        'custom-color-gray': '#edf1ff'
         
       }
     }

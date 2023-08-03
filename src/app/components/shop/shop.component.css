@@ -1,0 +1,14 @@
+::ng-deep .product-container {
+    height:450px !important;
+    width:350px;
+    margin: 30px;
+  }
+  ::ng-deep.image-container{
+    height: 300px;
+    width: 300px;
+  }
+  .mat-divider {
+    width: 100%;
+    margin: 0 auto;
+  }
+  

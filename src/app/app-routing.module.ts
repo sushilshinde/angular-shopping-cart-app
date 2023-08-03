@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopComponent } from './components/shop/shop.component';
+import { AuthGaurd } from './pages/authentication/auth-gaurd.service';
+import { RestrictAuth } from './pages/authentication/authentication-gaurd.service';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
@@ -13,12 +15,18 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-   path: 'shop',
-   component: ShopComponent
+    path: 'shop',
+    component: ShopComponent
   },
   {
-    path: 'auth',
+    path: 'auth/login',
     component: AuthenticationComponent,
+    canActivate: [RestrictAuth]
+  },
+  {
+    path: 'auth/register',
+    component: AuthenticationComponent,
+    canActivate: [RestrictAuth]
   },
   {
     path: '',
@@ -36,10 +44,10 @@ const routes: Routes = [
       showCart: false,
     },
 
-  },{
-  path: 'details',
-  component: ProductDetailsComponent,
-},
+  }, {
+    path: 'details',
+    component: ProductDetailsComponent,
+  },
 ];
 
 @NgModule({

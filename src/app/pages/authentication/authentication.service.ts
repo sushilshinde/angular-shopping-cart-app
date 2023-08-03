@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError, of } from 'rxjs';
 import { LocalUser, User } from './auth.model';
 const headerDict = {
   'Content-Type': 'application/json',
@@ -18,8 +18,7 @@ const requestOptions = {
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   user = new BehaviorSubject<User | null>(null);
-  localUser = new BehaviorSubject<LocalUser | null>(null);
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
   private tokenExpiration: any;
 
   handleLogout() {
@@ -126,18 +125,15 @@ export class AuthenticationService {
 
   handleLocalAuthSuccess(id: number, email: string) {
     const newLocalUser = new LocalUser(id, email);
-    this.localUser.next(newLocalUser);
     localStorage.setItem('local_user', JSON.stringify(newLocalUser));
+    this.router.navigate(['/home'])
   }
 
   localAutoLogin() {
     const user = localStorage.getItem('local_user');
     const parsedUser = user && JSON.parse(user);
     if (!parsedUser) return;
-    const loadedUser = new LocalUser(parsedUser.id, parsedUser.email);
-    if (loadedUser) {
-      this.localUser.next(loadedUser);
-    }
+    // const loadedUser = new LocalUser(parsedUser.id, parsedUser.email);
   }
 
   localLogout() {

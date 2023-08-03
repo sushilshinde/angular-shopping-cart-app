@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthenticationService } from './authentication.service';
+import { SignIn, SignUp } from './authStore/auth.action';
 
 @Component({
   selector: 'app-authentication',
@@ -19,48 +21,31 @@ export class AuthenticationComponent {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
-  ) {}
-
-  // handleSubmit(formData: NgForm) {
-  //   this.isLoading = true;
-  //   const mode = this.isLogin ? 'login' : 'register';
-  //   if (!formData.valid) {
-  //     this.error = 'Please enter valid details.';
-  //     this.clearError();
-  //     return;
-  //   }
-  //   this.authService
-  //     .handleAuth(formData.value.email, formData.value.password, mode)
-  //     .subscribe({
-  //       next: (data: any) => {
-  //         this.isLoading = false;
-  //         this.router.navigate(['']);
-  //       },
-  //       error: (e: string) => {
-  //         console.log(e);
-  //         this.isLoading = false;
-  //         this.error = e;
-  //       },
-  //     });
-  // }
+    private router: Router,
+    private store: Store,
+    private activedRoute: ActivatedRoute
+  ) {
+    if (activedRoute.url['_value'][1].path === 'login') {
+      this.isLogin = true
+    }
+  }
 
   handleSubmit(formData: NgForm) {
-    this.isLoading = true;
-    const mode = this.isLogin ? 'login' : 'register';
     if (!formData.valid) {
       this.error = 'Please enter valid details.';
       this.clearError();
       return;
     }
-    this.authService
-      .handleLocalAuth(formData.value.email, formData.value.password, mode)
-      .subscribe({
-        next: (data) => {
-          this.isLoading = false;
-          this.router.navigate(['']);
-        },
-        error: (err) => (this.error = err),
-      });
+    if (this.isLogin) {
+      this.store.dispatch(new SignIn(formData.value))
+    }
+    else {
+      return this.store.dispatch(new SignUp(formData.value))
+    }
+    this.store.select((state: any) => state.auth).subscribe(
+      data => {
+        this.error = data.error;
+      }
+    )
   }
 }

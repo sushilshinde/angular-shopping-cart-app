@@ -1,1 +1,39 @@
 <app-title-bar pageTitle="Shopping Cart" subTitle="Shopping Cart"></app-title-bar>
+
+<div class="flex-center mt-[10vh]">
+    <div class="flex w-[93%] justify-between">
+        <div class="w-[72%]">
+            <table class="table border-1">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartList">
+                        <td class="truncate max-w-[10vw]">{{item.productName}}</td>
+                        <td>{{item.price | currency}}</td>
+                        <td class="flex-center">
+                            <button class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]" [disabled]="item.quantity < 2">
+                                <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
+                            </button>
+                            {{item.quantity}}
+                            <button class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
+                                <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
+                            </button>
+                        </td>
+                        <td>{{item.price * item.quantity | currency}}</td>
+                        <td class="flex-center"><button class="bg-[#ff3030b3] rounded-lg text-[white] p-1 flex-center px-2">
+                                Remove
+                            </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="w-[25%] border-1 p-3">total cost</div>
+    </div>
+</div>

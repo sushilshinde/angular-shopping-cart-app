@@ -1,0 +1,8 @@
+th,td{
+    text-align: center;
+}
+td{
+    color: grey;
+    font-weight: 500;
+    padding: 2.5vh 0;
+}

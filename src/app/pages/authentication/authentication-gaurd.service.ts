@@ -12,7 +12,7 @@ import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGaurd {
+export class RestrictAuth {
   constructor(
     private authService: AuthenticationService,
     private router: Router, private store: Store
@@ -30,37 +30,11 @@ export class AuthGaurd {
       take(1),
       map((user) => {
         const isAuth = Object.values(user).length > 0;
-        if (isAuth) return true;
-        this.router.navigate(['/auth/login'])
+        if (!isAuth) return true;
+        this.router.navigate(['home'])
         return false
-        // return this.router.createUrlTree(['auth']);
       })
     );
   }
 }
 
-// export class AuthenticationGaurd {
-//   constructor(
-//     private authService: AuthenticationService,
-//     private router: Router,
-//     private store: Store
-//   ) { }
-
-//   canActivate(
-//     Route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot,
-//   ):
-//     | Observable<boolean | UrlTree>
-//     | Promise<boolean | UrlTree>
-//     | boolean
-//     | UrlTree {
-//     return this.store.select((state: any) => state.auth.userData).pipe(
-//       take(1),
-//       map((user) => {
-//         const isAuth = !!user;
-//         if (!isAuth) return true;
-//         return this.router.createUrlTree(['/home']);
-//       })
-//     );
-//   }
-// }

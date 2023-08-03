@@ -17,25 +17,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
-
-
-
-
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
-
-
-
-
 import { HomeModule } from './pages/home/home.module';
-
 import { CategoryModule } from './pages/category-page/cat-page.module';
-
 import { RatingComponent } from './pages/product-details/rating/rating.component';
 import { SizeComponent } from './pages/product-details/size/size.component';
-
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
+import { AuthModule } from './pages/authentication/auth.module';
 
 
 
@@ -48,10 +37,7 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
     AuthenticationComponent,
     NavbarComponent,
     CategoryListComponent,
-    
-    
     ShopComponent,
-    
     ProductDetailsComponent,
     RatingComponent,
     SizeComponent,
@@ -66,13 +52,11 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
     SharedModules,
     RouterModule,
     HttpClientModule,
-    
-    StoreModule.forRoot({shop:shopReducer}),
+    StoreModule.forRoot({ shop: shopReducer }),
     EffectsModule.forRoot([ShopEffects]),
-   
     HomeModule,
-    
-    CategoryModule
+    CategoryModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

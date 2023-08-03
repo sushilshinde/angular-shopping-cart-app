@@ -39,7 +39,7 @@ export class HeaderComponent {
   ngOnInit() {
     this.routerEvents = this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
-        if (event.snapshot.routeConfig?.['path'] === 'auth') {
+        if (event.snapshot.routeConfig?.['path'].includes('auth')) {
           this.showheader = false;
         } else {
           this.showheader = true;

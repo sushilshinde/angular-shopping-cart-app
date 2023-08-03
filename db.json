@@ -1,12 +1,16 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "vicky",
       "email": "vigneshn0922000@gmail.com",
       "password": "Vicky@123",
-      "isAdmin": true,
-      "cart": []
+      "cart": [],
+      "id": 2
+    },
+    {
+      "email": "vigneshn0922000@gmail.com",
+      "password": "Vicky@123",
+      "cart": [],
+      "id": 3
     }
   ],
   "products": [
@@ -58,7 +62,9 @@
       "brand": "Samsung",
       "category": "electronic",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1436,7 +1442,9 @@
       "brand": "Fashion Jewellery",
       "category": "jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
+      ]
     },
     {
       "id": 79,
@@ -1449,7 +1457,9 @@
       "brand": "Fashion Jewellery",
       "category": "jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ]
     },
     {
       "id": 80,

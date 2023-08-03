@@ -13,10 +13,12 @@ import { CommonModule } from '@angular/common';
 import { TitlebBarComponent } from '../components/title-bar/title-bar.component';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [TitlebBarComponent],
   imports: [
+    MatTableModule,
     MatToolbarModule,
     MatIconModule,
     MatBadgeModule,

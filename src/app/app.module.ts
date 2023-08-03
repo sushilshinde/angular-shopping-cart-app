@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
@@ -13,38 +11,43 @@ import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { CatCardComponent } from './pages/home/cat-card/cat-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
-import { MatTreeModule } from '@angular/material/tree';
-import { OffersectionCardComponent } from './components/offersection-card/offersection-card.component';
-import { TrandyComponent } from './components/trandy/trandy.component';
-import { TitlebBarComponent } from './components/titleb-bar/titleb-bar.component';
+import { TitlebBarComponent } from './components/title-bar/title-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { HomeModule } from './pages/home/home.module';
+import { RatingComponent } from './pages/product-details/rating/rating.component';
+import { SizeComponent } from './pages/product-details/size/size.component';
+import { ColorsComponent } from './pages/product-details/colors/colors.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     DetailsComponent,
     CartComponent,
     AuthenticationComponent,
     CartListComponent,
-    CarouselComponent,
-    CatCardComponent,
     NavbarComponent,
     CategoryListComponent,
     OffersectionCardComponent,
     TrandyComponent,
     TitlebBarComponent,
     ShopComponent
+    TitlebBarComponent,
+    ProductsComponent,
+    ProductDetailsComponent,
+    RatingComponent,
+    SizeComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,9 @@ import { ShopEffects } from './store/shop.effects';
     MatTreeModule,
     StoreModule.forRoot({shop:shopReducer}),
     EffectsModule.forRoot([ShopEffects]),
+    HomeModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

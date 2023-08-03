@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TitlebBarComponent } from './titleb-bar.component';
+import { RatingComponent } from './rating.component';
 
-describe('TitlebBarComponent', () => {
-  let component: TitlebBarComponent;
-  let fixture: ComponentFixture<TitlebBarComponent>;
+describe('RatingComponent', () => {
+  let component: RatingComponent;
+  let fixture: ComponentFixture<RatingComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TitlebBarComponent]
+      declarations: [RatingComponent]
     });
-    fixture = TestBed.createComponent(TitlebBarComponent);
+    fixture = TestBed.createComponent(RatingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
+  ratingValue="4.5";
+  
   productData={
     "id": 5,
     "title": "Huawei P30",

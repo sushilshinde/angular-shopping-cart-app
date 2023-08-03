@@ -1,0 +1,13 @@
+.font-weight-semi-bold {
+    font-weight: 600;
+}
+h3{
+    font-size:1.75rem;
+   
+    }
+.form-button{
+    height: 30px;
+    border:1px solid black;
+    color: #d19c97;
+    
+}

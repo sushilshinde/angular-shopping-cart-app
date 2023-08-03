@@ -19,6 +19,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HomeModule } from './pages/home/home.module';
+import { RatingComponent } from './pages/product-details/rating/rating.component';
+import { SizeComponent } from './pages/product-details/size/size.component';
+import { ColorsComponent } from './pages/product-details/colors/colors.component';
+
 
 
 @NgModule({
@@ -33,7 +37,10 @@ import { HomeModule } from './pages/home/home.module';
     CategoryListComponent,
     TitlebBarComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    RatingComponent,
+    SizeComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserModule,

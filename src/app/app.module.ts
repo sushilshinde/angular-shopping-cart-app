@@ -17,14 +17,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
-<<<<<<< HEAD
-=======
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
-
->>>>>>> divya
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
 import { HomeModule } from './pages/home/home.module';
 import { CategoryModule } from './pages/category-page/cat-page.module';

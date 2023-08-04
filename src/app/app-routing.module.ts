@@ -6,6 +6,7 @@ import { RestrictAuth } from './pages/authentication/authentication-gaurd.servic
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
@@ -48,6 +49,12 @@ const routes: Routes = [
     path: 'details',
     component: ProductDetailsComponent,
   },
+
+  {
+   path:'checkout',
+   component: CheckoutComponent
+  }
+ 
 ];
 
 @NgModule({

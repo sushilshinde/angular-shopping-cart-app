@@ -17,6 +17,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
+<<<<<<< HEAD
+=======
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+
+
+
+>>>>>>> divya
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
 import { HomeModule } from './pages/home/home.module';
 import { CategoryModule } from './pages/category-page/cat-page.module';
@@ -27,6 +35,11 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
 import { AuthModule } from './pages/authentication/auth.module';
 import { cartReducer } from './pages/cart/cart-store/cart.reducer';
 
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -45,6 +58,8 @@ import { cartReducer } from './pages/cart/cart-store/cart.reducer';
     ColorsComponent,
     CategoryListComponent,
     CartListComponent,
+    ProductCarouselComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +72,10 @@ import { cartReducer } from './pages/cart/cart-store/cart.reducer';
     EffectsModule.forRoot([ShopEffects]),
     HomeModule,
     CategoryModule,
-    AuthModule
+    AuthModule,
+    MatButtonToggleModule,
+    MatTabsModule,
+    CarouselModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,38 @@
+
+  <h2 class="text-center text-3xl fw-500 tracking-wide mt-[9vh] mb-[6vh]"><span>You May Also Like</span></h2>
+    
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let product of products">
+      <ng-template carouselSlide [id]="product.id">
+        <mat-card class="border p-2 product-container ">
+            <div class=" d-flex justify-content-center align-items-center image-container overflow-hidden group">
+              <img mat-card-image class="img-fluid w-50 h-75 transition-transform transform group-hover:scale-110"
+                [src]="product.image" [alt]="product.title" />
+            </div>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+              <div class="text-center pt-4 pb-3">
+                <h6 class="text-truncate mb-3 text-lg">${{ product.title }}</h6>
+                <div class="d-flex justify-content-center">
+                  <h6 class="text-sm">{{ (product.price - (product.price * 0.09)).toString() | slice:0:4 | currency}}</h6>
+                  <h6 class="text-muted ml-3 text-sm"><del>${{ product.price }}</del></h6>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-footer>
+              <div class="d-flex justify-content-between">
+                <a style="text-decoration:none" class="linkText d-flex align-items-center p-1">
+                  <mat-icon class="text-custom-color">visibility</mat-icon>
+                  <span class="pl-1 text-sm text-dark cursor-pointer">View Detail</span>
+                </a>
+                <button class="text-dark d-flex align-items-center p-1 ">
+                  <mat-icon class="text-custom-color">add_shopping_cart</mat-icon>
+                  <span class="pl-1 text-sm text-dark">Add To Cart</span>
+                </button>
+              </div>
+            </mat-card-footer>
+          </mat-card>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>

@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body,html {
   margin: 0;
@@ -29,4 +32,11 @@ body,html {
 .flex-justify-center {
   display: flex;
   justify-content: center;
+}
+.tab-container span.mdc-tab__text-label{
+  font-size: 21px;
+  color:#D19C97 !important;
+}
+.tab-container span.mdc-tab__text-label:active{
+  color: black !important;
 }

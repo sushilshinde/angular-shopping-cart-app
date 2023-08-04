@@ -25,5 +25,5 @@ export class ProductDetailsComponent {
      "https://i.dummyjson.com/data/products/5/3.jpg"
     ]
      }
-
+   
 }

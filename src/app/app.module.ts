@@ -17,7 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
 import { shopReducer } from './store/reducers/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
-
+import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
 
 
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
@@ -32,7 +32,6 @@ import { cartReducer } from './pages/cart/cart-store/cart.reducer';
 
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 

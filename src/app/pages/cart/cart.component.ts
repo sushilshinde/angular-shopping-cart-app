@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { addQuantity, removeItem, removeItemSuccess, removeQuantity } from './cart-store/cart.action';
 
 @Component({
   selector: 'app-cart',
@@ -7,27 +9,33 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private store: Store) {
   }
 
-  cartList = [
-    {
-      id: 1,
-      productName: 'Bags',
-      quantity: 2,
-      price: 200,
-    },
-    {
-      id: 2,
-      productName: 'Bags',
-      quantity: 1,
-      price: 200,
-    },
-    {
-      id: 3,
-      productName: 'Bags',
-      quantity: 1,
-      price: 200,
+  cartList = []
+
+  handleRemove(id) {
+    // const ind = this.cartList.findIndex(item => item.id === id)
+    // console.log(ind, id)
+    // this.cartList.splice(ind, 1)
+    this.store.dispatch(removeItemSuccess({id}))
+  }
+
+  handleQantity(mode, id) {
+    const ind = this.cartList.findIndex(item => item.id === id)
+    if (mode === 'remove') {
+      // this.cartList[ind].quantity = this.cartList[ind].quantity - 1
+      this.store.dispatch(removeQuantity({id}))
     }
-  ]
+    else {
+      // this.cartList[ind].quantity = this.cartList[ind].quantity + 1
+      this.store.dispatch(addQuantity({id}))
+    }
+  }
+
+  ngOnInit() {
+    this.store.select((state: any) => state.cart).subscribe(
+      data => this.cartList = data.cartItem
+    )
+  }
 }

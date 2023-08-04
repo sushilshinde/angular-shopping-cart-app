@@ -7,33 +7,43 @@
                 <thead>
                     <tr>
                         <th>Product Name</th>
-                        <th>Quantity</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Total</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="cartList.length">
                     <tr *ngFor="let item of cartList">
                         <td class="truncate max-w-[10vw]">{{item.productName}}</td>
                         <td>{{item.price | currency}}</td>
-                        <td class="flex-center">
-                            <button class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]" [disabled]="item.quantity < 2">
-                                <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
-                            </button>
-                            {{item.quantity}}
-                            <button class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
-                                <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
-                            </button>
+                        <td>
+                            <div class="flex-center">
+
+                                <button (click)="handleQantity('remove',item.id)"
+                                    class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
+                                    [disabled]="item.quantity < 2">
+                                    <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
+                                </button>
+                                <span>{{item.quantity}}</span>
+                                <button (click)="handleQantity('add',item.id)"
+                                    class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
+                                    <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
+                                </button>
+                            </div>
                         </td>
                         <td>{{item.price * item.quantity | currency}}</td>
-                        <td class="flex-center"><button class="bg-[#ff3030b3] rounded-lg text-[white] p-1 flex-center px-2">
+                        <td (click)="handleRemove(item.id)" class="flex-center"><button
+                                class="bg-[#ff3030b3] rounded-lg text-[white] p-1 flex-center px-2">
                                 Remove
                             </button></td>
                     </tr>
                 </tbody>
+                <tr *ngIf="!cartList.length" class="flex-center w-full">
+                    <td>No Items Found</td>
+                </tr>
             </table>
         </div>
-        <div class="w-[25%] border-1 p-3">total cost</div>
+        <div class="w-[25%] border-1 p-3">Cart Summary</div>
     </div>
 </div>

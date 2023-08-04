@@ -25,6 +25,7 @@ import { SizeComponent } from './pages/product-details/size/size.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { AuthModule } from './pages/authentication/auth.module';
+import { cartReducer } from './pages/cart/cart-store/cart.reducer';
 
 
 
@@ -52,7 +53,7 @@ import { AuthModule } from './pages/authentication/auth.module';
     SharedModules,
     RouterModule,
     HttpClientModule,
-    StoreModule.forRoot({ shop: shopReducer }),
+    StoreModule.forRoot({ shop: shopReducer, cart: cartReducer }),
     EffectsModule.forRoot([ShopEffects]),
     HomeModule,
     CategoryModule,

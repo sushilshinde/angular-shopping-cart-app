@@ -26,13 +26,13 @@
       <button mat-icon-button [matMenuTriggerFor]="menu"
         class="flex gap-x-[1vw] text-[#d19c97] items-center border-[1px] px-2 py-1" *ngIf="showCart">
         <mat-icon>shopping_cart</mat-icon>
-        <p class="m-[0]">{{ sampleProducts.length }}</p>
+        <p class="m-[0]">{{ cartProducts.length }}</p>
       </button>
     </div>
 
     <mat-menu #menu="matMenu">
-      <app-cart-list *ngIf="sampleProducts.length" [cartData]="sampleProducts"></app-cart-list>
-      <p class="p-5" *ngIf="!sampleProducts.length">Cart is empty!</p>
+      <app-cart-list *ngIf="cartProducts.length" [cartData]="cartProducts"></app-cart-list>
+      <p class="p-5" *ngIf="!cartProducts.length">Cart is empty!</p>
     </mat-menu>
   </mat-toolbar>
   <mat-divider></mat-divider>

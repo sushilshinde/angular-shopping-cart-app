@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cart-list',
@@ -7,12 +8,15 @@ import { Component, Input } from '@angular/core';
 })
 export class CartListComponent {
   @Input() cartData!: Array<any>;
-  total: number = 0;
-
+  constructor(private store: Store) { }
+  
+  // showTotal() {
+  //   return this.cartData.reduce(
+  //     (acc, cur) => acc + cur.price * cur.quantity,
+  //     0
+  //   );
+  // }
   ngOnInit() {
-    this.total = this.cartData.reduce(
-      (acc, cur) => acc + cur.price * cur.quantity,
-      0
-    );
+
   }
 }

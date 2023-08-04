@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
 
 @Component({
@@ -9,23 +10,7 @@ import { AuthenticationService } from 'src/app/pages/authentication/authenticati
 })
 export class HeaderComponent {
   routerEvents: any;
-  sampleProducts: Array<any> = [
-    {
-      name: 'watch',
-      quantity: 2,
-      price: 250,
-    },
-    {
-      name: 'Shoe',
-      quantity: 1,
-      price: 400,
-    },
-    {
-      name: 'Shoe',
-      quantity: 1,
-      price: 400,
-    },
-  ];
+  cartProducts: Array<any> = [];
   search;
   showheader: boolean = true;
   showCart = true;
@@ -33,10 +18,14 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private store: Store
   ) { }
 
   ngOnInit() {
+    this.store.select((state: any) => state.cart.cartItem).subscribe(
+      data => this.cartProducts = data
+    )
     this.routerEvents = this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
         if (event.snapshot.routeConfig?.['path'].includes('auth')) {
@@ -46,6 +35,9 @@ export class HeaderComponent {
         }
         if (event.snapshot.data?.['showCart'] !== undefined)
           this.showCart = event.snapshot.data?.['showCart'];
+        else {
+          this.showCart = true
+        }
       }
     });
   }

@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       colors: {
         'custom-color': '#D19C97',
-        'custom-color-gray': '#edf1ff'
-        
+        'custom-color-gray': '#edf1ff',
+        'custom-checkout-color': '#6F6F6F'
       }
     }
   },

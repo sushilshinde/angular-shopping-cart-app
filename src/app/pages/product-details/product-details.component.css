@@ -4,10 +4,48 @@
 h3{
     font-size:1.75rem;
    
-    }
-.form-button{
-    height: 30px;
-    border:1px solid black;
-    color: #d19c97;
-    
+}
+::ng-deep.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: red;
+    font-weight: 700;
+}
+.heading-tabs{
+    color:  #D19C97 !important;
+    font-size: 18px;
+}
+.heading-description{
+    font-weight: 500;
+    font-size: 21px;
+}
+.paragraph-description{
+    font-size: 17px;
+     color:#6c757d;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}   
+.line{
+    color: #202124;
+    --center-width: 652px;
+    --rhs-width: 369px;
+    --center-abs-margin: 28px;
+    --rhs-margin: 44px;
+    font-family: arial,sans-serif;
+    font-size: medium;
+    font-weight: 400;
+    height: 1px;
+    background-color: #ecedef;
+    position: relative;
+}
+.review-button{
+    background-color: #D19C97 !important;
+    border: none !important;
+    padding: 9px;
+}
+.review-button:hover{
+    color: white;
+}
+.star-color{
+    color:#D19C97 !important;
 }

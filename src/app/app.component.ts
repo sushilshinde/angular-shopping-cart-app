@@ -3,6 +3,7 @@ import { AuthenticationService } from './pages/authentication/authentication.ser
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { LoadUser } from './pages/authentication/authStore/auth.action';
+import { loadCart } from './pages/cart/cart-store/cart.action';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   }
   ngOnInit() {
     this.store.dispatch(new LoadUser())
+    this.store.dispatch(loadCart())
   }
   public open(modal: any): void {
     this.modalService.open(modal);

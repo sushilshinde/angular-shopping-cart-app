@@ -22,7 +22,7 @@
             </div>
             <div class="flex flex-wrap w-[100%] gap-x-[5vw] xl:gap-x-[4%] gap-y-[3vh]" *ngIf="!isLoading; else loader">
                 <h2 *ngIf="product.length < 1">No Products Found...</h2>
-                <app-product-card class="w-[100%] lg:w-[45%] xl:w-[30%]" [name]="item.title" [price]="item.price"
+                <app-product-card class="w-[100%] lg:w-[45%] xl:w-[30%]" [name]="item.title" [price]="item.price" [itemId]="item.id"
                     [discount]="item.discountPercentage" [thumbnail]="item.thumbnail" *ngFor="let item of product"
                     cardData="item"></app-product-card>
             </div>

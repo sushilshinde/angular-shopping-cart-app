@@ -26,6 +26,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { CartListComponent } from './components/header/cart-list/cart-list.component';
 import { AuthModule } from './pages/authentication/auth.module';
 import { cartReducer } from './pages/cart/cart-store/cart.reducer';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CartEffects } from './pages/cart/cart-store/cart.effects';
 
 
 
@@ -45,6 +47,7 @@ import { cartReducer } from './pages/cart/cart-store/cart.reducer';
     ColorsComponent,
     CategoryListComponent,
     CartListComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { cartReducer } from './pages/cart/cart-store/cart.reducer';
     RouterModule,
     HttpClientModule,
     StoreModule.forRoot({ shop: shopReducer, cart: cartReducer }),
-    EffectsModule.forRoot([ShopEffects]),
+    EffectsModule.forRoot([ShopEffects, CartEffects]),
     HomeModule,
     CategoryModule,
     AuthModule

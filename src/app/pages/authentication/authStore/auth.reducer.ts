@@ -70,10 +70,11 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
                 isLoading: false,
             }
         case AuthAction.AuthActions.CLEAR_STORAGE:
+            console.log('clear storage')
             return {
                 ...state,
                 isLoading: false,
-                userData: null
+                userData: {}
             }
         default:
             return state;

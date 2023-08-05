@@ -21,6 +21,8 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
   private tokenExpiration: any;
 
+  private api = 'http://localhost:3000/users'
+
   handleLogout() {
     this.user.next(null);
     localStorage.removeItem('userData');
@@ -100,7 +102,7 @@ export class AuthenticationService {
   handleLocalAuth(email, password, mode) {
     if (mode === 'register') {
       return this.http
-        .post('http://localhost:3000/users', {
+        .post(this.api, {
           email,
           password,
           cart: [],
@@ -110,7 +112,7 @@ export class AuthenticationService {
           catchError((err) => throwError(err.message))
         );
     }
-    return this.http.get(`http://localhost:3000/users?email=${email}`).pipe(
+    return this.http.get(`${this.api}?email=${email}`).pipe(
       tap((data: any) => {
         if (!data.length) throw new Error('Invalid Username/Password');
         if (data[0].password === password) {

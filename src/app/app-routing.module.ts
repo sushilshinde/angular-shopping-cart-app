@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { AuthGaurd } from './pages/authentication/auth-gaurd.service';
 import { RestrictAuth } from './pages/authentication/authentication-gaurd.service';
@@ -48,6 +49,10 @@ const routes: Routes = [
     path: 'details',
     component: ProductDetailsComponent,
   },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

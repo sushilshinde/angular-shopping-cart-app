@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { addQuantity, removeItem, removeItemSuccess, removeQuantity } from './cart-store/cart.action';
+import { addQuantity, removeItem, removeQuantity } from './cart-store/cart.action';
 
 @Component({
   selector: 'app-cart',
@@ -15,15 +15,14 @@ export class CartComponent {
   cartList = []
 
   handleRemove(id) {
-    // const ind = this.cartList.findIndex(item => item.id === id)
-    // console.log(ind, id)
-    // this.cartList.splice(ind, 1)
-    this.store.dispatch(removeItemSuccess({id}))
+    this.store.dispatch(removeItem({ id }))
   }
 
   handleQantity(mode, id) {
-    const ind = this.cartList.findIndex(item => item.id === id)
+
+    console.log(id);
     if (mode === 'remove') {
+      
       // this.cartList[ind].quantity = this.cartList[ind].quantity - 1
       this.store.dispatch(removeQuantity({id}))
     }

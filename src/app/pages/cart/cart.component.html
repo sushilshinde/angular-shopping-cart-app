@@ -15,11 +15,10 @@
                 </thead>
                 <tbody *ngIf="cartList.length">
                     <tr *ngFor="let item of cartList">
-                        <td class="truncate max-w-[10vw]">{{item.productName}}</td>
+                        <td class="truncate max-w-[10vw]">{{item.title}}</td>
                         <td>{{item.price | currency}}</td>
                         <td>
                             <div class="flex-center">
-
                                 <button (click)="handleQantity('remove',item.id)"
                                     class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
                                     [disabled]="item.quantity < 2">

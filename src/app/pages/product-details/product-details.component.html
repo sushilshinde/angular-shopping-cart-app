@@ -1,52 +1,52 @@
 <app-title-bar pageTitle="Shop Details" subTitle="Shop Details"></app-title-bar>
 
 
-<div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw]">
+<div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw] details-carousel">
   <div class="sm:max-w-[30vw]">
-    <ngb-carousel [showNavigationIndicators]="false">
-      <ng-template ngbSlide *ngFor="let item of productData.images">
-        <div class="w-[98vw] mb-5 sm:w-[30vw] sm:max-w-[30vw] h-[30vh] sm:h-[60vh] bg-[#cecece] justify-center flex">
+    <ngb-carousel [interval]="0" [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let item of productData?.images">
+        <div class="w-[98vw] mb-5 sm:w-[30vw] sm:max-w-[30vw] h-[30vh] sm:h-[60vh] justify-center flex">
           <img [src]="item" class="h-full max-w-full sm:absolute inset object-contain z-0 brightness-75" alt="">
         </div>
       </ng-template>
     </ngb-carousel>
   </div>
 
-  <div class="col-lg-7 pb-5 d-flex flex-column ml-[4vw] sm:ml-[5vw]">
-    <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
+  <div class="col-lg-7 pb-2 d-flex flex-column ml-[4vw] sm:ml-[5vw] justify-center">
+    <h3 class="font-weight-semi-bold">{{productData?.title}}</h3>
     <div class="d-flex mb-3">
-      <app-rating [rating]="productData.rating"></app-rating>
+      <app-rating [rating]="productData?.rating"></app-rating>
       <small class="pt-1">(50 Reviews)</small>
     </div>
-    <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-    <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc
-      invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est
-      lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
-    <app-size></app-size>
-    <app-colors></app-colors>
+    <h3 class="font-weight-semi-bold mb-4">{{productData?.price | currency}}</h3>
+    <p class="mb-4">{{productData?.description}}</p>
+    <p><b>Brand : </b>{{productData?.brand}}</p>
+    <p><b>Stocks Available : </b>{{productData?.stock}}</p>
+    <!-- <app-size></app-size>
+    <app-colors></app-colors> -->
 
     <div class="d-flex align-items-center">
       <div class="d-flex justify-content-center align-items-center">
-        <button class="px-5 py-2 bg-custom-color text-md fw-bolder">-</button>
-        <button class="p-4 bg-custom-color-gray py-2">1</button>
-        <button class="px-5 py-2 bg-custom-color fw-bold">+</button>
+        <button [disabled]="count <= 1" (click)="handleCount('remove')"
+          class="px-5 py-2 bg-custom-color text-md fw-bolder">-</button>
+        <span class="p-4 bg-custom-color-gray py-2">{{count}}</span>
+        <button (click)="handleCount('add')" class="px-5 py-2 bg-custom-color fw-bold">+</button>
       </div>
-      <button
-        class="m-5 px-4 py-2 bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
-        <mat-icon>shopping_cart</mat-icon> Add To Cart</button>
+      <button [disabled]="existInCart" (click)="addItemToCart()"
+        class="font-[500] m-5 px-4 py-2 bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
+        <mat-icon>shopping_cart</mat-icon>{{ existInCart
+        ? 'Added':'Add'}} To Cart</button>
     </div>
+    <button
+      class="font-[500] px-4 py-2 w-[7vw] bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
+      Buy Now
+    </button>
 
   </div>
 </div>
-
-
-
-
-
 <div class="row px-xl-5 mt-[11vh]">
   <div class="col tab-container">
     <mat-tab-group>
-      <!-- Description Tab -->
       <mat-tab label="Description" class="description-label">
         <div class="mt-[6vh] p-3">
           <h4 class="mb-3 heading-description">Product Description</h4>

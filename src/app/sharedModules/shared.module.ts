@@ -14,9 +14,10 @@ import { TitlebBarComponent } from '../components/title-bar/title-bar.component'
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import { ProductCardComponent } from '../pages/category-page/components/product-card/product-card.component';
 
 @NgModule({
-  declarations: [TitlebBarComponent],
+  declarations: [TitlebBarComponent,ProductCardComponent],
   imports: [
     MatTableModule,
     MatToolbarModule,
@@ -49,7 +50,8 @@ import {MatTableModule} from '@angular/material/table';
     CommonModule,
     TitlebBarComponent,
     RouterModule,
-    MatSelectModule
+    MatSelectModule,
+    ProductCardComponent
   ],
 })
 export class SharedModules { }

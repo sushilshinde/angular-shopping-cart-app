@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SharedModules } from './sharedModules/shared.module';
 import { RouterModule } from '@angular/router';
@@ -39,7 +38,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   declarations: [
     AppComponent,
     HeaderComponent,
-    DetailsComponent,
     CartComponent,
     AuthenticationComponent,
     NavbarComponent,

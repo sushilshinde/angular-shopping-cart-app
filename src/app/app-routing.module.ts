@@ -47,18 +47,18 @@ const routes: Routes = [
     },
 
   }, {
-    path: 'details',
+    path: 'details/:id',
     component: ProductDetailsComponent,
   },
+  
+    {
+      path: 'checkout',
+      component: CheckoutComponent
+    },
   {
     path: '**',
     component: NotFoundComponent
   },
-
-  {
-    path: 'checkout',
-    component: CheckoutComponent
-  }
 
 ];
 

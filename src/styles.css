@@ -6,7 +6,8 @@
 @tailwind utilities;
 
 
-body,html {
+body,
+html {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -15,28 +16,39 @@ body,html {
 .error {
   color: red;
 }
+
 .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .grid-center {
   display: grid;
   align-items: center;
   justify-content: center;
 }
+
 .flex-items-center {
   display: flex;
   align-items: center;
 }
+
 .flex-justify-center {
   display: flex;
   justify-content: center;
 }
-.tab-container span.mdc-tab__text-label{
+
+.tab-container span.mdc-tab__text-label {
   font-size: 21px;
-  color:#D19C97 !important;
+  color: #D19C97 !important;
 }
-.tab-container span.mdc-tab__text-label:active{
+
+.tab-container span.mdc-tab__text-label:active {
   color: black !important;
+}
+
+.details-carousel .carousel-control-next-icon,
+.details-carousel .carousel-control-prev-icon {
+  background-color: #0000007a;
 }

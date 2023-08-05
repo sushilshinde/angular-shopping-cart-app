@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ShopService } from 'src/app/store/shop.service';
+import { addItem } from '../cart/cart-store/cart.action';
 
 @Component({
   selector: 'app-product-details',
@@ -6,24 +10,51 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
-  ratingValue="4.5";
+  id: number;
+  productData;
+  count = 1
+  existInCart = false;
   
-  productData={
-    "id": 5,
-    "title": "Huawei P30",
-    "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-    "price": 499,
-    "discountPercentage": 10.58,
-    "rating": 4.09,
-    "stock": 32,
-    "brand": "Huawei",
-    "category": "smartphones",
-    "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
-    "images": [
-    "https://i.dummyjson.com/data/products/5/1.jpg",
-    "https://i.dummyjson.com/data/products/5/2.jpg",
-     "https://i.dummyjson.com/data/products/5/3.jpg"
-    ]
-     }
-   
+  constructor(private route: ActivatedRoute, private shopService: ShopService, private store: Store) {
+    this.route.params.subscribe(params => this.id = params['id'])
+  }
+
+  addItemToCart() {
+    this.store.dispatch(addItem({
+      item: {
+        title: this.productData.title,
+        id: this.productData.id,
+        price: this.productData.price,
+        quantity: this.count
+      }
+    }))
+  }
+
+  handleCount(mode) {
+    if (mode === 'add') {
+      this.count = this.count + 1
+    }
+    else {
+      this.count = this.count - 1
+    }
+  }
+
+  ngOnInit() {
+    this.shopService.getProductById(this.id).subscribe(
+      (data: any) => {
+        this.productData = data
+      }
+    )
+    this.store.select((state: any) => state.cart.cartItem
+    ).subscribe(data => {
+      if (data.length > 0) {
+        const filteredId = data.map(item => item?.id)
+        if (filteredId.includes(+this.id)) {
+          this.existInCart = true;
+        }
+      }
+    })
+  }
+
+
 }

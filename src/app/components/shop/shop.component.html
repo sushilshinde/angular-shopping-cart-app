@@ -5,41 +5,13 @@
   <h1 class="font-bold tracking-wide font-mono mt-[9vh] p-2 text-3xl">All Products List</h1>
 </div>
 <div class="container pt-5">
-  <div class="row">
-    <ng-container *ngIf="(products$ | async).length > 0; else noResults">
-      <div class="col-12 col-md-6 col-lg-4 pb-5 d-flex justify-content-center align-items-center"
-        *ngFor="let product of (products$ | async); index as i">
-        <mat-card class="border p-2 product-container ">
-          <div class=" d-flex justify-content-center align-items-center image-container overflow-hidden group">
-            <img mat-card-image class="img-fluid w-50 h-50 transition-transform transform group-hover:scale-110"
-              [src]="product.images[0]" [alt]="product.title" />
-          </div>
-          <mat-divider [inset]="true"></mat-divider>
-          <mat-card-content>
-            <div class="text-center pt-4 pb-3">
-              <h6 class="text-truncate mb-3 text-lg">${{ product.title }}</h6>
-              <div class="d-flex justify-content-center">
-                <h6 class="text-sm">${{ product.price }}</h6>
-                <h6 class="text-muted ml-3 text-sm"><del>${{ product.price }}</del></h6>
-              </div>
-            </div>
-          </mat-card-content>
-          <mat-card-footer>
-            <div class="d-flex justify-content-between">
-              <a style="text-decoration:none" class="linkText d-flex align-items-center p-1">
-                <mat-icon class="text-custom-color">visibility</mat-icon>
-                <span class="pl-1 text-sm text-dark cursor-pointer">View Detail</span>
-              </a>
-              <button class="text-dark d-flex align-items-center p-1 ">
-                <mat-icon class="text-custom-color">add_shopping_cart</mat-icon>
-                <span class="pl-1 text-sm text-dark">Add To Cart</span>
-              </button>
-            </div>
-          </mat-card-footer>
-        </mat-card>
-        <!-- Product card ends here -->
-      </div>
-    </ng-container>
+  <div class="w-full justify-center flex">
+    <div class="flex flex-wrap w-[92%] gap-x-[5vw] xl:gap-x-[8%] gap-y-[5vh] justify-around">
+      <h2 *ngIf="(products$ | async).length < 0">No Products Found...</h2>
+      <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price"
+        [itemId]="item.id" [discount]="item['discountPercentage']" [thumbnail]="item['thumbnail']"
+        *ngFor="let item of (products$ | async)" cardData="item"></app-product-card>
+    </div>
   </div>
 </div>
 
@@ -48,5 +20,3 @@
 </ng-template>
 
 <app-product-carousel></app-product-carousel>
-
-  

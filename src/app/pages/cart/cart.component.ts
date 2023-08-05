@@ -9,32 +9,38 @@ import { addQuantity, removeItem, removeQuantity } from './cart-store/cart.actio
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
+
+  cartList = []
+  total
   constructor(private route: ActivatedRoute, private store: Store) {
   }
 
-  cartList = []
+  cartTotal = () => {
+    this.total = this.cartList.reduce((accumulator, currentValue) => {
+      return accumulator + (currentValue.price * currentValue.quantity)
+    }, 0)
+  }
+
 
   handleRemove(id) {
     this.store.dispatch(removeItem({ id }))
   }
 
   handleQantity(mode, id) {
-
-    console.log(id);
     if (mode === 'remove') {
-      
-      // this.cartList[ind].quantity = this.cartList[ind].quantity - 1
-      this.store.dispatch(removeQuantity({id}))
+      this.store.dispatch(removeQuantity({ id }))
     }
     else {
-      // this.cartList[ind].quantity = this.cartList[ind].quantity + 1
-      this.store.dispatch(addQuantity({id}))
+      this.store.dispatch(addQuantity({ id }))
     }
   }
 
   ngOnInit() {
     this.store.select((state: any) => state.cart).subscribe(
-      data => this.cartList = data.cartItem
+      data => {
+        this.cartList = data.cartItem
+        this.cartTotal()
+      }
     )
   }
 }

@@ -19,7 +19,7 @@ export class TrandyComponent implements OnInit {
   }
 
   fetchProducts(): void {
-    const apiUrl = 'https://fakestoreapi.com/products';
+    const apiUrl = 'http://localhost:3000/products?trendy=true';
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.products = data;
@@ -32,6 +32,6 @@ export class TrandyComponent implements OnInit {
 
   public open(modal: any): void {
     this.modalService.open(modal);
-  } 
+  }
 }
 

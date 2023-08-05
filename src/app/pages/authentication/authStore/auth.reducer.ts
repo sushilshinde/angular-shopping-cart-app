@@ -27,7 +27,6 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
                 error: ''
             }
         case AuthAction.AuthActions.SIGN_IN_FAIL:
-            console.log(action)
             return {
                 ...state,
                 isLoading: false,
@@ -70,7 +69,6 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
                 isLoading: false,
             }
         case AuthAction.AuthActions.CLEAR_STORAGE:
-            console.log('clear storage')
             return {
                 ...state,
                 isLoading: false,

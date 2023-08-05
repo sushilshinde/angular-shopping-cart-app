@@ -35,7 +35,6 @@ export class CartEffects {
             switchMap((data: any) => {
                 return this.cartService.removeCartItem(data.id).pipe(
                     map(cartData => {
-                        console.log(cartData)
                         return CartActions.removeItemSuccess({ cartData: cartData['cart'] })
                     })
                 )
@@ -46,10 +45,8 @@ export class CartEffects {
         this.action$.pipe(
             ofType(CartActions.removeQuantity),
             switchMap((data: any) => {
-                console.log(data)
                 return this.cartService.handleQuantity(data.id, 'remove').pipe(
                     map(cartData => {
-                        console.log(cartData)
                         return CartActions.removeQuantitySuccess({ cartData: cartData['cart'] })
                     })
                 )
@@ -59,10 +56,8 @@ export class CartEffects {
         this.action$.pipe(
             ofType(CartActions.addQuantity),
             switchMap((data: any) => {
-                console.log(data)
                 return this.cartService.handleQuantity(data.id, 'add').pipe(
                     map(cartData => {
-                        console.log(cartData)
                         return CartActions.addQuantitySuccess({ cartData: cartData['cart'] })
                     })
                 )

@@ -5,7 +5,6 @@ export const filterData = (
     sortby = 'select'
 ) => {
     let shallowCopy = array.slice();
-    console.log(array, filterBy, searchQuery)
     if (filterBy.length === 2) {
         shallowCopy = shallowCopy.filter(
             item => item['price'] >= filterBy[0] && item['price'] <= filterBy[1]

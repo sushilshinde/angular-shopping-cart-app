@@ -23,8 +23,7 @@ ngOnInit(){
   this.fetchProducts();
   this.searchService.searchProductChange.subscribe((searchText: string) => {
     this.searching = searchText;
-    console.log("Searching:", this.searching); // Add this line
-    this.applySearchFilter();
+    console.log("Searching:", this.searching); 
   });
   
 }
@@ -32,7 +31,7 @@ ngOnInit(){
  
 
   fetchProducts(): void {
-    const apiUrl = 'http://localhost:3000/products';
+    const apiUrl = 'http://localhost:3000/products?trendy=true';
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.products = data;

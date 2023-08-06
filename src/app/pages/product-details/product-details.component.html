@@ -1,120 +1,124 @@
 <app-title-bar pageTitle="Shop Details" subTitle="Shop Details"></app-title-bar>
 
 
-<div class="flex mt-[9vh]">
-    <!-- <ngb-carousel  [showNavigationIndicators]="false" >
-        <ng-template ngbSlide *ngFor="let item of productData.image">
-          <div
-            class="
-            rounded-sm 
-            w-[30vw]
-            h-[35vh]
-            sm:h-[70vh] 
-            mt-1
-            relative
-            bg-[cover] 
-            flex flex-col 
-            justify-center
-             
-            text-[dark] 
-            items-center 
-            gap-y-[2.5vh]
-            sm:gap-y-[5vh]
-            ml-[9vh]"
-          >
-          <img [src]="item" class="h-full w-full absolute top-[0] object-cover z-0 brightness-75" alt="">
-          </div>
-        </ng-template>
-      </ngb-carousel> -->
-      <div class="d-flex justify-content-center align-items-center border ml-[7vh] py-5">
-      <img class="img-fluid w-75 h-100"
-      [src]="productData.images[0]" [alt]="productData.title" />
-     </div>
-     <div class="col-lg-7 pb-5 d-flex flex-column ml-[9vh]">
-            <h3 class="font-weight-semi-bold">{{productData.title}}</h3>
-            <div class="d-flex mb-3">
-                <app-rating [rating]="productData.rating"></app-rating>
-                <small class="pt-1">(50 Reviews)</small>
-            </div>
-            <h3 class="font-weight-semi-bold mb-4">${{productData.price}}</h3>
-            <p class="mb-4">{{productData.description}}</p>
-           <app-size></app-size>
-           <app-colors></app-colors>
-          
-          <div class="d-flex align-items-center">
-           <div class="d-flex justify-content-center align-items-center">
-            <button class="px-5 py-2 bg-custom-color text-md fw-bolder">-</button>
-            <button class="p-4 bg-custom-color-gray py-2">1</button>
-            <button class="px-5 py-2 bg-custom-color fw-bold">+</button>
-           </div>
-            <button class="m-5 px-4 py-2 bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
-                <mat-icon>shopping_cart</mat-icon> Add To Cart</button>
+<div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw] details-carousel">
+  <div class="sm:max-w-[30vw]">
+    <ngb-carousel [interval]="0" [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let item of productData?.images">
+        <div class="w-[98vw] mb-5 sm:w-[30vw] sm:max-w-[30vw] h-[30vh] sm:h-[60vh] justify-center flex">
+          <img [src]="item" class="h-full max-w-full sm:absolute inset object-contain z-0 brightness-75" alt="">
         </div>
-           
-        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="col-lg-7 pb-2 d-flex flex-column ml-[4vw] sm:ml-[5vw] justify-center">
+    <h3 class="font-weight-semi-bold">{{productData?.title}}</h3>
+    <div class="d-flex mb-3">
+      <app-rating [rating]="productData?.rating"></app-rating>
+      <small class="pt-1">(50 Reviews)</small>
+    </div>
+    <h3 class="font-weight-semi-bold mb-4">{{productData?.price | currency}}</h3>
+    <p class="mb-4">{{productData?.description}}</p>
+    <p><b>Brand : </b>{{productData?.brand}}</p>
+    <p><b>Stocks Available : </b>{{productData?.stock}}</p>
+    <!-- <app-size></app-size>
+    <app-colors></app-colors> -->
+
+    <div class="d-flex align-items-center">
+      <div class="d-flex justify-content-center align-items-center">
+        <button [disabled]="count <= 1" (click)="handleCount('remove')"
+          class="px-5 py-2 bg-custom-color text-md fw-bolder">-</button>
+        <span class="p-4 bg-custom-color-gray py-2">{{count}}</span>
+        <button (click)="handleCount('add')" class="px-5 py-2 bg-custom-color fw-bold">+</button>
+      </div>
+      <button [disabled]="existInCart" (click)="addItemToCart()"
+        class="font-[500] m-5 px-4 py-2 bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
+        <mat-icon>shopping_cart</mat-icon>{{ existInCart
+        ? 'Added':'Add'}} To Cart</button>
+    </div>
+    <button
+      class="font-[500] px-4 py-2 w-[7vw] bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
+      Buy Now
+    </button>
+
+  </div>
 </div>
-    
-
-
-    
-
 <div class="row px-xl-5 mt-[11vh]">
   <div class="col tab-container">
     <mat-tab-group>
-      <!-- Description Tab -->
       <mat-tab label="Description" class="description-label">
-        <div class="mt-[6vh]">
-        <h4 class="mb-3 heading-description">Product Description</h4>
-        <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-        <p class="paragraph-description mt-4">Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+        <div class="mt-[6vh] p-3">
+          <h4 class="mb-3 heading-description">Product Description</h4>
+          <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea.
+            Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum
+            eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam
+            stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam
+            consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos
+            consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea
+            invidunt.</p>
+          <p class="paragraph-description mt-4">Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum.
+            Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita
+            clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et
+            diam takimata sed justo. Magna takimata justo et amet magna et.</p>
         </div>
       </mat-tab>
       <!-- Information Tab -->
       <mat-tab label="Information">
-        <h4 class="mb-3 heading-description mt-[6vh]">Additional Information</h4>
-                    <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                                </li>
-                              </ul> 
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                                </li>
-                                <li class="list-group-item px-0 paragraph-description">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                                </li>
-                              </ul> 
-                        </div>
-                    </div>
+        <div class="p-3">
+          <h4 class="mb-3 heading-description mt-[6vh]">Additional Information</h4>
+          <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea.
+            Consetetur
+            vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod
+            consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet
+            rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur
+            duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur
+            at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 paragraph-description">
+                  Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 paragraph-description">
+                  Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                </li>
+                <li class="list-group-item px-0 paragraph-description">
+                  Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </mat-tab>
       <!-- Reviews Tab -->
       <mat-tab label="Reviews(0)">
-        <div class="row mt-[6vh]">
+        <div class="row mt-[6vh] p-3">
           <div class="col-md-6">
             <h4 class="mb-4 heading-description">Reviews for this Product</h4>
             <div class="media mb-4 d-flex">
-              <img src="https://m.media-amazon.com/images/I/81PEBDVcoOL._SL1500_.jpg" alt="" class="img-fluid mr-3 mt-1" style="width: 70px;" />
+              <img src="https://m.media-amazon.com/images/I/81PEBDVcoOL._SL1500_.jpg" alt="" class="img-fluid mr-3 mt-1"
+                style="width: 70px;" />
               <div class="media-body">
                 <h6 class="text-sm">Divya.K</h6>
                 <p>2/08/2023</p>
@@ -125,7 +129,8 @@
           </div>
           <div class="col-md-6">
             <h4 class="mb-4 heading-description">Leave Review</h4>
-            <small class="paragraph-description">Your email address will not be published. Required fields are marked *</small>
+            <small class="paragraph-description">Your email address will not be published. Required fields are marked
+              *</small>
             <form>
               <div class="d-flex my-3">
                 <p class="mb-0 mr-2 paragraph-description">Your Rating</p>
@@ -145,15 +150,16 @@
                 <label for="email" class="paragraph-description">Your Email</label>
                 <input type="email" class="form-control" id="email" />
               </div>
-      <div class="form-group mb-0 mt-4">
-        <button type="submit" class="border-none review-button px-3 Paragraph-description">Leave Your Review</button>
-      </div>
-    </form>
+              <div class="form-group mb-0 mt-4">
+                <button type="submit" class="border-none review-button px-3 Paragraph-description">Leave Your
+                  Review</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
-</mat-tab>
-</mat-tab-group>
-</div>
-</div>
 
-<app-product-carousel></app-product-carousel>
+<!-- <app-product-carousel></app-product-carousel> -->

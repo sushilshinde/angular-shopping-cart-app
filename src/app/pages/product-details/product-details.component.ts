@@ -1,27 +1,60 @@
-import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute , NavigationExtras} from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ShopService } from 'src/app/store/shop.service';
+import { addItem } from '../cart/cart-store/cart.action';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit{
+export class ProductDetailsComponent {
+  id: number;
+  productData;
+  count = 1
+  existInCart = false;
   
-  
-  randomDecimal = Math.random();
-  ratingValue = Math.ceil(this.randomDecimal*5);
-  productData:any;
- 
-     constructor(private route:ActivatedRoute){
+  constructor(private route: ActivatedRoute, private shopService: ShopService, private store: Store) {
+    this.route.params.subscribe(params => this.id = params['id'])
+  }
 
-     }
-     ngOnInit() {
-      this.route.queryParams.subscribe(params => {
-        if (params['product']) {
-          this.productData = JSON.parse(params['product']);
-          this.productData.rating = this.ratingValue
-        }
-      });
+  addItemToCart() {
+    this.store.dispatch(addItem({
+      item: {
+        title: this.productData.title,
+        id: this.productData.id,
+        price: this.productData.price,
+        quantity: this.count
+      }
+    }))
+  }
+
+  handleCount(mode) {
+    if (mode === 'add') {
+      this.count = this.count + 1
     }
+    else {
+      this.count = this.count - 1
+    }
+  }
+
+  ngOnInit() {
+    this.shopService.getProductById(this.id).subscribe(
+      (data: any) => {
+        this.productData = data
+      }
+    )
+    this.store.select((state: any) => state.cart.cartItem
+    ).subscribe(data => {
+      if (data.length > 0) {
+        const filteredId = data.map(item => item?.id)
+        if (filteredId.includes(+this.id)) {
+          this.existInCart = true;
+        }
+      }
+    })
+  }
+
+
 }

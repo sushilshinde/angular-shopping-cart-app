@@ -5,7 +5,7 @@
   </div>
   <div class="py-3">
     <mat-list *ngFor="let item of cartData" class="flex justify-between py-3">
-      <span>{{ item.productName | uppercase }} -
+      <span class="truncate w-[50%]">{{ item.title | uppercase }} -
         {{ item.price | currency }}</span>
       <span class="mx-[10px]"> x {{ item.quantity }}</span>
       <span>{{
@@ -13,10 +13,6 @@
         }}</span>
     </mat-list>
   </div>
-  <!-- <div class="flex justify-between py-3">
-    <span>Total</span>
-    <span>{{ showTotal() | currency}}</span>
-  </div> -->
   <div class="flex justify-between pt-3">
     <button title="Clear Cart" class="bg-rose-600 rounded-full text-white w-9 h-9">
       <mat-icon color="white">remove_shopping_cart</mat-icon>

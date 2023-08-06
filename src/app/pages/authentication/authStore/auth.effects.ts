@@ -52,7 +52,6 @@ export class AuthEffects {
         this.action$.pipe(
             ofType(AuthActions.AuthActions.LOAD_USER),
             switchMap(() => {
-                console.log("dispatching")
                 const user = JSON.parse(localStorage.getItem('local_user'))
                 if (user) {
                     return of(new AuthActions.LoadUserData(user))

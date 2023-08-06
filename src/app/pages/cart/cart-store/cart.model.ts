@@ -1,9 +1,9 @@
 export interface CartModel {
-    cartItem: {
-        id: number,
-        productName: string,
+    cartItem?: {
+        productId: number,
         quantity: number,
-        price: number,
+        productName: string,
+        price: number
     }[],
-    error: string
+    error?: string
 }

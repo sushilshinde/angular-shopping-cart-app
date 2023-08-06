@@ -15,11 +15,14 @@
                 </thead>
                 <tbody *ngIf="cartList.length">
                     <tr *ngFor="let item of cartList">
-                        <td class="truncate max-w-[10vw]">{{item.productName}}</td>
+                        <td class="truncate max-w-[10vw]">
+                            <a [routerLink]="['/details',item.id]">
+                                {{item.title}}
+                            </a>
+                        </td>
                         <td>{{item.price | currency}}</td>
                         <td>
                             <div class="flex-center">
-
                                 <button (click)="handleQantity('remove',item.id)"
                                     class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
                                     [disabled]="item.quantity < 2">
@@ -44,6 +47,33 @@
                 </tr>
             </table>
         </div>
-        <div class="w-[25%] border-1 p-3">Cart Summary</div>
+        <div class="grid w-[25%] border-1 p-3" *ngIf="cartList.length">
+            <h3 class="text-[#d19c97]">
+                <b>
+                    Cart Summary
+                </b>
+            </h3>
+            <ul class="font-bold">
+                <li class="flex justify-around p-3">
+                    <p class="m-[0]">SubTotal</p>
+                    <!-- <p class="m-[0]">- </p> -->
+                    <p class="m-[0]"> {{total | currency}}</p>
+                </li>
+                <li class="flex justify-around p-3">
+                    <p class="m-[0]">Shipping</p>
+                    <!-- <p class="m-[0]">- </p> -->
+                    <p class="m-[0]"> {{0 | currency}}</p>
+                </li>
+                <mat-divider></mat-divider>
+                <li class="flex justify-around p-3">
+                    <p class="m-[0]">Total</p>
+                    <!-- <p class="m-[0]"> - </p> -->
+                    <p class="m-[0]"> {{total | currency}}</p>
+                </li>
+            </ul>
+            <a class="bg-[#d19c97] p-3 text-[white] font-[600] text-center">
+                Proceed to Pay
+            </a>
+        </div>
     </div>
 </div>

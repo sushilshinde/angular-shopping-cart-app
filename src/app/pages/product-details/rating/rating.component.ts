@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class RatingComponent {
   @Input() rating
-  
-  totalStars=5;
+
+  totalStars = 5;
 
 }

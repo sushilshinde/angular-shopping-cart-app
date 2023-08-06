@@ -42,6 +42,7 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [AuthGaurd],
     data: {
       showCart: false,
     },
@@ -50,11 +51,12 @@ const routes: Routes = [
     path: 'details/:id',
     component: ProductDetailsComponent,
   },
-  
-    {
-      path: 'checkout',
-      component: CheckoutComponent
-    },
+
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [AuthGaurd]
+  },
   {
     path: '**',
     component: NotFoundComponent

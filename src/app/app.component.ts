@@ -15,7 +15,14 @@ export class AppComponent {
   }
   ngOnInit() {
     this.store.dispatch(new LoadUser())
-    this.store.dispatch(loadCart())
+    this.store.select((state: any) => state.auth).subscribe(
+      data => {
+        if (Object.values(data.userData).length > 0) {
+          this.store.dispatch(loadCart())
+        }
+      }
+    )
+
   }
   public open(modal: any): void {
     this.modalService.open(modal);

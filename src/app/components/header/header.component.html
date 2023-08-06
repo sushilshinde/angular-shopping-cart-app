@@ -23,8 +23,8 @@
         <mat-icon>favorite</mat-icon>
         <p class="m-[0]">0</p>
       </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu"
-        class="flex gap-x-[1vw] text-[#d19c97] items-center border-[1px] px-2 py-1" *ngIf="showCart">
+      <button *ngIf="isAuthenticated && showCart" mat-icon-button [matMenuTriggerFor]="menu"
+        class="flex gap-x-[1vw] text-[#d19c97] items-center border-[1px] px-2 py-1">
         <mat-icon>shopping_cart</mat-icon>
         <p class="m-[0]">{{ cartProducts.length }}</p>
       </button>

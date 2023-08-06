@@ -14,7 +14,7 @@ export class ProductCardComponent {
   @Input() thumbnail: string;
   @Input() itemId: number;
   @Input() item: any;
-  existInCart = 'false';
+  existInCart = false;
 
   constructor(private store: Store) {
   }
@@ -25,7 +25,7 @@ export class ProductCardComponent {
       if (data.length > 0) {
         const filteredId = data.map(item => item.id)
         if (filteredId.includes(this.itemId)) {
-          this.existInCart = 'true';
+          this.existInCart = true;
         }
       }
     })

@@ -26,7 +26,7 @@
           </mat-card-content>
           <mat-card-footer>
             <div class="d-flex justify-content-between">
-              <a style="text-decoration:none" class="linkText d-flex align-items-center p-1">
+              <a style="text-decoration:none" class="linkText d-flex align-items-center p-1" (click)="viewProductDetail(product)" [routerLink]="['viewdetail']" routerLinkActive="active">
                 <mat-icon class="text-custom-color">visibility</mat-icon>
                 <span class="pl-1 text-sm text-dark cursor-pointer">View Detail</span>
               </a>
@@ -47,6 +47,6 @@
   <div class="text-center" style="font-size: 22px; font-weight: bold; color: teal">No Results Found</div>
 </ng-template>
 
-<app-product-carousel></app-product-carousel>
+
 
   

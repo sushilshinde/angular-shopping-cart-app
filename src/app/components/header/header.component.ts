@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
+import { ServiceService } from 'src/app/service.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,7 @@ import { AuthenticationService } from 'src/app/pages/authentication/authenticati
 export class HeaderComponent {
   routerEvents: any;
   cartProducts: Array<any> = [];
-  search;
+  search:string="";
   showheader: boolean = true;
   showCart = true;
   total: number = 0;
@@ -19,8 +21,14 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private store: Store
+    private store: Store,
+    private searchService:ServiceService
   ) { }
+  onSearch(){
+  this.searchService.searchProduct = this.search;
+  console.log("Search Query:", this.searchService.searchProduct); 
+  this.searchService.searchProductChange.emit(this.search);
+  }
 
   ngOnInit() {
     this.store.select((state: any) => state.cart.cartItem).subscribe(
@@ -40,9 +48,12 @@ export class HeaderComponent {
         }
       }
     });
+   
+   
   }
 
   handleLogout() {
     this.authService.localLogout();
   }
+ 
 }

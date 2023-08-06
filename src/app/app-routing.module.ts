@@ -45,10 +45,15 @@ const routes: Routes = [
       showCart: false,
     },
 
-  }, {
+  }, 
+  {
     path: 'details',
     component: ProductDetailsComponent,
   },
+  { 
+    path: 'product-details', 
+    component: ProductDetailsComponent
+   },
 
   {
    path:'checkout',

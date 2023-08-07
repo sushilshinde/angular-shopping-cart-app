@@ -32,6 +32,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CustomCurrencyPipe } from './custom-currency.pipe';
+import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CartListComponent,
     NotFoundComponent,
     ProductCarouselComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CustomCurrencyPipe,
+    PlaceorderComponent
   ],
   imports: [
     BrowserModule,

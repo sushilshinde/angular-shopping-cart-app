@@ -8,6 +8,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
@@ -56,7 +57,7 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     canActivate: [AuthGaurd]
-  },
+  }, { path: 'order', component: PlaceorderComponent },
   {
     path: '**',
     component: NotFoundComponent

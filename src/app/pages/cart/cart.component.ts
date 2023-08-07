@@ -15,11 +15,12 @@ export class CartComponent {
   constructor(private route: ActivatedRoute, private store: Store) {
   }
 
-  cartTotal = () => {
-    this.total = this.cartList.reduce((accumulator, currentValue) => {
-      return accumulator + (currentValue.price * currentValue.quantity)
-    }, 0)
-  }
+  // cartTotal = () => {
+  //   console.log(this.cartList)
+  //   this.total = this.cartList.reduce((accumulator, currentValue) => {
+  //     return accumulator + (currentValue.price * currentValue.quantity)
+  //   }, 0)
+  // }
 
 
   handleRemove(id) {
@@ -39,7 +40,7 @@ export class CartComponent {
     this.store.select((state: any) => state.cart).subscribe(
       data => {
         this.cartList = data.cartItem
-        this.cartTotal()
+        // this.cartTotal()
       }
     )
   }

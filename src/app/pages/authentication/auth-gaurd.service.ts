@@ -31,36 +31,10 @@ export class AuthGaurd {
       map((user) => {
         const isAuth = Object.values(user).length > 0;
         if (isAuth) return true;
-        this.router.navigate(['/auth/login'])
-        return false
-        // return this.router.createUrlTree(['auth']);
+        return this.router.createUrlTree(['/auth/login'])
       })
     );
   }
 }
 
-// export class AuthenticationGaurd {
-//   constructor(
-//     private authService: AuthenticationService,
-//     private router: Router,
-//     private store: Store
-//   ) { }
 
-//   canActivate(
-//     Route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot,
-//   ):
-//     | Observable<boolean | UrlTree>
-//     | Promise<boolean | UrlTree>
-//     | boolean
-//     | UrlTree {
-//     return this.store.select((state: any) => state.auth.userData).pipe(
-//       take(1),
-//       map((user) => {
-//         const isAuth = !!user;
-//         if (!isAuth) return true;
-//         return this.router.createUrlTree(['/home']);
-//       })
-//     );
-//   }
-// }

@@ -129,6 +129,7 @@ export class AuthenticationService {
     const newLocalUser = new LocalUser(id, email);
     localStorage.setItem('local_user', JSON.stringify(newLocalUser));
     this.router.navigate(['/home'])
+    window.location.reload()
   }
 
   localAutoLogin() {
@@ -141,5 +142,6 @@ export class AuthenticationService {
   localLogout() {
     localStorage.removeItem('local_user');
     this.router.navigate['/home'];
+    window.location.reload()
   }
 }

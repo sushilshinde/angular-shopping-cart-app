@@ -5,27 +5,33 @@
       "password": "Vicky@123",
       "cart": [
         {
-          "title": "Plant Hanger For Home",
-          "id": 26,
-          "price": 41,
+          "title": "Eau De Perfume Spray",
+          "id": 15,
+          "price": 30,
           "quantity": 1
+        },
+        {
+          "title": "iPhone 9",
+          "id": 1,
+          "price": 549,
+          "quantity": 1
+        },
+        {
+          "title": "perfume Oil",
+          "id": 11,
+          "price": 13,
+          "quantity": 1
+        },
+        {
+          "title": "cereals muesli fruit nuts",
+          "id": 24,
+          "price": 46,
+          "quantity": 7
         },
         {
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
-          "quantity": 2
-        },
-        {
-          "title": "NIGHT SUIT",
-          "id": 41,
-          "price": 55,
-          "quantity": 4
-        },
-        {
-          "title": "Eau De Perfume Spray",
-          "id": 15,
-          "price": 30,
           "quantity": 1
         },
         {

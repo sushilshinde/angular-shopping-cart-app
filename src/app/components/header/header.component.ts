@@ -11,12 +11,11 @@ import { ServiceService } from 'src/app/service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  routerEvents: any;
   cartProducts: Array<any> = [];
   search:string="";
   showheader: boolean = true;
   showCart = true;
-  total: number = 0;
+  isAuthenticated: boolean = false;
 
   constructor(
     private router: Router,
@@ -31,10 +30,19 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.store.select((state: any) => state.cart.cartItem).subscribe(
-      data => this.cartProducts = data
+    this.store.select((state: any) => state).subscribe(
+      data => {
+        this.cartProducts = data.cart.cartItem
+        if (Object.values(data.auth.userData).length > 0) {
+          this.isAuthenticated = true
+        }
+        else {
+          this.isAuthenticated = false
+        }
+      }
+
     )
-    this.routerEvents = this.router.events.subscribe((event: any) => {
+    this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
         if (event.snapshot.routeConfig?.['path'].includes('auth')) {
           this.showheader = false;

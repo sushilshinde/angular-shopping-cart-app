@@ -15,8 +15,10 @@ export class NavbarComponent {
   handleLogout() {
     this.store.dispatch(new SignOut());
     this.router.navigate(['/home']);
-    this.isAuthenticated = false
+    this.isAuthenticated = false;
+    window.location.reload()
   }
+
   constructor(private store: Store, private router: Router) {
     this.store.select((state: any) => state.auth).subscribe(
       data => {

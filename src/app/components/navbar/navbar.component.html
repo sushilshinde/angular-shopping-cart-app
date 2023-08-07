@@ -7,11 +7,11 @@
         </div>
         <div class="sm:ml-6">
           <div class="flex space-x-4">
-            <a [routerLink]="['home']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Home</a>
-            <a [routerLink]="['shop']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Shop</a>
-            <a *ngIf="isAuthenticated" [routerLink]="['cart']" routerLinkActive="active" href="#"
+            <a appHighlight [routerLink]="['home']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Home</a>
+            <a appHighlight [routerLink]="['shop']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Shop</a>
+            <a appHighlight *ngIf="isAuthenticated" [routerLink]="['cart']" routerLinkActive="active" href="#"
               class="px-3 py-2 text-[16px] mt-3">Cart</a>
-            <a *ngIf="isAuthenticated" [routerLink]="['checkout']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Checkout</a>
+            <a appHighlight *ngIf="isAuthenticated" [routerLink]="['checkout']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Checkout</a>
           </div>
         </div>
       </div>

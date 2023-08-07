@@ -21,7 +21,6 @@ export class CartComponent {
     }, 0)
   }
 
-
   handleRemove(id) {
     this.store.dispatch(removeItem({ id }))
   }

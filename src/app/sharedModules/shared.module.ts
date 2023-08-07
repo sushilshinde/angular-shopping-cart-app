@@ -13,11 +13,12 @@ import { CommonModule } from '@angular/common';
 import { TitlebBarComponent } from '../components/title-bar/title-bar.component';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
-import {MatTableModule} from '@angular/material/table';
-import { ProductCardComponent } from '../pages/category-page/components/product-card/product-card.component';
+import { MatTableModule } from '@angular/material/table';
+import { ProductCardComponent } from '../components/product-card/product-card.component';
+import { HighlightDirective } from '../custom-directives/hover.directive';
 
 @NgModule({
-  declarations: [TitlebBarComponent,ProductCardComponent],
+  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective],
   imports: [
     MatTableModule,
     MatToolbarModule,
@@ -51,7 +52,7 @@ import { ProductCardComponent } from '../pages/category-page/components/product-
     TitlebBarComponent,
     RouterModule,
     MatSelectModule,
-    ProductCardComponent
+    ProductCardComponent, HighlightDirective
   ],
 })
 export class SharedModules { }

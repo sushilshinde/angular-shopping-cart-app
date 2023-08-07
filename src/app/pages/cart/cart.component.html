@@ -17,7 +17,7 @@
                     <tr *ngFor="let item of cartList">
                         <td class="truncate max-w-[10vw]">
                             <a [routerLink]="['/details',item.id]">
-                                {{item.title}}
+                                {{ item.title }}
                             </a>
                         </td>
                         <td>{{item.price | currency}}</td>
@@ -68,7 +68,7 @@
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Total</p>
                     <!-- <p class="m-[0]"> - </p> -->
-                    <p class="m-[0]"> {{total | currency}}</p>
+                    <p class="m-[0]"> {{cartList | cartTotal | currency}}</p>
                 </li>
             </ul>
             <a class="bg-[#d19c97] h-[50px] p-3 text-[white] font-[600] text-center">

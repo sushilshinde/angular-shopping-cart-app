@@ -27,11 +27,12 @@ import { CartListComponent } from './components/header/cart-list/cart-list.compo
 import { AuthModule } from './pages/authentication/auth.module';
 import { cartReducer } from './pages/cart/cart-store/cart.reducer';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CartEffects } from './pages/cart/cart-store/cart.effects';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CartEffects } from './pages/cart/cart-store/cart.effects';
+import { TotalPipe } from './custom-pipes/total.pipe';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CartListComponent,
     NotFoundComponent,
     ProductCarouselComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    TotalPipe,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     AuthModule,
     MatButtonToggleModule,
     MatTabsModule,
-    CarouselModule, 
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

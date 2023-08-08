@@ -57,7 +57,7 @@
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">SubTotal</p>
                     <!-- <p class="m-[0]">- </p> -->
-                    <p class="m-[0]"> {{total | currency}}</p>
+                    <p class="m-[0]">{{cartList | customCurrency}}</p>
                 </li>
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Shipping</p>
@@ -68,7 +68,7 @@
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Total</p>
                     <!-- <p class="m-[0]"> - </p> -->
-                    <p class="m-[0]"> {{cartList | cartTotal | currency}}</p>
+                    <p class="m-[0]"> {{cartList | customCurrency}}</p>
                 </li>
             </ul>
             <a class="bg-[#d19c97] h-[50px] p-3 text-[white] font-[600] text-center">

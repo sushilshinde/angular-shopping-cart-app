@@ -10,10 +10,10 @@
     </h1>
     <div class="flex w-[65%] sm:w-[50%]">
       <div class="text-left border w-[100%]">
-        <input class="p-1 w-[100%]" type="text" placeholder="Search for products" [(ngModel)]="search" />
+        <input class="p-1 w-[100%]" type="text" placeholder="Search for products" [(ngModel)]="search"/>
       </div>
       <button mat-icon-button class="px-2 text-[#d19c97] flex-center border-[1px]"
-        aria-label="Example icon-button with heart icon">
+        aria-label="Example icon-button with heart icon" (click)="onSearch()">
         <mat-icon>search</mat-icon>
       </button>
     </div>

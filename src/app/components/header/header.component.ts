@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
+import { ProductSearchService } from '../product-search/product-search.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { AuthenticationService } from 'src/app/pages/authentication/authenticati
 })
 export class HeaderComponent {
   cartProducts: Array<any> = [];
-  search;
+  search:string="";
   showheader: boolean = true;
   showCart = true;
   isAuthenticated: boolean = false;
@@ -18,8 +20,14 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private store: Store
+    private store: Store,
+    private searchService:ProductSearchService
   ) { }
+  onSearch(){
+  this.searchService.searchProduct = this.search;
+  this.searchService.searchProductChange.emit(this.search);
+  this.router.navigate(['/product-search']);
+  }
 
   ngOnInit() {
     this.store.select((state: any) => state).subscribe(
@@ -48,9 +56,12 @@ export class HeaderComponent {
         }
       }
     });
+   
+   
   }
 
   handleLogout() {
     this.authService.localLogout();
   }
+ 
 }

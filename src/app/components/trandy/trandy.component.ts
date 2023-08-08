@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component ,OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-trandy',
   templateUrl: './trandy.component.html',
   styleUrls: ['./trandy.component.css']
 })
-export class TrandyComponent implements OnInit {
+export class TrandyComponent implements OnInit{
   products: any[];
-
-  constructor(private modalService: NgbModal, private http: HttpClient) {
+  constructor( private http: HttpClient,private router: Router) {
     this.products = [];
   }
+ngOnInit(){
+  this.fetchProducts();
+}
 
-  ngOnInit() {
-    this.fetchProducts();
-  }
+ 
 
   fetchProducts(): void {
     const apiUrl = 'http://localhost:3000/products?trendy=true';
@@ -29,9 +31,8 @@ export class TrandyComponent implements OnInit {
       }
     );
   }
-
-  public open(modal: any): void {
-    this.modalService.open(modal);
+  viewProductDetail(product: any) {
+    this.router.navigate(['/product-details'], { queryParams: { product: JSON.stringify(product) } });
   }
 }
 

@@ -10,18 +10,21 @@
         <div class="sm:ml-6">
           <div class="flex space-x-4">
             <a
+              appHighlight
               [routerLink]="['home']"
               routerLinkActive="active"
               class="px-3 py-2 text-[16px] mt-3"
               >Home</a
             >
             <a
+              appHighlight
               [routerLink]="['shop']"
               routerLinkActive="active"
               class="px-3 py-2 text-[16px] mt-3"
               >Shop</a
             >
             <a
+              appHighlight
               *ngIf="isAuthenticated"
               [routerLink]="['cart']"
               routerLinkActive="active"
@@ -30,6 +33,7 @@
               >Cart</a
             >
             <a
+              appHighlight
               *ngIf="isAuthenticated"
               [routerLink]="['checkout']"
               routerLinkActive="active"

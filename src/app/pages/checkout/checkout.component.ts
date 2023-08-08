@@ -17,8 +17,8 @@ export class CheckoutComponent implements OnInit{
   "Bank Transfer"
 ]
 formData: any = {
-  firstName: '',
-  lastName: '',
+  firstName: 'Kanchugatla',
+  lastName: 'Divya',
   email: '',
   mobileNo: '',
   addressLine1: '',

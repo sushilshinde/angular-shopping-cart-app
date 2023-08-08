@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { AuthGaurd } from './pages/authentication/auth-gaurd.service';
 import { RestrictAuth } from './pages/authentication/authentication-gaurd.service';
@@ -52,7 +53,10 @@ const routes: Routes = [
     path: 'details/:id',
     component: ProductDetailsComponent,
   },
-
+{
+path: 'product-search',
+component: ProductSearchComponent
+},
   {
     path: 'checkout',
     component: CheckoutComponent,

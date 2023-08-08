@@ -32,8 +32,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { CustomCurrencyPipe } from './custom-currency.pipe';
+import { CustomCurrencyPipe } from './components/custom-pipe/custom-currency.pipe'
 import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.comp
     ProductCarouselComponent,
     CheckoutComponent,
     CustomCurrencyPipe,
-    PlaceorderComponent
+    PlaceorderComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -10,12 +10,7 @@ export class CartListComponent {
   @Input() cartData!: Array<any>;
   constructor(private store: Store) { }
   
-  // showTotal() {
-  //   return this.cartData.reduce(
-  //     (acc, cur) => acc + cur.price * cur.quantity,
-  //     0
-  //   );
-  // }
+  
   ngOnInit() {
 
   }

@@ -2,7 +2,7 @@ import { Component,Output,EventEmitter } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ServiceService } from 'src/app/service.service';
+import { ProductSearchService } from '../product-search/product-search.service';
 
 
 @Component({
@@ -21,12 +21,12 @@ export class HeaderComponent {
     private router: Router,
     private authService: AuthenticationService,
     private store: Store,
-    private searchService:ServiceService
+    private searchService:ProductSearchService
   ) { }
   onSearch(){
   this.searchService.searchProduct = this.search;
-  console.log("Search Query:", this.searchService.searchProduct); 
   this.searchService.searchProductChange.emit(this.search);
+  this.router.navigate(['/product-search']);
   }
 
   ngOnInit() {

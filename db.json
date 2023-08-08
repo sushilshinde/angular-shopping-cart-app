@@ -5,34 +5,22 @@
       "password": "Vicky@123",
       "cart": [
         {
-          "title": "Eau De Perfume Spray",
-          "id": 15,
-          "price": 30,
-          "quantity": 5
-        },
-        {
           "title": "iPhone 9",
           "id": 1,
           "price": 549,
-          "quantity": 5
-        },
-        {
-          "title": "perfume Oil",
-          "id": 11,
-          "price": 13,
-          "quantity": 5
-        },
-        {
-          "title": "cereals muesli fruit nuts",
-          "id": 24,
-          "price": 46,
-          "quantity": 10
+          "quantity": 1
         },
         {
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
-          "quantity": 5
+          "quantity": 1
+        },
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "id": 8,
+          "price": 1499,
+          "quantity": 1
         }
       ],
       "id": 2

@@ -49,6 +49,12 @@
       "password": "vicky@123",
       "isAdmin": true,
       "id": 4
+    },
+    {
+      "email": "akashbalakumar99@gmail.com",
+      "password": "Aqashkumar@1999",
+      "cart": [],
+      "id": 5
     }
   ],
   "products": [

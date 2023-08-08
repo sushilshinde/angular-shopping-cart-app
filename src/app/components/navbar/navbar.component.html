@@ -1,26 +1,60 @@
 <nav class="bg-white-800 w-full">
   <div class="">
     <div class="relative flex items-center justify-between">
-      <div class="flex sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+      <div
+        class="flex sm:flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+      >
         <div class="flex flex-shrink-0 items-center">
           <app-category-list> </app-category-list>
         </div>
         <div class="sm:ml-6">
           <div class="flex space-x-4">
-            <a [routerLink]="['home']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Home</a>
-            <a [routerLink]="['shop']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Shop</a>
-            <a *ngIf="isAuthenticated" [routerLink]="['cart']" routerLinkActive="active" href="#"
-              class="px-3 py-2 text-[16px] mt-3">Cart</a>
-            <a *ngIf="isAuthenticated" [routerLink]="['checkout']" routerLinkActive="active" class="px-3 py-2 text-[16px] mt-3">Checkout</a>
+            <a
+              [routerLink]="['home']"
+              routerLinkActive="active"
+              class="px-3 py-2 text-[16px] mt-3"
+              >Home</a
+            >
+            <a
+              [routerLink]="['shop']"
+              routerLinkActive="active"
+              class="px-3 py-2 text-[16px] mt-3"
+              >Shop</a
+            >
+            <a
+              *ngIf="isAuthenticated"
+              [routerLink]="['cart']"
+              routerLinkActive="active"
+              href="#"
+              class="px-3 py-2 text-[16px] mt-3"
+              >Cart</a
+            >
+            <a
+              *ngIf="isAuthenticated"
+              [routerLink]="['checkout']"
+              routerLinkActive="active"
+              class="px-3 py-2 text-[16px] mt-3"
+              >Checkout</a
+            >
           </div>
         </div>
       </div>
-      <div *ngIf="!isAuthenticated"
-        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 mt-[1.2vh]">
+      <div
+        *ngIf="!isAuthenticated"
+        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 mt-[1.2vh]"
+      >
         <a [routerLink]="['/auth/login']" class="px-3 py-2 text-m">Login</a>
-        <a [routerLink]="['/auth/register']" class="px-3 py-2 text-m">Register</a>
+        <a [routerLink]="['/auth/register']" class="px-3 py-2 text-m"
+          >Register</a
+        >
       </div>
-      <button (click)="handleLogout()" *ngIf="isAuthenticated" class="px-3 py-2 text-m">Logout</button>
+      <button
+        (click)="handleLogout()"
+        *ngIf="isAuthenticated"
+        class="px-3 py-2 text-m"
+      >
+        Logout
+      </button>
     </div>
   </div>
 </nav>

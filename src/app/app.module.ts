@@ -51,7 +51,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CartListComponent,
     NotFoundComponent,
     ProductCarouselComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    
   ],
   imports: [
     BrowserModule,

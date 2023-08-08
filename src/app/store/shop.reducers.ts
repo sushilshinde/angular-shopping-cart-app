@@ -1,13 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadProducts, loadProductsSuccess, loadProductsFailure } from '../actions/shop-actions';
-import { initialState } from '../shop.initialState';
-import { Product } from '../shop.model';
+import { loadProducts, loadProductsSuccess, loadProductsFailure } from './shop-actions';
+import { ShopState } from './shop.model';
 
-export interface ShopState {
-  products: Product[];
-  loading: boolean;
-  error: any;
-}
+
+
+export const initialState: ShopState = {
+  products: [],
+  loading: false,
+  error: null,
+};
 
 export const shopReducer = createReducer(
   initialState,

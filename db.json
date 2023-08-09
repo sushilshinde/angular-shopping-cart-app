@@ -11,32 +11,38 @@
           "quantity": 1
         },
         {
-          "title": "Samsung Universe 9",
-          "id": 3,
-          "price": 1249,
-          "quantity": 1
-        },
-        {
           "title": "Microsoft Surface Laptop 4",
           "id": 8,
           "price": 1499,
-          "quantity": 1
+          "quantity": 3
+        },
+        {
+          "title": "sublimation plain kids tank",
+          "id": 38,
+          "price": 100,
+          "quantity": 3
+        },
+        {
+          "title": "Eau De Perfume Spray",
+          "id": 15,
+          "price": 30,
+          "quantity": 4
         }
       ],
       "id": 2
     },
     {
-      "email": "vigneshn0922000@gmail.com",
-      "password": "Vicky@123",
-      "cart": [],
-      "id": 3
-    },
-    {
-      "name": "vignesh",
-      "email": "vigneshn0922000@gmail.com",
-      "password": "vicky@123",
-      "isAdmin": true,
-      "id": 4
+      "email": "balaji@gmail.com",
+      "password": "balaji123",
+      "cart": [
+        {
+          "title": "perfume Oil",
+          "id": 11,
+          "price": 13,
+          "quantity": 1
+        }
+      ],
+      "id": 5
     }
   ],
   "products": [
@@ -744,7 +750,7 @@
       "rating": 4.8,
       "stock": 20,
       "brand": "Soft Cotton",
-      "category": "baby-dress",
+      "category": "baby-dresses",
       "thumbnail": "https://i.dummyjson.com/data/products/38/thumbnail.jpg",
       "images": [
         "https://i.dummyjson.com/data/products/38/1.png",

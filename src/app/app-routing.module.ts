@@ -53,10 +53,10 @@ const routes: Routes = [
     path: 'details/:id',
     component: ProductDetailsComponent,
   },
-{
-path: 'product-search',
-component: ProductSearchComponent
-},
+  {
+    path: 'product-search',
+    component: ProductSearchComponent
+  },
   {
     path: 'checkout',
     component: CheckoutComponent,
@@ -70,7 +70,7 @@ component: ProductSearchComponent
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

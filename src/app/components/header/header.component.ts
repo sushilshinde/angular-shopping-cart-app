@@ -23,11 +23,11 @@ export class HeaderComponent {
     private store: Store,
     private searchService:ProductSearchService
   ) { }
-  onSearch(){
-  this.searchService.searchProduct = this.search;
-  this.searchService.searchProductChange.emit(this.search);
-  this.router.navigate(['/product-search']);
+  onSearch() {
+    this.searchService.updateSearch(this.search); // Update and emit the search value
+    this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
   }
+  
 
   ngOnInit() {
     this.store.select((state: any) => state).subscribe(

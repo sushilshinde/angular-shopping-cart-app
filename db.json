@@ -5,12 +5,6 @@
       "password": "Vicky@123",
       "cart": [
         {
-          "title": "iPhone 9",
-          "id": 1,
-          "price": 549,
-          "quantity": 1
-        },
-        {
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
@@ -20,6 +14,12 @@
           "title": "Microsoft Surface Laptop 4",
           "id": 8,
           "price": 1499,
+          "quantity": 1
+        },
+        {
+          "title": "iPhone X",
+          "id": 2,
+          "price": 899,
           "quantity": 1
         }
       ],

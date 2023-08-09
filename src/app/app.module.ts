@@ -14,7 +14,7 @@ import { CategoryListComponent } from './components/navbar/category-list/categor
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopComponent } from './components/shop/shop.component';
-import { shopReducer } from './store/reducers/shop.reducers';
+import { shopReducer } from './store/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
 import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
 import { ColorsComponent } from './pages/product-details/colors/colors.component';

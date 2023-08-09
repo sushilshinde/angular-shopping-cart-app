@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadProducts } from '../../store/actions/shop-actions';
-import { ShopState } from '../../store/reducers/shop.reducers';
+import { loadProducts } from '../../store/shop-actions';
+import { ShopState } from '../../store/shop.model';
 import { Observable } from 'rxjs';
 import { Product } from '../../store/shop.model';
 import { Router } from '@angular/router';

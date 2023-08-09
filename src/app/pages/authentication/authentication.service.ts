@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, tap, throwError, of } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError, of, exhaustMap, map } from 'rxjs';
 import { LocalUser, User } from './auth.model';
 const headerDict = {
   'Content-Type': 'application/json',
@@ -101,16 +101,21 @@ export class AuthenticationService {
 
   handleLocalAuth(email, password, mode) {
     if (mode === 'register') {
-      return this.http
-        .post(this.api, {
-          email,
-          password,
-          cart: [],
-        })
-        .pipe(
-          tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
-          catchError((err) => throwError(err.message))
-        );
+      return this.http.get(`${this.api}?email=${email}`).pipe(
+        exhaustMap(
+          (user: any) => {
+            if (user.length) return throwError({ message: "Email Already Exists" })
+            return this.http
+              .post(this.api, {
+                email,
+                password,
+                cart: [],
+              })
+          }
+        ),
+        tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
+        catchError((err) => throwError(err.message))
+      )
     }
     return this.http.get(`${this.api}?email=${email}`).pipe(
       tap((data: any) => {
@@ -136,7 +141,6 @@ export class AuthenticationService {
     const user = localStorage.getItem('local_user');
     const parsedUser = user && JSON.parse(user);
     if (!parsedUser) return;
-    // const loadedUser = new LocalUser(parsedUser.id, parsedUser.email);
   }
 
   localLogout() {

@@ -30,7 +30,20 @@ export class AuthenticationComponent {
     }
   }
 
+  ngOnInit() {
+    this.store.select((state: any) => state.auth).subscribe(
+      data => {
+        setTimeout(() => {
+          this.isLoading = false;
+          this.error = data.error;
+        }, 1000)
+      }
+    )
+  }
+
   handleSubmit(formData: NgForm) {
+    this.error = '';
+    this.isLoading = true;
     if (!formData.valid) {
       this.error = 'Please enter valid details.';
       this.clearError();
@@ -42,10 +55,5 @@ export class AuthenticationComponent {
     else {
       return this.store.dispatch(new SignUp(formData.value))
     }
-    this.store.select((state: any) => state.auth).subscribe(
-      data => {
-        this.error = data.error;
-      }
-    )
   }
 }

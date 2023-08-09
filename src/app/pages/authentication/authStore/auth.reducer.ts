@@ -31,11 +31,12 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
                 ...state,
                 isLoading: false,
                 error: action.error,
-                userData: null
+                userData: {}
             }
         case AuthAction.AuthActions.SIGN_UP:
             return {
                 ...state,
+                error: '',
                 isLoading: true,
             }
         case AuthAction.AuthActions.SIGN_UP_SUCCESS:
@@ -50,7 +51,7 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
                 ...state,
                 isLoading: false,
                 error: action.error,
-                userData: null
+                userData: {}
             }
         case AuthAction.AuthActions.LOAD_USER:
             return {

@@ -61,7 +61,10 @@ component: ProductSearchComponent
     path: 'checkout',
     component: CheckoutComponent,
     canActivate: [AuthGaurd]
-  }, { path: 'order', component: PlaceorderComponent },
+  }, 
+  { path: 'order', 
+  component: PlaceorderComponent
+ },
   {
     path: '**',
     component: NotFoundComponent

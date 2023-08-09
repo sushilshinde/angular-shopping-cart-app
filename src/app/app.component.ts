@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './pages/authentication/authentication.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { LoadUser } from './pages/authentication/authStore/auth.action';
 import { loadCart } from './pages/cart/cart-store/cart.action';
@@ -11,7 +9,7 @@ import { loadCart } from './pages/cart/cart-store/cart.action';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private modalService: NgbModal, private store: Store) {
+  constructor( private store: Store) {
   }
   ngOnInit() {
     this.store.dispatch(new LoadUser())
@@ -24,7 +22,5 @@ export class AppComponent {
     )
 
   }
-  public open(modal: any): void {
-    this.modalService.open(modal);
-  }
+  
 }

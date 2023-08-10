@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
-import { ShopComponent } from './components/shop/shop.component';
+import { ProductSearchComponent } from './pages/product-search/product-search.component';
+import { ShopComponent } from './pages/shop/shop.component';
 import { AuthGaurd } from './pages/authentication/auth-gaurd.service';
 import { RestrictAuth } from './pages/authentication/authentication-gaurd.service';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';

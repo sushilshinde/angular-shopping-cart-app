@@ -2,7 +2,7 @@ import { Component,Output,EventEmitter } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ProductSearchService } from '../product-search/product-search.service';
+import { ProductSearchService } from '../../pages/product-search/product-search.service';
 
 
 @Component({

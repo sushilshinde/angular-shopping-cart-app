@@ -2,6 +2,9 @@
 <div class="flex justify-center mt-[5vh] min-h-[75vh]">
     <div class="w-[95%] flex justify-between">
         <div class="hidden sm:block sm:w-[21%] h-[20vh] grid gap-y-4">
+
+            <!-- Filter card -->
+            
             <app-filter-card cardTitle="Filter By Price" [filterList]="priceArray"
                 (handleOutput)="handlePriceArray($event)"></app-filter-card>
             <mat-divider></mat-divider>

@@ -1,4 +1,4 @@
-import { Component,Output,EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
@@ -6,13 +6,14 @@ import { ProductSearchService } from '../../pages/product-search/product-search.
 
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-header', 
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'] 
 })
 export class HeaderComponent {
+  // Properties to hold cart products, search string, header visibility, cart visibility, and authentication status
   cartProducts: Array<any> = [];
-  search:string="";
+  search: string = "";
   showheader: boolean = true;
   showCart = true;
   isAuthenticated: boolean = false;
@@ -21,27 +22,30 @@ export class HeaderComponent {
     private router: Router,
     private authService: AuthenticationService,
     private store: Store,
-    private searchService:ProductSearchService
+    private searchService: ProductSearchService
   ) { }
+
+  // Function to handle the search action
   onSearch() {
     this.searchService.updateSearch(this.search); // Update and emit the search value
     this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
   }
-  
 
+  // Lifecycle hook called after the component is initialized
   ngOnInit() {
+    // Subscribe to the store to update cart products and authentication status
     this.store.select((state: any) => state).subscribe(
       data => {
-        this.cartProducts = data.cart.cartItem
+        this.cartProducts = data.cart.cartItem;
         if (Object.values(data.auth.userData).length > 0) {
-          this.isAuthenticated = true
-        }
-        else {
-          this.isAuthenticated = false
+          this.isAuthenticated = true;
+        } else {
+          this.isAuthenticated = false;
         }
       }
+    );
 
-    )
+    // Subscribe to router events to manage header and cart visibility based on route changes
     this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
         if (event.snapshot.routeConfig?.['path'].includes('auth')) {
@@ -49,19 +53,17 @@ export class HeaderComponent {
         } else {
           this.showheader = true;
         }
-        if (event.snapshot.data?.['showCart'] !== undefined)
+        if (event.snapshot.data?.['showCart'] !== undefined) {
           this.showCart = event.snapshot.data?.['showCart'];
-        else {
-          this.showCart = true
+        } else {
+          this.showCart = true;
         }
       }
     });
-   
-   
   }
 
+  // Function to handle user logout
   handleLogout() {
     this.authService.localLogout();
   }
- 
 }

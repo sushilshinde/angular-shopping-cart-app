@@ -5,13 +5,11 @@
 <!-- Trandy Products Container -->
 <div class="w-full justify-center flex">
   <div class="flex flex-wrap w-[92%] gap-x-[5vw] xl:gap-x-[8%] gap-y-[5vh] justify-around">
+    <!-- Not fount text -->
     <h2 *ngIf="products.length < 1">No Products Found...</h2>
+    <!-- product card -->
     <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price" [itemId]="item.id"
       [discount]="item.discountPercentage" [thumbnail]="item.thumbnail" *ngFor="let item of products"
       cardData="item"></app-product-card>
   </div>
 </div>
-
-<ng-template #noResults>
-  <div class="text-center" style="font-size: 22px; font-weight: bold; color: teal">No Results Found</div>
-</ng-template>

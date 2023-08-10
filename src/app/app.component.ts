@@ -3,24 +3,30 @@ import { Store } from '@ngrx/store';
 import { LoadUser } from './pages/authentication/authStore/auth.action';
 import { loadCart } from './pages/cart/cart-store/cart.action';
 
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-root', // The component's selector used in templates
+  templateUrl: './app.component.html', // The HTML template for the component
+  styleUrls: ['./app.component.css'], // Stylesheets for the component
 })
 export class AppComponent {
-  constructor( private store: Store) {
+  constructor(private store: Store) {
   }
+
+  // Lifecycle hook called after the component is initialized
   ngOnInit() {
-    this.store.dispatch(new LoadUser())
+    // Dispatch an action to load user data
+    this.store.dispatch(new LoadUser());
+
+    // Subscribe to the 'auth' state in the store to react to changes
     this.store.select((state: any) => state.auth).subscribe(
       data => {
+        // Check if user data exists in the 'auth' state
         if (Object.values(data.userData).length > 0) {
-          this.store.dispatch(loadCart())
+          // If user data exists, dispatch an action to load the cart
+          this.store.dispatch(loadCart());
         }
       }
-    )
-
+    );
   }
-  
 }

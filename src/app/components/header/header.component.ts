@@ -2,13 +2,13 @@ import { Component,Output,EventEmitter } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ProductSearchService } from '../product-search/product-search.service';
+import { ProductSearchService } from 'src/app/components/product-search/product-search.service';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   cartProducts: Array<any> = [];

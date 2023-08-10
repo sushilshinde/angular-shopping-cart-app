@@ -10,8 +10,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./trandy.component.css']
 })
 export class TrandyComponent implements OnInit{
+  title1:string = "Trandy Products"
   products: any[];
-  constructor( private http: HttpClient,private router: Router) {
+  constructor( private http: HttpClient,public router: Router) {
     this.products = [];
   }
 ngOnInit(){

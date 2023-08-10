@@ -26,6 +26,7 @@ export class ProductSearchComponent implements OnInit {
       this.fetchAndFilterProducts();
     });
   }
+
   fetchProducts(): void {
     const apiUrl = 'http://localhost:3000/products?trendy=true';
     this.http.get<any[]>(apiUrl).subscribe(
@@ -43,10 +44,10 @@ export class ProductSearchComponent implements OnInit {
         this.products = data;
       });
     } else {
-      this.fetchProducts(); // Fetch all products when search query is empty
+      this.products = []
     }
   }
-  
-  
-  
+
+
+
 }

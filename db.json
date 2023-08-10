@@ -5,6 +5,12 @@
       "password": "Vicky@123",
       "cart": [
         {
+          "title": "iPhone 9",
+          "id": 1,
+          "price": 549,
+          "quantity": 1
+        },
+        {
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
@@ -15,28 +21,22 @@
           "id": 8,
           "price": 1499,
           "quantity": 1
-        },
-        {
-          "title": "iPhone X",
-          "id": 2,
-          "price": 899,
-          "quantity": 1
         }
       ],
       "id": 2
     },
     {
-      "email": "vigneshn0922000@gmail.com",
-      "password": "Vicky@123",
-      "cart": [],
-      "id": 3
-    },
-    {
-      "name": "vignesh",
-      "email": "vigneshn0922000@gmail.com",
-      "password": "vicky@123",
-      "isAdmin": true,
-      "id": 4
+      "email": "balaji@gmail.com",
+      "password": "balaji123",
+      "cart": [
+        {
+          "title": "perfume Oil",
+          "id": 11,
+          "price": 13,
+          "quantity": 1
+        }
+      ],
+      "id": 5
     }
   ],
   "products": [
@@ -744,7 +744,7 @@
       "rating": 4.8,
       "stock": 20,
       "brand": "Soft Cotton",
-      "category": "baby-dress",
+      "category": "baby-dresses",
       "thumbnail": "https://i.dummyjson.com/data/products/38/thumbnail.jpg",
       "images": [
         "https://i.dummyjson.com/data/products/38/1.png",

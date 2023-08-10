@@ -13,7 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ShopComponent } from './components/shop/shop.component';
+import { ShopComponent } from './pages/shop/shop.component';
 import { shopReducer } from './store/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
 import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
@@ -35,7 +35,7 @@ import { CartEffects } from './pages/cart/cart-store/cart.effects';
 import { TotalPipe } from './custom-pipes/total.pipe';
 import { CustomCurrencyPipe } from './components/custom-pipe/custom-currency.pipe'
 import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductSearchComponent } from './pages/product-search/product-search.component';
 
 
 @NgModule({

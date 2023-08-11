@@ -41,10 +41,12 @@
     {
       "email": "akashbalakumar99@gmail.com",
       "password": "Aqashkumar@1999",
-      "cart": [],
+      "cart": []
+    },
+    {
       "email": "balaji@gmail.com",
       "password": "balaji123",
-      "cart": []
+      "cart": [
     
         {
           "title": "perfume Oil",

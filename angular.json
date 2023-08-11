@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shopping-cart": {
+    "angular-shopping-cart-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shopping-cart",
+            "outputPath": "dist/angular-shopping-cart-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "shopping-cart:build:production"
+              "browserTarget": "angular-shopping-cart-app:build:production"
             },
             "development": {
-              "browserTarget": "shopping-cart:build:development"
+              "browserTarget": "angular-shopping-cart-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shopping-cart:build"
+            "browserTarget": "angular-shopping-cart-app:build"
           }
         },
         "test": {

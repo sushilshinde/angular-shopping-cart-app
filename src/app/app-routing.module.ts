@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    // loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'shop',
@@ -61,10 +62,11 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     canActivate: [AuthGaurd]
-  }, 
-  { path: 'order', 
-  component: PlaceorderComponent
- },
+  },
+  {
+    path: 'order',
+    component: PlaceorderComponent
+  },
   {
     path: '**',
     component: NotFoundComponent

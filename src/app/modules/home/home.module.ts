@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { CarouselComponent } from "src/app/components/carousel/carousel.component";
 import { OffersectionCardComponent } from "src/app/components/offersection-card/offersection-card.component";
@@ -12,7 +11,6 @@ import { HomeComponent } from "./home.component";
         HomeComponent,
         CatCardComponent, CarouselComponent,],
     imports: [
-      
         SharedModules
     ],
     exports: [

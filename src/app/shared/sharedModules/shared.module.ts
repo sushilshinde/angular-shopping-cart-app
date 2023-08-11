@@ -16,44 +16,40 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { HighlightDirective } from '../custom-directives/hover.directive';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { TotalPipe } from '../custom-pipes/total.pipe';
+import { CustomCurrencyPipe } from 'src/app/components/custom-pipe/custom-currency.pipe';
+import { HttpClientModule } from '@angular/common/http';
+
+const sharedImports = [
+  MatTableModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatBadgeModule,
+  MatMenuModule,
+  FormsModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatCardModule,
+  NgbCarouselModule,
+  MatTreeModule,
+  NgbModule,
+  CommonModule,
+  RouterModule,
+  MatSelectModule,
+  MatButtonToggleModule,
+  MatTabsModule,
+  CarouselModule,
+  HttpClientModule,
+]
 
 @NgModule({
-  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective],
-  imports: [
-    MatTableModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatBadgeModule,
-    MatMenuModule,
-    FormsModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    NgbCarouselModule,
-    MatTreeModule,
-    NgbModule,
-    CommonModule,
-    RouterModule,
-    MatSelectModule
-  ],
+  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective,CustomCurrencyPipe,TotalPipe],
+  imports: sharedImports,
   exports: [
-    MatToolbarModule,
-    MatIconModule,
-    MatBadgeModule,
-    MatMenuModule,
-    FormsModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    NgbCarouselModule,
-    MatTreeModule,
-    NgbModule,
-    CommonModule,
-    TitlebBarComponent,
-    RouterModule,
-    MatSelectModule,
-    ProductCardComponent,
-     HighlightDirective
+    ...sharedImports, TitlebBarComponent, ProductCardComponent, HighlightDirective,CustomCurrencyPipe,TotalPipe
   ],
 })
 export class SharedModules { }

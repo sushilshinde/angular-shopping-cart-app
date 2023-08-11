@@ -14,7 +14,7 @@
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
-          "quantity": 2
+          "quantity": 4
         },
         {
           "title": "perfume Oil",
@@ -26,6 +26,12 @@
           "title": "iPhone X",
           "id": 2,
           "price": 899,
+          "quantity": 1
+        },
+        {
+          "title": "Eau De Perfume Spray",
+          "id": 15,
+          "price": 30,
           "quantity": 1
         }
       ],

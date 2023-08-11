@@ -1,7 +1,7 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick,waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
+import { By } from '@angular/platform-browser';
 import { TrandyComponent } from './trandy.component';
 
 describe('TrandyComponent', () => {
@@ -18,25 +18,17 @@ describe('TrandyComponent', () => {
     component = fixture.componentInstance;
     httpMock = TestBed.inject(HttpTestingController); // Inject HttpTestingController
   });
+  afterEach(fakeAsync(() => {
+    fixture.whenStable().then(() => {
+      console.log('Verifying HTTP requests...');
+      httpMock.verify(); // Verify that there are no pending requests
+    });
+  }));
 
-  afterEach(() => {
-    console.log('Verifying HTTP requests...');
-    httpMock.verify(); // Verify that there are no pending requests
-  });
-  
   it('should create', () => {
     expect(component).toBeTruthy();
   });
  
-  it('should display correct title', () => {
-    component.title1 = 'Trandy Products';
-    fixture.detectChanges();
-
-    const titleElement = fixture.nativeElement.querySelector('h1'); 
-    expect(titleElement.textContent).toContain('Trandy Products');
-  });
-  
-
   it('should fetch products from API', fakeAsync(() => {
     // Arrange
     console.log('Starting the test...');

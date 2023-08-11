@@ -7,12 +7,12 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RestrictAuth {
+export class AuthGaurd {
   constructor(
     private authService: AuthenticationService,
     private router: Router, private store: Store
@@ -30,11 +30,11 @@ export class RestrictAuth {
       take(1),
       map((user) => {
         const isAuth = Object.values(user).length > 0;
-        if (!isAuth) return true;
-        this.router.navigate(['home'])
-        return false
+        if (isAuth) return true;
+        return this.router.createUrlTree(['/auth/login'])
       })
     );
   }
 }
+
 

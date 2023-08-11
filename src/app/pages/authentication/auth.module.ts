@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
-import { AuthEffects } from "./authStore/auth.effects";
-import { AuthReducer } from "./authStore/auth.reducer";
+import { AuthEffects } from "../../shared/authentication/authStore/auth.effects";
+import { AuthReducer } from "../../shared/authentication/authStore/auth.reducer";
 
 @NgModule({
     imports: [

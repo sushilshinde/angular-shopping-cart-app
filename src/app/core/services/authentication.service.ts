@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError, of, exhaustMap, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LocalUser, User } from './auth.model';
+import { LocalUser, User } from '../../shared/authentication/auth.model';
 const headerDict = {
   'Content-Type': 'application/json',
 };
@@ -102,7 +102,7 @@ export class AuthenticationService {
 
   handleLocalAuth(email, password, mode) {
     if (mode === 'register') {
-      return this.http.get(`${this.api}?email=${email}`).pipe(
+      return this.http.get(`${this.api}/users?email=${email}`).pipe(
         exhaustMap(
           (user: any) => {
             if (user.length) return throwError({ message: "Email Already Exists" })
@@ -118,7 +118,7 @@ export class AuthenticationService {
         catchError((err) => throwError(err.message))
       )
     }
-    return this.http.get(`${this.api}?email=${email}`).pipe(
+    return this.http.get(`${this.api}/users?email=${email}`).pipe(
       tap((data: any) => {
         if (!data.length) throw new Error('Invalid Username/Password');
         if (data[0].password === password) {

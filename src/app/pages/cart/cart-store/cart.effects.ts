@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
-import { CartService } from "../cart.service";
+import { CartService } from "../../../core/services/cart.service";
 import * as CartActions from "./cart.action"
 import { Injectable } from "@angular/core"
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ShopService } from '../../store/shop.service';
+import { ShopService } from '../../core/services/shop.service';
 import { addItem } from '../cart/cart-store/cart.action';
 
 @Component({

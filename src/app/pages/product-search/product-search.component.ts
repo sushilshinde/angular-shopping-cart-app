@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { ProductSearchService } from './product-search.service';
+import { ProductSearchService } from '../../core/services/product-search.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

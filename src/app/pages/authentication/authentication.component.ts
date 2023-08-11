@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthenticationService } from './authentication.service';
-import { SignIn, SignUp } from './authStore/auth.action';
+import { AuthenticationService } from '../../core/services/authentication.service';
+import { SignIn, SignUp } from '../../shared/authentication/authStore/auth.action';
 
 @Component({
   selector: 'app-authentication',

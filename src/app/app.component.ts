@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoadUser } from './pages/authentication/authStore/auth.action';
+import { LoadUser } from './shared/authentication/authStore/auth.action';
 import { loadCart } from './pages/cart/cart-store/cart.action';
 
 

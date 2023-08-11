@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs'
-import { CatService } from "../category-page.service.ts/category-page.service";
+import { CatService } from "../../../core/services/category-page.service";
 import * as fromCatAction from './cat-page.action'
 
 @Injectable()

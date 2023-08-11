@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { LoadUser } from './shared/authentication/authStore/auth.action';
-import { loadCart } from './pages/cart/cart-store/cart.action';
+import { loadCart } from './modules/cart/cart-store/cart.action';
 
 
 @Component({

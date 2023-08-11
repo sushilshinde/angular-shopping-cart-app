@@ -5,33 +5,21 @@
       "password": "Vicky@123",
       "cart": [
         {
-          "title": "Eau De Perfume Spray",
-          "id": 15,
-          "price": 30,
-          "quantity": 1
-        },
-        {
           "title": "iPhone 9",
           "id": 1,
           "price": 549,
           "quantity": 1
         },
         {
-          "title": "perfume Oil",
-          "id": 11,
-          "price": 13,
-          "quantity": 1
-        },
-        {
-          "title": "cereals muesli fruit nuts",
-          "id": 24,
-          "price": 46,
-          "quantity": 7
-        },
-        {
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
+          "quantity": 1
+        },
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "id": 8,
+          "price": 1499,
           "quantity": 1
         }
       ],
@@ -54,6 +42,17 @@
       "email": "akashbalakumar99@gmail.com",
       "password": "Aqashkumar@1999",
       "cart": [],
+      "email": "balaji@gmail.com",
+      "password": "balaji123",
+      "cart": []
+    
+        {
+          "title": "perfume Oil",
+          "id": 11,
+          "price": 13,
+          "quantity": 1
+        }
+      ],
       "id": 5
     }
   ],
@@ -762,7 +761,7 @@
       "rating": 4.8,
       "stock": 20,
       "brand": "Soft Cotton",
-      "category": "baby-dress",
+      "category": "baby-dresses",
       "thumbnail": "https://i.dummyjson.com/data/products/38/thumbnail.jpg",
       "images": [
         "https://i.dummyjson.com/data/products/38/1.png",

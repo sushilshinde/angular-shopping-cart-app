@@ -1,7 +1,9 @@
+<!-- Carousel component displaying dynamic content, shown only if there is content to display -->
 <ngb-carousel *ngIf="content.length" [showNavigationIndicators]="false">
+  <!-- Template for each slide in the carousel, iterating over each item in the 'content' array -->
   <ng-template ngbSlide *ngFor="let item of content">
-    <div
-      class="
+    <!-- Slide content container -->
+    <div class="
       rounded-sm 
       w-full
       h-[35vh]
@@ -17,18 +19,22 @@
       gap-y-[2.5vh]
       sm:gap-y-[5vh]"
     >
-    <img [src]="item.imgUrl" class="h-full w-full absolute top-[0] object-cover z-0 brightness-75" alt="">
+      <!-- Background image for the slide, covering the container with adjustable brightness -->
+      <img [src]="item.imgUrl" class="h-full w-full absolute top-[0] object-cover z-0 brightness-75" alt="">
+      <!-- Subtitle text  -->
       <h4 class="text-[1rem] sm:text-[1.5rem] font-[500] mt-[5vh] z-1">
         10% OFF YOUR FIRST ORDER
       </h4>
+      <!-- Title text -->
       <h2 class="text-[2.5rem] sm:text-[3.6rem] font-[500] z-1">
         {{ item.title }}
       </h2>
+      <!-- shop now button  -->
       <a
         class="bg-[white] rounded-sm cursor-pointer text-black font-[800] py-3 px-4 z-1"
       >
-        Shop Now</a
-      >
+        Shop Now
+      </a>
     </div>
   </ng-template>
 </ngb-carousel>

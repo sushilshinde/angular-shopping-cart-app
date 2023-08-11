@@ -1,0 +1,14 @@
+<div class="align-items-center d-flex justify-content-center mt-5 h-[50vh]">
+<mat-card class="h-[50vh] w-[50vh] p-5 d-flex flex-column justify-content-center align-items-center bg-primary" *ngIf="cartList.length > 0 ; noResults">
+    <h3 class="text-white">{{formData.firstName}} {{formData.lastName}}</h3>
+    <h3 class="text-white">TotalPrice: {{cartList | customCurrency}}</h3>
+    <h1 class="text-white">Your order is placed</h1>
+    <h1>😍 😍 </h1>
+</mat-card>
+
+<div *ngIf="cartList.length == 0">
+    <h2>No Items In The Cart...</h2>
+    <h1 class="text-center"> 🥺 </h1>
+</div>
+ 
+</div>

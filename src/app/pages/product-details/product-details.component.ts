@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ShopService } from 'src/app/store/shop.service';
+import { ShopService } from '../../store/shop.service';
 import { addItem } from '../cart/cart-store/cart.action';
 
 @Component({
@@ -14,12 +14,17 @@ export class ProductDetailsComponent {
   productData;
   count = 1
   existInCart = false;
+  isAuthenticated: boolean = false
   
   constructor(private route: ActivatedRoute, private shopService: ShopService, private store: Store) {
     this.route.params.subscribe(params => this.id = params['id'])
   }
 
   addItemToCart() {
+    if (!this.isAuthenticated) {
+      alert("Please Login to add items in cart...")
+      return;
+    }
     this.store.dispatch(addItem({
       item: {
         title: this.productData.title,
@@ -40,6 +45,14 @@ export class ProductDetailsComponent {
   }
 
   ngOnInit() {
+    this.store.select((state: any) => state
+    ).subscribe(data => {
+      if (Object.values(data.auth.userData).length > 0) {
+        this.isAuthenticated = true
+      }
+      else {
+        this.isAuthenticated = false
+      }
     this.shopService.getProductById(this.id).subscribe(
       (data: any) => {
         this.productData = data
@@ -56,5 +69,6 @@ export class ProductDetailsComponent {
     })
   }
 
-
+    )
+}
 }

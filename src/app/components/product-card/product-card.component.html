@@ -1,16 +1,21 @@
 <div class="pt-4 border-1 rounded-lg shadow-sm pb-2 h-[50vh] sm:h-[60vh]">
+    <!-- image container -->
     <div class="h-[65%]">
         <img [src]="thumbnail" class="w-full h-full object-contain">
     </div>
     <mat-divider></mat-divider>
     <div class="p-4 text-center">
+        <!-- title -->
         <h3 class="font-[500] m-[0] truncate" [title]="name">{{name}}</h3>
+        <!-- price -->
         <p class="text-[grey]">{{ (price - (price * (+discount / 100))) | currency }} <span><del>{{price |
                     currency}}</del></span></p>
         <div class="flex justify-around">
+            <!-- view item -->
             <a [routerLink]="['/details',itemId]" routerLinkActive="router-link-active"
                 class="py-2 text-lg sm:text-sm px-3 border-1 rounded-sm cursor-pointer text-[#d19c97] border-[#d19c97]">View
                 Item</a>
+                <!-- add to cart -->
             <button [disabled]="existInCart" (click)="addToCart()"
                 class="py-2 text-lg sm:text-sm px-3 border-1 rounded-sm text-[#d19c97] border-[#d19c97]">{{ existInCart
                 ? 'Added':'Add'}} To Cart</button>

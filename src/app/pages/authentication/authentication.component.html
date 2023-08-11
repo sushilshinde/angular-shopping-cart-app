@@ -4,33 +4,19 @@
     <form class="w-full" #form="ngForm" (ngSubmit)="handleSubmit(form)">
       <div class="w-[90%] grid gap-y-[10px] m-auto">
         <label>Email</label>
-        <input
-          type="email"
-          ngModel
-          name="email"
-          required
-          email
-          #email="ngModel"
-        />
-        <span class="error" *ngIf="!email.valid && email.touched"
-          >Please enter valid mail Id</span
-        >
+        <input type="email" ngModel name="email" required email #email="ngModel" />
+        <span class="error" *ngIf="!email.valid && email.touched">Please enter valid mail Id</span>
       </div>
       <div class="w-[90%] grid gap-y-[10px] m-auto">
         <label>password</label>
-        <input
-          type="password"
-          name="password"
-          ngModel
-          required
-          #password="ngModel"
-        />
-        <span class="error" *ngIf="!password.valid && password.touched"
-          >Password is required</span
-        >
+        <input type="password" name="password" ngModel required #password="ngModel" />
+        <span class="error" *ngIf="!password.valid && password.touched">Password is required</span>
       </div>
-      <button class="mt-5" type="submit">
-        Submit
+      <button class="mt-5 flex justify-around" type="submit">
+        <p class="text-[blue] m-[0]">Submit</p>
+        <p class="m-[0]" *ngIf="isLoading">
+          <mat-spinner class="w-[20px] h-[20px]"></mat-spinner>
+        </p>
       </button>
     </form>
     <p class="mt-4" (click)="isLogin = !isLogin">

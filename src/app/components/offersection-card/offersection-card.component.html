@@ -1,14 +1,18 @@
 <div class="container-fluid mt-[11vh]">
   <div class="flex flex-wrap items-center justify-center w-[95%] ml-[2.5vw]">
     <div class="col-12 col-lg-6">
+      <!-- left card -->
       <mat-card class="offer-section-container m-2">
         <div class="d-flex flex-row justify-content-between mb-2">
+          <!-- image container -->
           <div>
             <img class="offer-section-girl-image" alt="girlpic" [src]="url1" />
           </div>
+          <!-- content container -->
           <div class="d-flex flex-column align-items-center justify-content-center pr-12">
-            <h4 class="text-xl pb-2  font-bold text-custom-color">20% OFF THE ALL ORDER</h4>
-            <h1 class="text-3xl text-[35px] fw-bold pb-2 tracking-wide">Spring Collection</h1>
+            <h4 class="text-xl pb-2  font-bold text-custom-color">{{offer}}</h4>
+            <h1 class="text-3xl text-[35px] fw-bold pb-2 tracking-wide">{{title1}}</h1>
+            <!-- shop now button -->
             <button
               class="text-custom-color p-2 border-1 border-custom-color px-3 hover:bg-custom-color hover:text-[white]">Shop
               Now</button>
@@ -17,15 +21,19 @@
       </mat-card>
     </div>
     <div class="col-12 col-lg-6">
+      <!-- right card -->
       <mat-card class="offer-section-container m-2">
         <div class="d-flex flex-row justify-content-between mb-2">
+          <!-- Content container -->
           <div class="d-flex flex-column align-items-center justify-content-center pl-12">
-            <h4 class="text-xl pb-2 font-bold text-custom-color">20% OFF THE ALL ORDER</h4>
-            <h1 class="text-3xl fw-bold pb-2 tracking-wide">Winter Collection</h1>
+            <h4 class="text-xl pb-2 font-bold text-custom-color">{{offer}}</h4>
+            <h1 class="text-3xl fw-bold pb-2 tracking-wide">{{title2}}</h1>
+            <!-- shop now button -->
             <button
               class="text-custom-color p-2 border-1 border-custom-color px-3 hover:bg-custom-color hover:text-[white]">Shop
               Now</button>
           </div>
+          <!-- image container -->
           <div>
             <img class="offer-section-girl-image" alt="girlpic" [src]="url2" />
           </div>

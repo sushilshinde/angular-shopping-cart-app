@@ -13,8 +13,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoryListComponent } from './components/navbar/category-list/category-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ShopComponent } from './components/shop/shop.component';
-import { shopReducer } from './store/reducers/shop.reducers';
+import { ShopComponent } from './pages/shop/shop.component';
+import { shopReducer } from './store/shop.reducers';
 import { ShopEffects } from './store/shop.effects';
 import { ProductCarouselComponent } from './pages/product-details/product-carousel/product-carousel.component';
 import { ColorsComponent } from './pages/product-details/colors/colors.component';
@@ -33,6 +33,9 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartEffects } from './pages/cart/cart-store/cart.effects';
 import { TotalPipe } from './custom-pipes/total.pipe';
+import { CustomCurrencyPipe } from './components/custom-pipe/custom-currency.pipe'
+import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
+import { ProductSearchComponent } from './pages/product-search/product-search.component';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { TotalPipe } from './custom-pipes/total.pipe';
     NotFoundComponent,
     ProductCarouselComponent,
     CheckoutComponent,
-    TotalPipe
+    TotalPipe,
+    CustomCurrencyPipe,
+    PlaceorderComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,

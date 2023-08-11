@@ -6,6 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError, of, exhaustMap, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { LocalUser, User } from './auth.model';
 const headerDict = {
   'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
   private tokenExpiration: any;
 
-  private api = 'http://localhost:3000/users'
+  private api = environment.apiURL;
 
   handleLogout() {
     this.user.next(null);

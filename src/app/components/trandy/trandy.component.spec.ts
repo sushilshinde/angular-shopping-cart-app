@@ -27,19 +27,19 @@ describe('TrandyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
- 
+
   it('should display correct title', () => {
     component.title1 = 'Trandy Products';
     fixture.detectChanges();
 
-    const titleElement = fixture.nativeElement.querySelector('h1'); 
+    const titleElement = fixture.nativeElement.querySelector('h1');
     expect(titleElement.textContent).toContain('Trandy Products');
   });
-  
+
 
   it('should fetch products from API', () => {
     const apiUrl = 'http://localhost:3000/products?trendy=true';
-    const mockResponse = [ {
+    const mockResponse = [{
       "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
@@ -81,6 +81,6 @@ describe('TrandyComponent', () => {
     });
   });
 
-  
+
 
 });

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { exhaustMap, map } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -18,16 +19,16 @@ export class CartService {
             }
         )
     }
-    private URL = 'http://localhost:3000/'
+    private URL = environment.apiURL;
 
     getCartData() {
-        return this.http.get(this.URL + 'users/' + this.userId).pipe(
+        return this.http.get(this.URL + '/users/' + this.userId).pipe(
             map(data => data['cart'])
         )
     }
 
     addCartItem(data) {
-        return this.http.patch(this.URL + 'users/' + this.userId, {
+        return this.http.patch(this.URL + '/users/' + this.userId, {
             cart: [
                 ...this.cartItem,
                 data
@@ -37,7 +38,7 @@ export class CartService {
 
     removeCartItem(id) {
         const filteredarray = this.cartItem.filter(item => item['id'] !== id)
-        return this.http.patch(this.URL + 'users/' + this.userId, {
+        return this.http.patch(this.URL + '/users/' + this.userId, {
             cart: filteredarray
         })
     }
@@ -50,7 +51,7 @@ export class CartService {
         } else {
             data[index].quantity = data[index].quantity + 1
         }
-        return this.http.patch(this.URL + 'users/' + this.userId, {
+        return this.http.patch(this.URL + '/users/' + this.userId, {
             cart: data
         })
     }

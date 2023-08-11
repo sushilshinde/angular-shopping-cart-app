@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { SharedModules } from 'src/app/sharedModules/shared.module';
+import { SharedModules } from 'src/app/shared/sharedModules/shared.module';
 import { CategoryPageComponent } from './category-page.component';
 import { CatPageEffect } from './category-store/cat-page.effects';
 import { catPageReducer } from './category-store/cat-page.reducer';

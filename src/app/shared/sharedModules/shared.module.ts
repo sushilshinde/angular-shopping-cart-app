@@ -10,11 +10,11 @@ import { MatCardModule } from '@angular/material/card';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTreeModule } from '@angular/material/tree';
 import { CommonModule } from '@angular/common';
-import { TitlebBarComponent } from '../components/title-bar/title-bar.component';
+import { TitlebBarComponent } from '../../components/title-bar/title-bar.component';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { ProductCardComponent } from '../components/product-card/product-card.component';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { HighlightDirective } from '../custom-directives/hover.directive';
 
 @NgModule({
@@ -52,7 +52,8 @@ import { HighlightDirective } from '../custom-directives/hover.directive';
     TitlebBarComponent,
     RouterModule,
     MatSelectModule,
-    ProductCardComponent, HighlightDirective
+    ProductCardComponent,
+     HighlightDirective
   ],
 })
 export class SharedModules { }

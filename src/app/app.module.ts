@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { SharedModules } from './sharedModules/shared.module';
+import { SharedModules } from './shared/sharedModules/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +32,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartEffects } from './pages/cart/cart-store/cart.effects';
-import { TotalPipe } from './custom-pipes/total.pipe';
+import { TotalPipe } from './shared/custom-pipes/total.pipe';
 import { CustomCurrencyPipe } from './components/custom-pipe/custom-currency.pipe'
 import { PlaceorderComponent } from './pages/checkout/placeorder/placeorder.component';
 import { ProductSearchComponent } from './pages/product-search/product-search.component';

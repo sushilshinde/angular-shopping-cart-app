@@ -11,13 +11,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TrandyComponent implements OnInit{
   title1:string = "Trandy Products"
-  products: any[];
+  products: any[]=[];
   constructor( private http: HttpClient,public router: Router) {
-    this.products = [];
   }
-ngOnInit(){
-  this.fetchProducts();
-}
+  ngOnInit(){
+    this.fetchProducts();
+  }
 
  
 

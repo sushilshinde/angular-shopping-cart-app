@@ -13,7 +13,7 @@
           <div class="text-center pt-4 pb-3">
             <h6 class="text-truncate mb-3 text-lg">${{ product.title }}</h6>
             <div class="d-flex justify-content-center">
-              <h6 class="text-sm">{{ (product.price - (product.price * 0.09)).toString() | slice:0:4 | currency}}</h6>
+              <h6 class="text-sm">${{ (product.price - (product.price * 0.09)).toString() | slice:0:4}}</h6>
               <h6 class="text-muted ml-3 text-sm"><del>${{ product.price }}</del></h6>
             </div>
           </div>

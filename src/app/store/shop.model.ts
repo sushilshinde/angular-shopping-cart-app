@@ -5,7 +5,7 @@ export interface  ShopState {
     price: number;
     category: string;
     description: string;
-    images: string;
+    images: string[];
   }[],
   loading?: boolean,
   error?: any
@@ -19,6 +19,6 @@ export interface  ShopState {
     price: number;
     category: string;
     description: string;
-    images: string;
+    images: string[];
   }
   

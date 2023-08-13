@@ -54,15 +54,43 @@ describe('ShopComponent', () => {
     expect(mockStore.dispatch).toHaveBeenCalledOnceWith({ type: '[Shop Component] Load Products' });
   });
 
-  it('should call getProducts from ShopService on ngOnInit', () => {
-    component.ngOnInit();
+  it('should call getProducts from ShopService on ngOnInit', async() => {
+    const mockProducts = [
+      {
+        "id": 1,
+        "title": "iPhone 9",
+        "description": "An apple mobile which is nothing like apple",
+        "price": 549,
+        "discountPercentage": 12.96,
+        "rating": 4.69,
+        "stock": 94,
+        "brand": "Apple",
+        "category": "electronic",
+        "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+        "images": [
+          "https://i.dummyjson.com/data/products/1/1.jpg",
+          "https://i.dummyjson.com/data/products/1/2.jpg",
+          "https://i.dummyjson.com/data/products/1/3.jpg",
+          "https://i.dummyjson.com/data/products/1/4.jpg",
+          "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        ],
+        "trendy": true
+      }
+      
+    ];
+    mockShopService.getProducts.and.returnValue(of(mockProducts));
+
+    await component.ngOnInit();
+    console.log("checking",mockShopService.getProducts())
+
     expect(mockShopService.getProducts).toHaveBeenCalled();
+   
   });
 
   it('should "No Products Found..." be falsy', () => {
     const noProductsFoundText = fixture.nativeElement.querySelector('h3');
     expect(noProductsFoundText).toBeFalsy();
   });
-  // Add more test cases for rendering product cards, etc.
+ 
 
 });

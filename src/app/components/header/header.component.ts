@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component ,Self} from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
 import { ProductSearchService } from '../../pages/product-search/product-search.service';
+import { NgControl } from '@angular/forms';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class HeaderComponent {
     private router: Router,
     private authService: AuthenticationService,
     private store: Store,
-    private searchService: ProductSearchService
+    private searchService: ProductSearchService,
+    @Self() public ngControl: NgControl
   ) { }
 
   // Function to handle the search action

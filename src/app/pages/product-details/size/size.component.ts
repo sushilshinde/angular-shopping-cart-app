@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./size.component.css']
 })
 export class SizeComponent {
+  
 
 }

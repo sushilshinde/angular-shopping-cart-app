@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync,tick,fakeAsync } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
@@ -81,25 +81,25 @@ describe('ProductSearchComponent', () => {
 
     expect(component.fetchProducts).toHaveBeenCalled();
   });
-  it('should fetch products from the server', () => {
+
+
+  it('should fetch products from the server', fakeAsync(() => {
     const mockProducts = [
       { id: 1, title: 'Product 1', price: 100 },
       { id: 2, title: 'Product 2', price: 200 }
     ];
     mockProductSearchService.getProductData.and.returnValue(of(mockProducts));
   
-    // Add a console log to inspect the search query before calling fetchProducts()
-    console.log('Search Query Before:', component.search);
+    component.search = 'iphone';
   
-    component.fetchProducts();
+    component.fetchAndFilterProducts();
   
-    // Add a console log to inspect the search query after calling fetchProducts()
-    console.log('Search Query After:', component.search);
+    tick(); // Simulate the passage of time for the observable to complete
   
-    // Modify the expectation to match the actual call argument
-    expect(mockProductSearchService.getProductData).toHaveBeenCalledWith(component.search);
+    expect(mockProductSearchService.getProductData).toHaveBeenCalledWith('iphone');
     expect(component.products).toEqual(mockProducts);
-  });
+  }));
+
   
   
 

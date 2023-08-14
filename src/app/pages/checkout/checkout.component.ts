@@ -9,7 +9,7 @@ import { CheckoutDataService } from './checkout-data.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
- constructor(private store:Store,private router:Router,private checkoutDataService: CheckoutDataService){}
+ constructor(private store:Store,public router:Router,private checkoutDataService: CheckoutDataService){}
  cartList = []
  payment:any = [
   "Paypal",

@@ -24,7 +24,7 @@ export class TrandyComponent implements OnInit {
 
 
   fetchProducts(): void {
-    const apiUrl = `${environment.apiURL}/products?trendy=true`;
+    const apiUrl = `${environment.apiURL}/team-d/products?trendy=true`;
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.products = data;

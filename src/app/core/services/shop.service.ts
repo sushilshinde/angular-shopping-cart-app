@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ShopService {
-  private apiUrl = environment.apiURL;;
+  private apiUrl = environment.apiURL+"/team-d";
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {

@@ -47,7 +47,7 @@ export class ProductDetailsComponent {
   ngOnInit() {
     this.store.select((state: any) => state
     ).subscribe(data => {
-      if (Object.values(data.auth.userData).length > 0) {
+      if (Object.values(data.auth.userData)?.length > 0) {
         this.isAuthenticated = true
       }
       else {
@@ -55,12 +55,13 @@ export class ProductDetailsComponent {
       }
     this.shopService.getProductById(this.id).subscribe(
       (data: any) => {
-        this.productData = data
+        this.productData = data.data
+        console.log(data.data)
       }
     )
     this.store.select((state: any) => state.cart.cartItem
     ).subscribe(data => {
-      if (data.length > 0) {
+      if (data?.length > 0) {
         const filteredId = data.map(item => item?.id)
         if (filteredId.includes(+this.id)) {
           this.existInCart = true;

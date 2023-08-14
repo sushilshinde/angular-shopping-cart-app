@@ -100,40 +100,54 @@ export class AuthenticationService {
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
+  // handleLocalAuth(email, password, mode) {
+  //   if (mode === 'register') {
+  //     return this.http.get(`${this.api}/users?email=${email}`).pipe(
+  //       exhaustMap(
+  //         (user: any) => {
+  //           if (user.length) return throwError({ message: "Email Already Exists" })
+  //           return this.http
+  //             .post(this.api, {
+  //               email,
+  //               password,
+  //               cart: [],
+  //             })
+  //         }
+  //       ),
+  //       tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
+  //       catchError((err) => throwError(err.message))
+  //     )
+  //   }
+  //   return this.http.get(`${this.api}/users?email=${email}`).pipe(
+  //     tap((data: any) => {
+  //       if (!data.length) throw new Error('Invalid Username/Password');
+  //       if (data[0].password === password) {
+  //         this.handleLocalAuthSuccess(data[0].id, data[0].email);
+  //       } else {
+  //         throw new Error('Invalid Username/Password');
+  //       }
+  //     }),
+  //     catchError((err) => throwError(err.message))
+  //   );
+  // }
+
   handleLocalAuth(email, password, mode) {
+    let path = '/auth/login'
     if (mode === 'register') {
-      return this.http.get(`${this.api}/users?email=${email}`).pipe(
-        exhaustMap(
-          (user: any) => {
-            if (user.length) return throwError({ message: "Email Already Exists" })
-            return this.http
-              .post(this.api, {
-                email,
-                password,
-                cart: [],
-              })
-          }
-        ),
-        tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
-        catchError((err) => throwError(err.message))
-      )
+      path = '/auth/register'
     }
-    return this.http.get(`${this.api}/users?email=${email}`).pipe(
-      tap((data: any) => {
-        if (!data.length) throw new Error('Invalid Username/Password');
-        if (data[0].password === password) {
-          this.handleLocalAuthSuccess(data[0].id, data[0].email);
-        } else {
-          throw new Error('Invalid Username/Password');
-        }
-      }),
-      catchError((err) => throwError(err.message))
-    );
+    return this.http.post(this.api + path, {
+      email, password
+    }).pipe(
+      tap((data: any) => this.handleLocalAuthSuccess(data)),
+      catchError((err) => {
+        return throwError(err.error.error.message)
+      })
+    )
   }
 
-  handleLocalAuthSuccess(id: number, email: string) {
-    const newLocalUser = new LocalUser(id, email);
-    localStorage.setItem('local_user', JSON.stringify(newLocalUser));
+  handleLocalAuthSuccess(data) {
+    localStorage.setItem('local_user', JSON.stringify(data));
     this.router.navigate(['/home'])
     window.location.reload()
   }

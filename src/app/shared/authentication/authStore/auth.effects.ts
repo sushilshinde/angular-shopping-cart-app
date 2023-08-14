@@ -17,8 +17,7 @@ export class AuthEffects {
                     .pipe(
                         map(data => {
                             return new AuthActions.SignInSuccess({
-                                id: data[0].id,
-                                email: data[0].email
+                                id: data.id,
                             })
                         }
                         ),

@@ -15,13 +15,7 @@ export class AuthenticationComponent {
   isLoading: boolean = false;
   error: string | null = null;
 
-  clearError() {
-    setTimeout(() => (this.error = ''), 3000);
-  }
-
   constructor(
-    private authService: AuthenticationService,
-    private router: Router,
     private store: Store,
     private activedRoute: ActivatedRoute
   ) {
@@ -33,10 +27,9 @@ export class AuthenticationComponent {
   ngOnInit() {
     this.store.select((state: any) => state.auth).subscribe(
       data => {
-        setTimeout(() => {
-          this.isLoading = false;
-          this.error = data.error;
-        }, 1000)
+        // this.isLoading = false;
+        this.error = data.error;
+        this.isLoading = false;
       }
     )
   }
@@ -46,7 +39,6 @@ export class AuthenticationComponent {
     this.isLoading = true;
     if (!formData.valid) {
       this.error = 'Please enter valid details.';
-      this.clearError();
       return;
     }
     if (this.isLogin) {

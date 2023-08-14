@@ -18,6 +18,7 @@ export const AuthReducer = (state = initialState, action: AuthAction.AuthActionT
             return {
                 ...state,
                 isLoading: true,
+                error: '',
             }
         case AuthAction.AuthActions.SIGN_IN_SUCCESS:
             return {

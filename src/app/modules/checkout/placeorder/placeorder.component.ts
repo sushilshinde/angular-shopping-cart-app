@@ -14,6 +14,5 @@ export class PlaceorderComponent implements OnInit{
   ngOnInit() {
     this.formData = this.checkoutDataService.getFormData();
     this.cartList = this.checkoutDataService.cartList
-    console.log(this.cartList)
   }
 }

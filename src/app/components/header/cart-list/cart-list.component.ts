@@ -8,10 +8,4 @@ import { Store } from '@ngrx/store';
 })
 export class CartListComponent {
   @Input() cartData!: Array<any>;
-  constructor(private store: Store) { }
-  
-  
-  ngOnInit() {
-
-  }
 }

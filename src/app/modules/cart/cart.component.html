@@ -16,27 +16,27 @@
                 <tbody *ngIf="cartList.length">
                     <tr *ngFor="let item of cartList">
                         <td class="truncate max-w-[10vw]">
-                            <a [routerLink]="['/details',item.id]">
-                                {{ item.title }}
+                            <a [routerLink]="['/details',item.product.id]">
+                                {{ item.product.title }}
                             </a>
                         </td>
-                        <td>{{item.price | currency}}</td>
+                        <td>{{item.product.price | currency}}</td>
                         <td>
                             <div class="flex-center">
-                                <button (click)="handleQantity('remove',item.id)"
+                                <button (click)="handleQantity('remove',item._id)"
                                     class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
-                                    [disabled]="item.quantity < 2">
+                                    [disabled]="item?.quantity < 2">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
                                 </button>
-                                <span>{{item.quantity}}</span>
-                                <button (click)="handleQantity('add',item.id)"
+                                <span>{{item?.quantity}}</span>
+                                <button (click)="handleQantity('add',item._id)"
                                     class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
                                 </button>
                             </div>
                         </td>
-                        <td>{{item.price * item.quantity | currency}}</td>
-                        <td (click)="handleRemove(item.id)" class="flex-center"><button
+                        <td>{{item.product.price * item.quantity | currency}}</td>
+                        <td (click)="handleRemove(item._id)" class="flex-center"><button
                                 class="bg-[#ff3030b3] rounded-lg text-[white] p-1 flex-center px-2">
                                 Remove
                             </button></td>
@@ -57,7 +57,7 @@
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">SubTotal</p>
                     <!-- <p class="m-[0]">- </p> -->
-                    <p class="m-[0]">{{cartList | customCurrency}}</p>
+                    <p class="m-[0]">{{cartList | cartTotal | currency}}</p>
                 </li>
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Shipping</p>
@@ -68,7 +68,7 @@
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Total</p>
                     <!-- <p class="m-[0]"> - </p> -->
-                    <p class="m-[0]"> {{cartList | customCurrency}}</p>
+                    <p class="m-[0]"> {{cartList | cartTotal | currency}}</p>
                 </li>
             </ul>
             <a class="bg-[#d19c97] h-[50px] p-3 text-[white] font-[600] text-center">

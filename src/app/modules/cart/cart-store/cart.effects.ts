@@ -23,7 +23,7 @@ export class CartEffects {
             switchMap((data) => {
                 return this.cartService.addCartItem(data.item).pipe(
                     map(cartData => {
-                        return CartActions.addItemSuccess({ cartData: cartData['cart'] })
+                        return CartActions.addItemSuccess({ cartData: cartData['cartItem'] })
                     })
                 )
             })
@@ -35,7 +35,7 @@ export class CartEffects {
             switchMap((data: any) => {
                 return this.cartService.removeCartItem(data.id).pipe(
                     map(cartData => {
-                        return CartActions.removeItemSuccess({ cartData: cartData['cart'] })
+                        return CartActions.removeItemSuccess({ cartData: cartData['cartItem'] })
                     })
                 )
             })
@@ -47,7 +47,7 @@ export class CartEffects {
             switchMap((data: any) => {
                 return this.cartService.handleQuantity(data.id, 'remove').pipe(
                     map(cartData => {
-                        return CartActions.removeQuantitySuccess({ cartData: cartData['cart'] })
+                        return CartActions.removeQuantitySuccess({ cartData: cartData['cartItem'] })
                     })
                 )
             })
@@ -58,7 +58,7 @@ export class CartEffects {
             switchMap((data: any) => {
                 return this.cartService.handleQuantity(data.id, 'add').pipe(
                     map(cartData => {
-                        return CartActions.addQuantitySuccess({ cartData: cartData['cart'] })
+                        return CartActions.addQuantitySuccess({ cartData: cartData['cartItem'] })
                     })
                 )
             })

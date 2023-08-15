@@ -14,7 +14,7 @@
 
       <!-- product card -->
       <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price"
-        [itemId]="item.id" [discount]="item['discountPercentage']" [thumbnail]="item['thumbnail']"
+        [itemId]="item._id" [discount]="item['discountPercentage']" [thumbnail]="item['thumbnail']"
         *ngFor="let item of (products$ | async)" cardData="item"></app-product-card>
     </div>
   </div>

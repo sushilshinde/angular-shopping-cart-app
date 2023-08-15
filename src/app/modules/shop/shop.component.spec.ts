@@ -2,14 +2,14 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { ShopComponent } from './shop.component';
-import { ShopState } from '../../store/shop.model';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ShopService } from '../../store/shop.service';
 import { Observable, of } from 'rxjs';
 import { HttpClientTestingModule} from '@angular/common/http/testing'; 
 import { TitlebBarComponent } from 'src/app/components/title-bar/title-bar.component';
 import { ProductCarouselComponent } from '../product-details/product-carousel/product-carousel.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ShopService } from 'src/app/core/services/shop.service';
+import { ShopState } from './store/shop.model';
 
 describe('ShopComponent', () => {
   let component: ShopComponent;
@@ -57,7 +57,7 @@ describe('ShopComponent', () => {
   it('should call getProducts from ShopService on ngOnInit', async() => {
     const mockProducts = [
       {
-        "id": 1,
+        "_id": 1,
         "title": "iPhone 9",
         "description": "An apple mobile which is nothing like apple",
         "price": 549,

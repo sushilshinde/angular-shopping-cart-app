@@ -15,7 +15,7 @@ export class ProductDetailsComponent {
   count = 1
   existInCart = false;
   isAuthenticated: boolean = false
-  
+
   constructor(private route: ActivatedRoute, private shopService: ShopService, private store: Store) {
     this.route.params.subscribe(params => this.id = params['id'])
   }
@@ -27,9 +27,7 @@ export class ProductDetailsComponent {
     }
     this.store.dispatch(addItem({
       item: {
-        title: this.productData.title,
-        id: this.productData.id,
-        price: this.productData.price,
+        id: this.productData._id,
         quantity: this.count
       }
     }))
@@ -53,23 +51,22 @@ export class ProductDetailsComponent {
       else {
         this.isAuthenticated = false
       }
-    this.shopService.getProductById(this.id).subscribe(
-      (data: any) => {
-        this.productData = data.data
-        console.log(data.data)
-      }
-    )
-    this.store.select((state: any) => state.cart.cartItem
-    ).subscribe(data => {
-      if (data?.length > 0) {
-        const filteredId = data.map(item => item?.id)
-        if (filteredId.includes(+this.id)) {
-          this.existInCart = true;
+      this.shopService.getProductById(this.id).subscribe(
+        (data: any) => {
+          this.productData = data.data
         }
-      }
-    })
-  }
+      )
+      this.store.select((state: any) => state.cart.cartItem
+      ).subscribe(data => {
+        if (data?.length > 0) {
+          const filteredId = data.map(item => item?.id)
+          if (filteredId.includes(+this.id)) {
+            this.existInCart = true;
+          }
+        }
+      })
+    }
 
     )
-}
+  }
 }

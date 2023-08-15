@@ -102,7 +102,6 @@ describe('ProductCarouselComponent', () => {
     ];
     
     component.products = products;
-    console.log(products)
     fixture.detectChanges();
   
     const productCards = fixture.nativeElement.querySelectorAll('.product-container');

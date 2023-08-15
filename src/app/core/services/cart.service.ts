@@ -23,36 +23,38 @@ export class CartService {
 
     getCartData() {
         return this.http.get(this.URL + '/users/' + this.userId).pipe(
-            map(data => data['cart'])
+            map(data => {
+                return data['cartItem']
+            })
         )
     }
 
     addCartItem(data) {
-        return this.http.patch(this.URL + '/users/' + this.userId, {
-            cart: [
-                ...this.cartItem,
-                data
-            ]
+        return this.http.patch(this.URL + '/add-cart/' + this.userId, {
+            product: data.id,
+            quantity: data.quantity,
         })
     }
 
-    removeCartItem(id) {
-        const filteredarray = this.cartItem.filter(item => item['id'] !== id)
-        return this.http.patch(this.URL + '/users/' + this.userId, {
-            cart: filteredarray
+    removeCartItem(_id) {
+        return this.http.patch(this.URL + '/remove-cart/' + this.userId, {
+            _id: _id
         })
     }
 
     handleQuantity(id, mode) {
         const data: any = JSON.parse(JSON.stringify(this.cartItem))
-        const index = data.findIndex((item: any) => item.id === id)
+        const index = data.findIndex((item: any) => item._id === id)
+        console.log(data)
+        let quantity;
         if (mode === 'remove') {
-            data[index].quantity = data[index].quantity - 1
+            quantity = data[index].quantity - 1
         } else {
-            data[index].quantity = data[index].quantity + 1
+            quantity = data[index].quantity + 1
         }
-        return this.http.patch(this.URL + '/users/' + this.userId, {
-            cart: data
+        return this.http.patch(this.URL + '/handle-cart-quantity/' + this.userId, {
+            cartId: id,
+            quantity
         })
     }
 }

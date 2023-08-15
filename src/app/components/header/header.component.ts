@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ProductSearchService } from '../../pages/product-search/product-search.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { ProductSearchService } from '../../core/services/product-search.service';
 
 
 @Component({

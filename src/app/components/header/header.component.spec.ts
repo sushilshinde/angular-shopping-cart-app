@@ -3,8 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { HeaderComponent } from './header.component';
-import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ProductSearchService } from '../../pages/product-search/product-search.service';
+
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { ProductSearchService } from 'src/app/core/services/product-search.service';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -68,14 +69,14 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should update search on search button click', () => {
-  //   spyOn(searchService, 'updateSearch');
-  //   const searchValue = 'example search';
-  //   component.search = searchValue;
-  //   const searchButton = fixture.nativeElement.querySelector('button[aria-label="Example icon-button with search icon"]');
-  //   searchButton.click();
-  //   expect(searchService.updateSearch).toHaveBeenCalledWith(searchValue);
-  // });
+  it('should update search on search button click', () => {
+    spyOn(searchService, 'updateSearch');
+    const searchValue = 'example search';
+    component.search = searchValue;
+    const searchButton = fixture.nativeElement.querySelector('button[aria-label="Example icon-button with search icon"]');
+    searchButton.click();
+    expect(searchService.updateSearch).toHaveBeenCalledWith(searchValue);
+  });
 
 
   

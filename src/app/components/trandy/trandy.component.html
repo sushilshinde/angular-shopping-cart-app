@@ -8,7 +8,7 @@
     <!-- Not fount text -->
     <h2 *ngIf="products.length < 1">No Products Found...</h2>
     <!-- product card -->
-    <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price" [itemId]="item.id"
+    <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price" [itemId]="item._id"
       [discount]="item.discountPercentage" [thumbnail]="item.thumbnail" *ngFor="let item of products"
       cardData="item"></app-product-card>
   </div>

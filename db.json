@@ -14,12 +14,24 @@
           "title": "Samsung Universe 9",
           "id": 3,
           "price": 1249,
+          "quantity": 4
+        },
+        {
+          "title": "perfume Oil",
+          "id": 11,
+          "price": 13,
           "quantity": 1
         },
         {
-          "title": "Microsoft Surface Laptop 4",
-          "id": 8,
-          "price": 1499,
+          "title": "iPhone X",
+          "id": 2,
+          "price": 899,
+          "quantity": 1
+        },
+        {
+          "title": "Eau De Perfume Spray",
+          "id": 15,
+          "price": 30,
           "quantity": 1
         }
       ],

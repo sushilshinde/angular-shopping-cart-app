@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignOut } from 'src/app/pages/authentication/authStore/auth.action';
+import { SignOut } from 'src/app/shared/authentication/authStore/auth.action';
 
 @Component({
   selector: 'app-navbar',

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addItem } from 'src/app/pages/cart/cart-store/cart.action';
+import { addItem } from 'src/app/modules/cart/cart-store/cart.action';
 
 @Component({
   selector: 'app-product-card',
@@ -23,14 +23,14 @@ export class ProductCardComponent {
   ngOnInit() {
     this.store.select((state: any) => state
     ).subscribe(data => {
-      if (Object.values(data.auth.userData).length > 0) {
+      if (Object.values(data.auth.userData)?.length > 0) {
         this.isAuthenticated = true
       }
       else {
         this.isAuthenticated = false
       }
       if (data.cart.cartItem.length > 0) {
-        const filteredId = data.cart.cartItem.map(item => item.id)
+        const filteredId = data.cart.cartItem.map(item => item.product._id)
         if (filteredId.includes(this.itemId)) {
           this.existInCart = true;
         }
@@ -45,9 +45,7 @@ export class ProductCardComponent {
     }
     this.store.dispatch(addItem({
       item: {
-        title: this.name,
         id: this.itemId,
-        price: this.price,
         quantity: 1
       }
     }))

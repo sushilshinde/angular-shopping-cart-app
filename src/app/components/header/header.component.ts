@@ -1,15 +1,16 @@
 import { Component ,Self} from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
-import { ProductSearchService } from '../../pages/product-search/product-search.service';
-import { NgControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { ProductSearchService } from '../../core/services/product-search.service';
+// import { NgControl } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-header', 
+  selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'] 
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   // Properties to hold cart products, search string, header visibility, cart visibility, and authentication status
@@ -18,13 +19,15 @@ export class HeaderComponent {
   showheader: boolean = true;
   showCart = true;
   isAuthenticated: boolean = false;
+  storeSubscription: Subscription;
+  routerSubscription: Subscription;
 
   constructor(
     private router: Router,
     private authService: AuthenticationService,
     private store: Store,
     private searchService: ProductSearchService,
-    @Self() public ngControl: NgControl
+    // @Self() public ngControl: NgControl
   ) { }
 
   // Function to handle the search action
@@ -36,7 +39,7 @@ export class HeaderComponent {
   // Lifecycle hook called after the component is initialized
   ngOnInit() {
     // Subscribe to the store to update cart products and authentication status
-    this.store.select((state: any) => state).subscribe(
+    this.storeSubscription = this.store.select((state: any) => state).subscribe(
       data => {
         this.cartProducts = data.cart.cartItem;
         if (Object.values(data.auth.userData).length > 0) {
@@ -48,7 +51,7 @@ export class HeaderComponent {
     );
 
     // Subscribe to router events to manage header and cart visibility based on route changes
-    this.router.events.subscribe((event: any) => {
+    this.routerSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
         if (event.snapshot.routeConfig?.['path'].includes('auth')) {
           this.showheader = false;
@@ -62,6 +65,11 @@ export class HeaderComponent {
         }
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.routerSubscription.unsubscribe();
+    this.storeSubscription.unsubscribe();
   }
 
   // Function to handle user logout

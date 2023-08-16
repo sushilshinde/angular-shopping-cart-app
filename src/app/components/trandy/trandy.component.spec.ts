@@ -1,8 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick,waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { of } from 'rxjs';
-
+import { By } from '@angular/platform-browser';
 import { TrandyComponent } from './trandy.component';
 
 describe('TrandyComponent', () => {
@@ -19,27 +18,29 @@ describe('TrandyComponent', () => {
     component = fixture.componentInstance;
     httpMock = TestBed.inject(HttpTestingController); // Inject HttpTestingController
   });
-
-  afterEach(() => {
-    httpMock.verify(); // Verify that there are no pending requests
-  });
+  afterEach(fakeAsync(() => {
+    fixture.whenStable().then(() => {
+      console.log('Verifying HTTP requests...');
+      httpMock.verify(); // Verify that there are no pending requests
+    });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
- 
+
   it('should display correct title', () => {
     component.title1 = 'Trandy Products';
     fixture.detectChanges();
 
-    const titleElement = fixture.nativeElement.querySelector('h1'); 
+    const titleElement = fixture.nativeElement.querySelector('h1');
     expect(titleElement.textContent).toContain('Trandy Products');
   });
-  
+
 
   it('should fetch products from API', () => {
     const apiUrl = 'http://localhost:3000/products?trendy=true';
-    const mockResponse = [ {
+    const mockResponse = [{
       "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
@@ -61,14 +62,29 @@ describe('TrandyComponent', () => {
     }];
 
     component.fetchProducts();
-
+  
     const req = httpMock.expectOne(apiUrl);
+    console.log('Expecting a GET request...');
+  
     expect(req.request.method).toBe('GET');
-
+  
+    // Act
     req.flush(mockResponse);
-
+    console.log('Mock response flushed...');
+  
+    tick();
+    console.log('Time ticked...');
+  
+    // Assert
+    console.log('Expecting component.products to match mock response...');
+    console.log('component.products:', component.products);
+    console.log('mockResponse:', mockResponse);
+  
     expect(component.products).toEqual(mockResponse);
+  
+    console.log('Test completed.');
   });
+  
 
   it('should navigate to product details', () => {
     const navigateSpy = spyOn(component.router, 'navigate');
@@ -81,6 +97,6 @@ describe('TrandyComponent', () => {
     });
   });
 
-  
+
 
 });

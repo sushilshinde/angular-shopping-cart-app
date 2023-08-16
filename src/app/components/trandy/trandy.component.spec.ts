@@ -27,28 +27,42 @@ describe('TrandyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
- 
+
   it('should display correct title', () => {
     component.title1 = 'Trandy Products';
     fixture.detectChanges();
 
-    const titleElement = fixture.nativeElement.querySelector('h1'); 
+    const titleElement = fixture.nativeElement.querySelector('h1');
     expect(titleElement.textContent).toContain('Trandy Products');
   });
-  
+
 
   it('should fetch products from API', fakeAsync(() => {
     // Arrange
     console.log('Starting the test...');
   
     const apiUrl = 'http://localhost:3000/products?trendy=true';
-    const mockResponse = [
-      {
-        "id": 1,
-        // ... rest of the mock data
-      }
-    ];
-  
+    const mockResponse = [{
+      "id": 1,
+      "title": "iPhone 9",
+      "description": "An apple mobile which is nothing like apple",
+      "price": 549,
+      "discountPercentage": 12.96,
+      "rating": 4.69,
+      "stock": 94,
+      "brand": "Apple",
+      "category": "electronic",
+      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/1/1.jpg",
+        "https://i.dummyjson.com/data/products/1/2.jpg",
+        "https://i.dummyjson.com/data/products/1/3.jpg",
+        "https://i.dummyjson.com/data/products/1/4.jpg",
+        "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+      ],
+      "trendy": true
+    }];
+
     component.fetchProducts();
   
     const req = httpMock.expectOne(apiUrl);
@@ -85,6 +99,6 @@ describe('TrandyComponent', () => {
     });
   });
 
-  
+
 
 });

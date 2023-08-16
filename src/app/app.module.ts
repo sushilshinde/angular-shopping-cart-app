@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CustomCurrencyPipe } from './components/custom-pipe/custom-currency.pipe';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -20,7 +20,6 @@ import { CartModule } from './modules/cart/cart.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
 import { ProductModule } from './modules/product-details/product-detail.module';
 import { ShopModule } from './modules/shop/shop.module';
-import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 @NgModule({
@@ -32,8 +31,6 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     CartListComponent,
     NotFoundComponent,
     ProductSearchComponent,
-    CustomCurrencyPipe,
-    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +45,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     CartModule,
     CheckoutModule,
     ProductModule,
-    ShopModule
+    ShopModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,7 +11,7 @@ import { ShopComponent } from "./shop.component";
 
 @NgModule({
     declarations: [ShopComponent, ProductCarouselComponent],
-    imports: [StoreModule.forFeature("shop", shopReducer), EffectsModule.forFeature([ShopEffects])],
+    imports: [SharedModules ,StoreModule.forFeature("shop", shopReducer), EffectsModule.forFeature([ShopEffects])],
     exports: [ShopComponent, ProductCarouselComponent]
 })
 export class ShopModule { }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { LoadUser } from './shared/authentication/authStore/auth.action';
 import { loadCart } from './modules/cart/cart-store/cart.action';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { loadCart } from './modules/cart/cart-store/cart.action';
   styleUrls: ['./app.component.css'], // Stylesheets for the component
 })
 export class AppComponent {
+  subscription: Subscription
   constructor(private store: Store) {
   }
 
@@ -19,7 +21,7 @@ export class AppComponent {
     this.store.dispatch(new LoadUser());
 
     // Subscribe to the 'auth' state in the store to react to changes
-    this.store.select((state: any) => state.auth).subscribe(
+    this.subscription = this.store.select((state: any) => state.auth).subscribe(
       data => {
         // Check if user data exists in the 'auth' state
         if (Object.values(data.userData).length > 0) {
@@ -28,5 +30,8 @@ export class AppComponent {
         }
       }
     );
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

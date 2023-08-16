@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
   templateUrl: './trandy.component.html',
   styleUrls: ['./trandy.component.css']
 })
-
 export class TrandyComponent implements OnInit {
   title1: string = "Trandy Products";
   subscription: Subscription
@@ -22,6 +21,8 @@ export class TrandyComponent implements OnInit {
   ngOnInit() {
     this.fetchProducts();
   }
+
+
 
   fetchProducts(): void {
     const apiUrl = `${environment.apiURL}/team-d/products?trendy=true`;

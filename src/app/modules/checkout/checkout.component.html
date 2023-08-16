@@ -44,14 +44,14 @@
                 <h2 class="pl-4 p-1 text-2xl">Products</h2>
                 <div *ngFor="let item of cartList">
                 <div class="px-4 d-flex justify-content-between">
-                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.title}}</h3>
-                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.price * item.quantity | currency}}</h3>
+                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.title}}</h3>
+                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.price * item.quantity | currency}}</h3>
                 </div>
-            </div>
+                </div>
                 <mat-divider [inset]="true"></mat-divider>
                 <div class="px-4 d-flex justify-content-between pt-6">
                     <h2 class="text-lg">SubTotal</h2>
-                    <h2 class="text-lg">{{cartList | customCurrency}}</h2>
+                    <h2 class="text-lg">${{cartList | cartTotal}}</h2>
                 </div>
                 <div class="px-4 d-flex justify-content-between pt-2">
                     <h2 class="text-lg">Shipping</h2>
@@ -60,7 +60,7 @@
                 <mat-divider [inset]="true"></mat-divider>
                 <div class="px-4 py-4 d-flex justify-content-between">
                     <h2 class="text-md fw-bold tracking-wide">Total</h2>
-                    <h2 class="text-md fw-bold tracking-wide">{{cartList | customCurrency}}</h2>
+                    <h2 class="text-md fw-bold tracking-wide">${{cartList | cartTotal}}</h2>
                 </div>
             </div>   
         

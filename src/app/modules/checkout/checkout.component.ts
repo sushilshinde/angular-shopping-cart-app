@@ -42,6 +42,7 @@ placeOrder(cartList:any){
   this.store.select((state: any) => state.cart).subscribe(
     data => {
       this.cartList = data.cartItem
+      console.log(this.cartList)
     }
   )
 }

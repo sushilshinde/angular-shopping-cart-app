@@ -1,5 +1,5 @@
 import { Component ,OnInit} from '@angular/core';
-import { CheckoutDataService } from '../../../core/services/checkout-data.service';
+import { CheckoutDataService } from 'src/app/core/services/checkout-data.service';
 
 @Component({
   selector: 'app-placeorder',

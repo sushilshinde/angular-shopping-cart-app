@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlaceorderComponent } from './placeorder.component';
-import { CheckoutDataService } from '../checkout-data.service';
+import { CheckoutDataService } from 'src/app/core/services/checkout-data.service';
 import { MatCardModule } from '@angular/material/card';
 import { CustomCurrencyPipe } from 'src/app/components/custom-pipe/custom-currency.pipe';
 

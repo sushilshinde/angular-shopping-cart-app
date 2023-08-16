@@ -83,7 +83,7 @@ describe('TrandyComponent', () => {
     expect(component.products).toEqual(mockResponse);
   
     console.log('Test completed.');
-  }));
+  });
   
 
   it('should navigate to product details', () => {

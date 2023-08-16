@@ -8,9 +8,10 @@ import { ProductCarouselComponent } from "../product-details/product-carousel/pr
 import { ShopComponent } from "./shop.component";
 
 
+
 @NgModule({
     declarations: [ShopComponent, ProductCarouselComponent],
-    imports: [SharedModules, StoreModule.forFeature("shop", shopReducer), EffectsModule.forFeature([ShopEffects])],
+    imports: [StoreModule.forFeature("shop", shopReducer), EffectsModule.forFeature([ShopEffects])],
     exports: [ShopComponent, ProductCarouselComponent]
 })
 export class ShopModule { }

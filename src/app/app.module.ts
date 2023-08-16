@@ -30,7 +30,7 @@ import { ShopModule } from './modules/shop/shop.module';
     CategoryListComponent,
     CartListComponent,
     NotFoundComponent,
-    ProductSearchComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,

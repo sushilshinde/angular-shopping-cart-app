@@ -22,6 +22,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { TotalPipe } from '../custom-pipes/total.pipe';
 import { CustomCurrencyPipe } from 'src/app/components/custom-pipe/custom-currency.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
 
 const sharedImports = [
   MatTableModule,
@@ -43,6 +44,7 @@ const sharedImports = [
   MatTabsModule,
   CarouselModule,
   HttpClientModule,
+  MatDividerModule
 ]
 
 @NgModule({

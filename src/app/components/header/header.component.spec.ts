@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store'; // Import StoreModule
-import { AuthenticationService } from 'src/app/pages/authentication/authentication.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { HeaderComponent } from './header.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule } from '@angular/material/icon';

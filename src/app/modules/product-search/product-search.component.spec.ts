@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { ProductSearchComponent } from './product-search.component';
-import { ProductSearchService } from './product-search.service';
+import { ProductSearchService } from 'src/app/core/services/product-search.service';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 
 describe('ProductSearchComponent', () => {

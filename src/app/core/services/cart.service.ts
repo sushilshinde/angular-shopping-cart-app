@@ -45,7 +45,6 @@ export class CartService {
     handleQuantity(id, mode) {
         const data: any = JSON.parse(JSON.stringify(this.cartItem))
         const index = data.findIndex((item: any) => item._id === id)
-        console.log(data)
         let quantity;
         if (mode === 'remove') {
             quantity = data[index].quantity - 1

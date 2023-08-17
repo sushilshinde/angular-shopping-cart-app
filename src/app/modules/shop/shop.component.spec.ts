@@ -81,7 +81,6 @@ describe('ShopComponent', () => {
     mockShopService.getProducts.and.returnValue(of(mockProducts));
 
     await component.ngOnInit();
-    console.log("checking",mockShopService.getProducts())
 
     expect(mockShopService.getProducts).toHaveBeenCalled();
    

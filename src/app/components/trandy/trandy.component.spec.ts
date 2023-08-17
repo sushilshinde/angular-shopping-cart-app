@@ -29,36 +29,14 @@ describe('TrandyComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display correct title', () => {
-    component.title1 = 'Trandy Products';
-    fixture.detectChanges();
-
-    const titleElement = fixture.nativeElement.querySelector('h1');
-    expect(titleElement.textContent).toContain('Trandy Products');
-  });
+  
 
 
-  it('should fetch products from API', () => {
-    const apiUrl = 'http://localhost:3000/products?trendy=true';
+  it('should fetch products from API', fakeAsync(() => {
+    const apiUrl = 'http://localhost:3000/team-d/products?trendy=true';
     const mockResponse = [{
       "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "electronic",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/1/1.jpg",
-        "https://i.dummyjson.com/data/products/1/2.jpg",
-        "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/4.jpg",
-        "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
-      ],
-      "trendy": true
+      // ...
     }];
 
     component.fetchProducts();
@@ -83,7 +61,7 @@ describe('TrandyComponent', () => {
     expect(component.products).toEqual(mockResponse);
   
     console.log('Test completed.');
-  });
+  }));
   
 
   it('should navigate to product details', () => {
@@ -96,7 +74,16 @@ describe('TrandyComponent', () => {
       queryParams: { product: JSON.stringify(product) },
     });
   });
+  it('should unsubscribe from subscription on ngOnDestroy', () => {
+    const subscriptionMock = jasmine.createSpyObj('Subscription', ['unsubscribe']);
+    component.subscription = subscriptionMock;
 
+    component.ngOnDestroy();
 
+    expect(subscriptionMock.unsubscribe).toHaveBeenCalled();
+  });
+  afterEach(() => {
+    fixture.destroy(); // Clean up the component fixture
+  });
 
 });

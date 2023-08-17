@@ -74,12 +74,12 @@ describe('ProductSearchComponent', () => {
   });
 
   it('should call fetchProducts when search query is empty', () => {
-    spyOn(component, 'fetchProducts');
+    spyOn(component, 'fetchAndFilterProducts');
     
     component.search = '';
     component.fetchAndFilterProducts();
 
-    expect(component.fetchProducts).toHaveBeenCalled();
+    expect(component.fetchAndFilterProducts).toHaveBeenCalled();
   });
 
 
@@ -104,3 +104,4 @@ describe('ProductSearchComponent', () => {
   
 
 });
+

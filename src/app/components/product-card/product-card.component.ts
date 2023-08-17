@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges,OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { addItem } from 'src/app/modules/cart/cart-store/cart.action';
 
@@ -7,7 +7,7 @@ import { addItem } from 'src/app/modules/cart/cart-store/cart.action';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnChanges,OnInit{
   @Input() name: string;
   @Input() price: number;
   @Input() discount: number;
@@ -19,7 +19,13 @@ export class ProductCardComponent {
 
   constructor(private store: Store) {
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['name']) {
+      
 
+      console.log(changes['name'].currentValue);
+    }
+  }
   ngOnInit() {
     this.store.select((state: any) => state
     ).subscribe(data => {

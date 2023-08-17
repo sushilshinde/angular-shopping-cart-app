@@ -1,7 +1,6 @@
-import { ComponentFixture, fakeAsync, TestBed, tick,waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { By } from '@angular/platform-browser';
 import { TrandyComponent } from './trandy.component';
 
 describe('TrandyComponent', () => {
@@ -9,15 +8,19 @@ describe('TrandyComponent', () => {
   let fixture: ComponentFixture<TrandyComponent>;
   let httpMock: HttpTestingController;
 
+  // Set up testing environment before each test
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TrandyComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule], // Import necessary testing modules
+      imports: [RouterTestingModule, HttpClientTestingModule], 
     }).compileComponents();
+    // Create component fixture and inject HttpTestingController
     fixture = TestBed.createComponent(TrandyComponent);
     component = fixture.componentInstance;
-    httpMock = TestBed.inject(HttpTestingController); // Inject HttpTestingController
+    httpMock = TestBed.inject(HttpTestingController);
   });
+
+  // Clean up and verify HTTP requests after each test
   afterEach(fakeAsync(() => {
     fixture.whenStable().then(() => {
       console.log('Verifying HTTP requests...');
@@ -25,45 +28,29 @@ describe('TrandyComponent', () => {
     });
   }));
 
+  //  Ensure component creation
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  
-
-
+  //  Fetch products from API
   it('should fetch products from API', fakeAsync(() => {
     const apiUrl = 'http://localhost:3000/team-d/products?trendy=true';
-    const mockResponse = [{
-      "id": 1,
-      // ...
-    }];
+    const mockResponse = [/* ... mock data ... */];
 
     component.fetchProducts();
-  
     const req = httpMock.expectOne(apiUrl);
-    console.log('Expecting a GET request...');
-  
+
+    // Verify request method and simulate response
     expect(req.request.method).toBe('GET');
-  
-    // Act
     req.flush(mockResponse);
     console.log('Mock response flushed...');
-  
-    tick();
-    console.log('Time ticked...');
-  
-    // Assert
-    console.log('Expecting component.products to match mock response...');
-    console.log('component.products:', component.products);
-    console.log('mockResponse:', mockResponse);
-  
-    expect(component.products).toEqual(mockResponse);
-  
-    console.log('Test completed.');
-  }));
-  
 
+    tick(); // Advance time to resolve async operations
+    expect(component.products).toEqual(mockResponse);
+  }));
+
+  //  Navigate to product details
   it('should navigate to product details', () => {
     const navigateSpy = spyOn(component.router, 'navigate');
     const product = { id: 1, title: 'Product 1' };
@@ -74,6 +61,8 @@ describe('TrandyComponent', () => {
       queryParams: { product: JSON.stringify(product) },
     });
   });
+
+  //  Unsubscribe from subscription on ngOnDestroy
   it('should unsubscribe from subscription on ngOnDestroy', () => {
     const subscriptionMock = jasmine.createSpyObj('Subscription', ['unsubscribe']);
     component.subscription = subscriptionMock;
@@ -82,8 +71,9 @@ describe('TrandyComponent', () => {
 
     expect(subscriptionMock.unsubscribe).toHaveBeenCalled();
   });
-  afterEach(() => {
-    fixture.destroy(); // Clean up the component fixture
-  });
 
+  // Clean up component fixture after each test
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

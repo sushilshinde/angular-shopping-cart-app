@@ -12,7 +12,9 @@ import { selectCat } from './category-store/cat-page.reducer';
 })
 
 export class CategoryPageComponent {
-  constructor(private activeRoute: ActivatedRoute, private store: Store) { }
+  constructor(private activeRoute: ActivatedRoute, private store: Store) {
+    this.product = []; 
+   }
   query: string = '';
   isLoading: boolean = false;
   priceArray = priceFilterArray;

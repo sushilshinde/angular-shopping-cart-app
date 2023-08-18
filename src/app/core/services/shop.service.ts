@@ -12,10 +12,10 @@ export class ShopService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl+'/team-d/products');
+    return this.http.get<Product[]>(this.apiUrl+'/products');
   }
 
   getProductById(id) {
-    return this.http.get<Product[]>(this.apiUrl + '/team-d/products/' + id);
+    return this.http.get<Product[]>(this.apiUrl + '/products/' + id);
   }
 }

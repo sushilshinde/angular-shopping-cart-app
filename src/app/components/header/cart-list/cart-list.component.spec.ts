@@ -50,28 +50,5 @@ describe('CartListComponent', () => {
     });
   });
 
-  
-  
 
-  // it('should navigate to checkout page on "Buy Now" button click', fakeAsync(() => {
-  //   const button = fixture.nativeElement.querySelector('button[title="Buy Now"]');
-  //   console.log("button", button);
-
-  //   // Spy on the navigateByUrl method of the router
-  //   const navigateByUrlSpy = spyOn(router, 'navigateByUrl').and.stub();
-
-  //   button.click();
-  //   tick();
-  //   fixture.detectChanges();
-
-  //   console.log("url", router.url);
-  //   expect(navigateByUrlSpy).toHaveBeenCalledWith('/checkout');
-  // }));
-  // it('should navigate to cart page on "View Cart" link click', fakeAsync(() => {
-  //   const link = fixture.nativeElement.querySelector('a[routerLink="/cart"]');
-  //   link.click();
-  //   tick();
-  //   expect(router.url).toBe('/cart');
-   
-  // }));
 });

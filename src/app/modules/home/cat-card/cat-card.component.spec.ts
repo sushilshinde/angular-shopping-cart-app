@@ -40,5 +40,5 @@ describe('CatCardComponent', () => {
     expect(component.ind).toEqual(mockInd);
   });
 
-  // You can add more test cases here to cover different scenarios
+  
 });

@@ -19,7 +19,7 @@ export class NavbarComponent {
     window.location.reload()
   }
 
-  constructor(private store: Store, private router: Router) {
+  constructor(public store: Store, public router: Router) {
     this.store.select((state: any) => state.auth).subscribe(
       data => {
         if (Object.values(data.userData).length > 0) {

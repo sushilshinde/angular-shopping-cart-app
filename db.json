@@ -38,9 +38,32 @@
       "id": 2
     },
     {
+      "email": "vigneshn0922000@gmail.com",
+      "password": "Vicky@123",
+      "cart": [],
+      "id": 3
+    },
+    {
+      "name": "vignesh",
+      "email": "vigneshn0922000@gmail.com",
+      "password": "vicky@123",
+      "isAdmin": true,
+      "id": 4
+    },
+    {
+      "email": "akashbalakumar99@gmail.com",
+      "password": "Aqashkumar@1999",
+      "cart": []
+    },
+    {
       "email": "balaji@gmail.com",
       "password": "balaji123",
       "cart": [
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 388fb700ce3cdccde576bc909aba6e9652a242e5
+    
         {
           "title": "perfume Oil",
           "id": 11,
@@ -48,7 +71,7 @@
           "quantity": 1
         }
       ],
-      "id": 5
+      "id":5
     }
   ],
   "products": [

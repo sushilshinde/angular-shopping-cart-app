@@ -1,9 +1,11 @@
-import { Component,DoCheck } from '@angular/core';
+import { Component,DoCheck,Self } from '@angular/core';
+
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ProductSearchService } from '../../core/services/product-search.service';
+// import { NgControl } from '@angular/forms';
 
 
 @Component({

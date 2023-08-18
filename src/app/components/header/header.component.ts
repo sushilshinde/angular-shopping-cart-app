@@ -24,7 +24,7 @@ export class HeaderComponent implements DoCheck {
   routerSubscription: Subscription;
 
   constructor(
-    private router: Router,
+    public router: Router,
     private authService: AuthenticationService,
     private store: Store<any>,
     private searchService: ProductSearchService

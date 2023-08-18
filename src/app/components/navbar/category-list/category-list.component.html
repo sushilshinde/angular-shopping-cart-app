@@ -7,7 +7,7 @@
   </a>
   <ul class="absolute w-full text-[16px] ease-out duration-300 overflow-hidden bg-[white]"
     [ngStyle]="{ height: isCatOpen ? '70vh' : '0' }">
-    <a class="hover:text-[#D19C97]" [routerLink]="['/products', cat]" *ngFor="let cat of catList">
+    <a class="hover:text-[#D19C97] cat-items" [routerLink]="['/products', cat]" *ngFor="let cat of catList">
       <li class="p-3 border-[1px]">
         {{ cat }}
       </li>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -11,6 +12,7 @@ import { SignIn, SignUp } from '../../shared/authentication/authStore/auth.actio
   styleUrls: ['./authentication.component.css'],
 })
 export class AuthenticationComponent {
+  subscribe:Subscription
   isLogin: boolean = false;
   isLoading: boolean = false;
   error: string | null = null;
@@ -19,22 +21,29 @@ export class AuthenticationComponent {
     private store: Store,
     private activedRoute: ActivatedRoute
   ) {
-    if (activedRoute.url['_value'][1].path === 'login') {
-      this.isLogin = true
-    }
+    this.activedRoute.url.subscribe(urlSegments => {
+      if (urlSegments.length > 0 && urlSegments[0].path === 'login') {
+        this.isLogin = true;
+      }
+    });
+    
   }
+  
 
   ngOnInit() {
-    this.store.select((state: any) => state.auth).subscribe(
+   this.subscribe= this.store.select((state: any) => state.auth).subscribe(
       data => {
         // this.isLoading = false;
         this.error = data.error;
         this.isLoading = false;
+       
       }
     )
+    
   }
 
   handleSubmit(formData: NgForm) {
+    
     this.error = '';
     this.isLoading = true;
     if (!formData.valid) {
@@ -47,5 +56,12 @@ export class AuthenticationComponent {
     else {
       return this.store.dispatch(new SignUp(formData.value))
     }
+   
   }
+  ngOnDestroy(){
+    if(this.subscribe){
+   this.subscribe.unsubscribe();
+  }
+}
+
 }

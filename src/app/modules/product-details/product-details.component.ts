@@ -15,6 +15,7 @@ export class ProductDetailsComponent {
   count = 1
   existInCart = false;
   isAuthenticated: boolean = false
+  isLoading = false;
 
   constructor(private route: ActivatedRoute, private shopService: ShopService, private store: Store) {
     this.route.params.subscribe(params => this.id = params['id'])
@@ -43,6 +44,7 @@ export class ProductDetailsComponent {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.store.select((state: any) => state
     ).subscribe(data => {
       if (Object.values(data.auth.userData)?.length > 0) {
@@ -54,6 +56,7 @@ export class ProductDetailsComponent {
       this.shopService.getProductById(this.id).subscribe(
         (data: any) => {
           this.productData = data.data
+          this.isLoading = false;
         }
       )
       this.store.select((state: any) => state.cart.cartItem

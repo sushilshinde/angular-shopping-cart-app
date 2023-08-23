@@ -46,6 +46,8 @@ import { ShopModule } from './modules/shop/shop.module';
     CheckoutModule,
     ProductModule,
     ShopModule,
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

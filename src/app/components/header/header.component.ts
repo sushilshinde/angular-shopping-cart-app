@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ProductSearchService } from '../../core/services/product-search.service';
-// import { NgControl } from '@angular/forms';
+
 
 
 @Component({

@@ -9,7 +9,7 @@ import { HomeComponent } from "./home.component";
 @NgModule({
     declarations: [OffersectionCardComponent, TrandyComponent,
         HomeComponent,
-        CatCardComponent, CarouselComponent,],
+        CatCardComponent, CarouselComponent],
     imports: [
         SharedModules
     ],

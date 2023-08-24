@@ -22,6 +22,7 @@ import { ProductModule } from './modules/product-details/product-detail.module';
 import { ShopModule } from './modules/shop/shop.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { ShopModule } from './modules/shop/shop.module';
     CategoryListComponent,
     CartListComponent,
     NotFoundComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+   
   ],
   imports: [
     BrowserModule,

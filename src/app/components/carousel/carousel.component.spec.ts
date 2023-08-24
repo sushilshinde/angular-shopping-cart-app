@@ -10,7 +10,7 @@ describe('CarouselComponent', () => {
  beforeEach(async () => {
 await TestBed.configureTestingModule({
 declarations: [CarouselComponent],
-imports: [NgbCarouselModule], // Import necessary modules
+imports: [NgbCarouselModule], 
 }).compileComponents();
 });
 

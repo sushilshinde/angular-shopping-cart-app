@@ -8,5 +8,5 @@ import { environment } from "src/environments/environment";
 export class CatService {
     constructor(private http: HttpClient) { }
     private apiUrl = environment.apiURL
-    getCatData = (query) => this.http.get(`${this.apiUrl}/team-d/products?category=${query}`)
+    getCatData = (query) => this.http.get(`${this.apiUrl}/products?category=${query}`)
 }

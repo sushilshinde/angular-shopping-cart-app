@@ -25,54 +25,6 @@ describe('SizeComponent', () => {
     expect(sizeRadioButton.checked).toBe(true);
   });
 
-  // it('should only allow one size to be selected at a time', () => {
-  //   const sizeRadioButtons = fixture.nativeElement.querySelectorAll('[name="size"]');
-  //   const sizeM = fixture.nativeElement.querySelector('#size-3');
-  //   const sizeL = fixture.nativeElement.querySelector('#size-4');
-
-  //   sizeM.click();
-  //   fixture.detectChanges();
-  //   expect(sizeM.checked).toBe(true);
-  //   expect(sizeL.checked).toBe(false);
-
-  //   sizeL.click();
-  //   fixture.detectChanges();
-  //   expect(sizeM.checked).toBe(false);
-  //   expect(sizeL.checked).toBe(true);
-  // });
-
-  // it('should update selectedSize when different sizes are selected', () => {
-  //   const newSize = 'L';
-  //   const sizeRadioButton = fixture.nativeElement.querySelector('#size-4');
-  //   sizeRadioButton.click();
-
-  //   expect(component.selectedSize).toBe(newSize);
-  // });
-
-  // it('should not change selectedSize when clicking the same size twice', () => {
-  //   const initialSize = 'XL';
-  //   component.selectedSize = initialSize;
-  //   fixture.detectChanges();
-
-  //   const sizeRadioButton = fixture.nativeElement.querySelector('#size-5');
-  //   sizeRadioButton.click();
-  //   fixture.detectChanges();
-  //   sizeRadioButton.click();
-  //   fixture.detectChanges();
-
-  //   expect(component.selectedSize).toBe(initialSize);
-  // });
-
-  // it('should associate labels with correct radio buttons', () => {
-  //   const labels = fixture.nativeElement.querySelectorAll('label');
-  //   for (const label of labels) {
-  //     const radioId = label.getAttribute('for');
-  //     const radioButton = fixture.nativeElement.querySelector(`#${radioId}`);
-  //     label.click();
-  //     fixture.detectChanges();
-  //     expect(radioButton.checked).toBe(true);
-  //   }
-  // });
 
   it('should have no radio buttons initially selected', () => {
     const sizeRadioButtons = fixture.nativeElement.querySelectorAll('[name="size"]');

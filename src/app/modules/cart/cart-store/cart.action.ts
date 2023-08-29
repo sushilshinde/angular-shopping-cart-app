@@ -13,7 +13,8 @@ export enum CartActions {
     ADD_QUANTITY = '[CART] ADD_QUANTITY',
     ADD_QUANTITY_SUCCESS = '[CART] ADD_QUANTITY_SUCCESS',
     CLEAR_CART = '[CART] CLEAR_CART',
-    CLEAR_CART_SUCCESS = '[CART] CLEAR_CART_SUCCESS'
+    CLEAR_CART_SUCCESS = '[CART] CLEAR_CART_SUCCESS',
+    EMPTY_CART = '[CART] EMPTY_CART'
 }
 
 export const loadCart = createAction(CartActions.LOAD_CART)
@@ -28,3 +29,4 @@ export const removeQuantity = createAction(CartActions.REMOVE_QUANTITY, props<{ 
 export const removeQuantitySuccess = createAction(CartActions.REMOVE_QUANTITY_SUCCESS, props<{ cartData }>())
 export const clearCart = createAction(CartActions.CLEAR_CART, props<{ id }>())
 export const clearCartSuccess = createAction(CartActions.CLEAR_CART_SUCCESS, props<{ cartData }>())
+export const emptyCart = createAction(CartActions.EMPTY_CART)

@@ -1,7 +1,8 @@
 <app-title-bar pageTitle="Shop Details" subTitle="Shop Details"></app-title-bar>
 
 
-<div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw] details-carousel" *ngIf="!isLoading">
+<div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw] details-carousel">
+ 
   <div class="sm:max-w-[30vw]">
     <ngb-carousel [interval]="0" [showNavigationIndicators]="false">
       <ng-template ngbSlide *ngFor="let item of productData?.images">
@@ -164,5 +165,6 @@
 <div class="h-[50vh] w-full flex-center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
+
 
 <!-- <app-product-carousel></app-product-carousel> -->

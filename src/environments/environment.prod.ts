@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiURL: 'https://angular-backend-api.cyclic.app/team-d'
+    apiURL: 'http://localhost:3000/team-d'
 };

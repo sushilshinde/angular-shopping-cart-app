@@ -6,13 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./carousel.component.css'],
 })
 export class CarouselComponent {
+  componentName='Carousel'
   content: any[] = [
     {
-      imgUrl: '../../../assets/images/carousel-1.jpg',
+      imgUrl: 'http://localhost:4200/assets/images/carousel-1.jpg',
       title: 'Fashionable Dress',
     },
     {
-      imgUrl: '../../../assets/images/carousel-2.jpg',
+      imgUrl: 'http://localhost:4200/assets/images/carousel-2.jpg',
       title: 'Reasonable Price',
     },
   ];

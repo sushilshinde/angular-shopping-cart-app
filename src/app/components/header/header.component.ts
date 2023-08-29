@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,DoCheck,Self } from '@angular/core';
+
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ProductSearchService } from '../../core/services/product-search.service';
+// import { NgControl } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { ProductSearchService } from '../../core/services/product-search.service
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
   // Properties to hold cart products, search string, header visibility, cart visibility, and authentication status
   cartProducts: Array<any> = [];
   search: string = "";
@@ -22,9 +24,9 @@ export class HeaderComponent {
   routerSubscription: Subscription;
 
   constructor(
-    private router: Router,
+    public router: Router,
     private authService: AuthenticationService,
-    private store: Store,
+    private store: Store<any>,
     private searchService: ProductSearchService
   ) { }
 
@@ -33,6 +35,7 @@ export class HeaderComponent {
     this.searchService.updateSearch(this.search); // Update and emit the search value
     this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
   }
+ 
 
   // Lifecycle hook called after the component is initialized
   ngOnInit() {
@@ -40,13 +43,14 @@ export class HeaderComponent {
     this.storeSubscription = this.store.select((state: any) => state).subscribe(
       data => {
         this.cartProducts = data.cart.cartItem;
-        if (Object.values(data.auth.userData).length > 0) {
-          this.isAuthenticated = true;
-        } else {
-          this.isAuthenticated = false;
-        }
+        // if (Object.values(data.auth.userData).length > 0) {
+        //   this.isAuthenticated = true;
+        // } else {
+        //   this.isAuthenticated = false;
+        // }
       }
     );
+    
 
     // Subscribe to router events to manage header and cart visibility based on route changes
     this.routerSubscription = this.router.events.subscribe((event: any) => {
@@ -62,6 +66,12 @@ export class HeaderComponent {
           this.showCart = true;
         }
       }
+    });
+  }
+  ngDoCheck() {
+    // Update the authentication status based on the latest data
+    this.store.select((state: any) => state.auth.userData).subscribe(userData => {
+      this.isAuthenticated = Object.values(userData).length > 0;
     });
   }
 

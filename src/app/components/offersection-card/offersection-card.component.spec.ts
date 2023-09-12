@@ -30,13 +30,13 @@ describe('OffersectionCardComponent', () => {
     expect(titleElements[1].textContent).toContain('Winter Collection');
   });
   it('should display correct offer', () => {
-    component.offer = '20% OFF THE ALL ORDER';
+    component.offer = 'New Offer: 30% OFF!';
     fixture.detectChanges();
   
     const offerElements = fixture.nativeElement.querySelectorAll('h4');
     expect(offerElements.length).toBe(2);
-    expect(offerElements[0].textContent).toContain('20% OFF THE ALL ORDER');
-    expect(offerElements[1].textContent).toContain('20% OFF THE ALL ORDER');
+    expect(offerElements[0].textContent).toContain('New Offer: 30% OFF!');
+    expect(offerElements[1].textContent).toContain('New Offer: 30% OFF!');
   });
   it('should display correct image source', () => {
     component.url1 = 'https://technext.github.io/eshopper/img/offer-1.png';

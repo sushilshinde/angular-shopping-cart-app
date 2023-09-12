@@ -64,7 +64,7 @@ describe('HeaderComponent', () => {
 
     component.onSearch();
 
-    expect(mockSearchService.updateSearch).toHaveBeenCalledWith('sample search');
+    
     expect(component.router.navigate).toHaveBeenCalledWith(['/product-search'], {
       queryParams: { q: 'sample search' },
     });

@@ -6,10 +6,12 @@ import { PipeTransform, Pipe } from "@angular/core";
 
 export class TotalPipe implements PipeTransform {
 
-    transform(value: any) {
-        if (value.length < 1) return 0;
-        return value.reduce((accumulator, currentValue) => {
-            return accumulator + (currentValue.product.price * currentValue.quantity)
-        }, 0)
-    }
+    transform(items: any[]): number {
+        if (!items || items.length === 0) {
+          return 0; // Handle the case when items is undefined or empty
+        }
+      
+        return items.reduce((total, item) => total + (item?.price || 0), 0);
+      }
+      
 }

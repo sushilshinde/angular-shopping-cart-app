@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -22,16 +22,15 @@ describe('AuthenticationComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            url: of([{ path: 'login' }])
-          }
-        }
-      ]
+            url: of([{ path: 'login' }]), // Provide a mock value for url
+          },
+        },
+      ],
     });
 
     fixture = TestBed.createComponent(AuthenticationComponent);
     component = fixture.componentInstance;
     component.isLogin = true; // Set isLogin property directly
-    
   });
 
   it('should create', () => {
@@ -39,5 +38,5 @@ describe('AuthenticationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+ 
 });

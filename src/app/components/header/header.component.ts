@@ -1,11 +1,8 @@
-import { Component,DoCheck,Self } from '@angular/core';
-
+import { Component,DoCheck } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { ProductSearchService } from '../../core/services/product-search.service';
-// import { NgControl } from '@angular/forms';
 
 
 @Component({
@@ -27,13 +24,12 @@ export class HeaderComponent implements DoCheck {
     public router: Router,
     private authService: AuthenticationService,
     private store: Store<any>,
-    private searchService: ProductSearchService
+   
   ) { }
 
   // Function to handle the search action
   onSearch() {
-    this.searchService.updateSearch(this.search); // Update and emit the search value
-    this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
+      this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
   }
  
 

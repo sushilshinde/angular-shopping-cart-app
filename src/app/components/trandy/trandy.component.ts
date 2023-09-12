@@ -30,7 +30,6 @@ export class TrandyComponent implements OnInit {
     this.subscription = this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.products = data;
-        console.log(this.products);
       },
      );
   } catch (error) {

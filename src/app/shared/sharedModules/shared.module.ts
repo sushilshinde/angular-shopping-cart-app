@@ -20,7 +20,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { TotalPipe } from '../custom-pipes/total.pipe';
-import { CustomCurrencyPipe } from 'src/app/components/custom-pipe/custom-currency.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from 'src/app/components/loading-spinner/loading-spinner.component';
 
@@ -47,10 +46,10 @@ const sharedImports = [
 ]
 
 @NgModule({
-  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective,CustomCurrencyPipe,TotalPipe,LoadingSpinnerComponent],
+  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective,TotalPipe,LoadingSpinnerComponent],
   imports: sharedImports,
   exports: [
-    ...sharedImports, TitlebBarComponent, ProductCardComponent, HighlightDirective,CustomCurrencyPipe,TotalPipe,LoadingSpinnerComponent
+    ...sharedImports, TitlebBarComponent, ProductCardComponent, HighlightDirective,TotalPipe,LoadingSpinnerComponent
   ],
 })
 export class SharedModules { }

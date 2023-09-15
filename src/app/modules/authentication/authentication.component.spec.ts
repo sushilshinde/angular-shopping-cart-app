@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { AuthenticationComponent } from './authentication.component';
-import { SignIn, SignUp } from '../../shared/authentication/authStore/auth.action';
+
 
 describe('AuthenticationComponent', () => {
   let component: AuthenticationComponent;
@@ -12,8 +12,16 @@ describe('AuthenticationComponent', () => {
   let mockStore: any;
 
   beforeEach(() => {
+    // Create a mock observable that resembles your real store's behavior
+    const mockAuthObservable = of({
+      isLoading: false,
+      userData: {},
+      error: "",
+    });
+  
     mockStore = jasmine.createSpyObj(['select', 'dispatch']);
-
+    mockStore.select.and.returnValue(mockAuthObservable);
+  
     TestBed.configureTestingModule({
       declarations: [AuthenticationComponent],
       imports: [FormsModule],
@@ -27,11 +35,12 @@ describe('AuthenticationComponent', () => {
         },
       ],
     });
-
+  
     fixture = TestBed.createComponent(AuthenticationComponent);
     component = fixture.componentInstance;
     component.isLogin = true; // Set isLogin property directly
   });
+  
 
   it('should create', () => {
     fixture.detectChanges();

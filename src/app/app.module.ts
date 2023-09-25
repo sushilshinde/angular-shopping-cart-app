@@ -19,6 +19,7 @@ import { CartModule } from './modules/cart/cart.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
 import { ProductModule } from './modules/product-details/product-detail.module';
 import { ShopModule } from './modules/shop/shop.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -46,6 +47,7 @@ import { ShopModule } from './modules/shop/shop.module';
     CheckoutModule,
     ProductModule,
     ShopModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -55,9 +55,7 @@ describe('CheckoutComponent', () => {
 
  
   it('should set the form data and cart list on placeOrder()', () => {
-    // ... rest of your test
-
-    // Mock navigation
+      // Mock navigation
     const router = TestBed.inject(Router);
     const navigateSpy = spyOn(router, 'navigate');
 

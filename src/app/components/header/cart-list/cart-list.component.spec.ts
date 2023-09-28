@@ -1,21 +1,25 @@
-import { ComponentFixture, TestBed,fakeAsync,tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { CartListComponent } from './cart-list.component';
 import { Router } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
-
+import { Store, StoreModule } from '@ngrx/store'; 
 
 describe('CartListComponent', () => {
   let component: CartListComponent;
   let fixture: ComponentFixture<CartListComponent>;
   let router: Router;
-  
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CartListComponent],
-      imports: [RouterTestingModule, MatIconModule,MatListModule]
+      imports: [
+        RouterTestingModule,
+        MatIconModule,
+        MatListModule,
+        StoreModule.forRoot({}),
+      ],
     }).compileComponents();
   });
 
@@ -49,6 +53,4 @@ describe('CartListComponent', () => {
       expect(item.textContent).toContain((cartItem.product.price * cartItem.quantity).toFixed(2));
     });
   });
-
-
 });

@@ -25,17 +25,18 @@ export class TrandyComponent implements OnInit {
 
 
   fetchProducts(): void {
+  try {
     const apiUrl = `${environment.apiURL}/products?trendy=true`;
     this.subscription = this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.products = data;
-        console.log(this.products)
       },
-      (error) => {
-        console.error('Error fetching products:', error);
-      }
-    );
+     );
+  } catch (error) {
+    console.error('An error occurred:', error);
   }
+}
+
 
   viewProductDetail(product: any) {
     this.router.navigate(['/product-details'], { queryParams: { product: JSON.stringify(product) } });

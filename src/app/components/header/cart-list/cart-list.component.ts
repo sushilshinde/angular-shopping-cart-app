@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { emptyCart } from 'src/app/modules/cart/cart-store/cart.action';
 
 @Component({
   selector: 'app-cart-list',
@@ -8,4 +9,10 @@ import { Store } from '@ngrx/store';
 })
 export class CartListComponent {
   @Input() cartData!: Array<any>;
+  constructor(private store:Store){
+
+  }
+  clearCart(){
+   this.store.dispatch(emptyCart())
+  }
 }

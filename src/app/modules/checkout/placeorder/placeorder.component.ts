@@ -8,11 +8,11 @@ import { CheckoutDataService } from 'src/app/core/services/checkout-data.service
 })
 export class PlaceorderComponent implements OnInit{
   formData: any = {};
-  cartList:any;
+  cartList:any[]=[];
   constructor(private checkoutDataService: CheckoutDataService) {}
 
   ngOnInit() {
     this.formData = this.checkoutDataService.getFormData();
-    this.cartList = this.checkoutDataService.cartList
+    this.cartList = this.checkoutDataService.cartList || [];
   }
 }

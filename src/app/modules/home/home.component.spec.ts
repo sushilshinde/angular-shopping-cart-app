@@ -10,6 +10,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatCardModule } from '@angular/material/card';
 import { CatCardComponent } from './cat-card/cat-card.component';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingSpinnerComponent } from 'src/app/components/loading-spinner/loading-spinner.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,7 +18,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent,CarouselComponent,OffersectionCardComponent,NavbarComponent,TrandyComponent,CatCardComponent],
+      declarations: [HomeComponent,CarouselComponent,OffersectionCardComponent,NavbarComponent,TrandyComponent,CatCardComponent,LoadingSpinnerComponent],
       imports: [RouterTestingModule, MatIconModule,HttpClientTestingModule,MatCardModule,NgbCarouselModule], // Import necessary modules
     }).compileComponents();
   });

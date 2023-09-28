@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewChecked } from '@angular/core';
+import { Component, Input, AfterViewChecked, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { addItem } from 'src/app/modules/cart/cart-store/cart.action';
 
@@ -7,7 +7,7 @@ import { addItem } from 'src/app/modules/cart/cart-store/cart.action';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements AfterViewChecked {
+export class ProductCardComponent implements OnInit {
   @Input() name: string;
   @Input() price: number;
   @Input() discount: number;
@@ -19,7 +19,7 @@ export class ProductCardComponent implements AfterViewChecked {
 
   constructor(private store: Store) {}
 
-  ngAfterViewChecked() {
+  ngOnInit() {
     this.updateCartInfo();
   }
 

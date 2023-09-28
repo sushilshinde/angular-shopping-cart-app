@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -20,6 +19,8 @@ import { CartModule } from './modules/cart/cart.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
 import { ProductModule } from './modules/product-details/product-detail.module';
 import { ShopModule } from './modules/shop/shop.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { ShopModule } from './modules/shop/shop.module';
     CategoryListComponent,
     CartListComponent,
     NotFoundComponent,
-    ProductSearchComponent
+    ProductSearchComponent, 
   ],
   imports: [
     BrowserModule,
@@ -46,8 +47,12 @@ import { ShopModule } from './modules/shop/shop.module';
     CheckoutModule,
     ProductModule,
     ShopModule,
+<<<<<<< HEAD
    
     
+=======
+    ReactiveFormsModule
+>>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -51,9 +51,11 @@
     </mat-menu>
   </mat-toolbar>
 
-  
-  <mat-divider></mat-divider>
-
-  <!-- Navigation bar component -->
-  <app-navbar></app-navbar>
+   
 </header>
+<!-- Navigation bar component -->
+<div  class="px-[2.5vw] sm:px-[4.5vw] pt-3 mt-[1vh] w-full" *ngIf="showheader">
+<app-navbar></app-navbar>
+</div>
+
+ 

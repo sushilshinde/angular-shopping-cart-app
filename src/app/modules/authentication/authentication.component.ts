@@ -33,7 +33,7 @@ export class AuthenticationComponent {
   ngOnInit() {
    this.subscribe= this.store.select((state: any) => state.auth).subscribe(
       data => {
-        // this.isLoading = false;
+        console.log(data)
         this.error = data.error;
         this.isLoading = false;
        

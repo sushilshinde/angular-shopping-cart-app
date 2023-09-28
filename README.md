@@ -37,3 +37,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Environment file contains the following variable
 "apiURL"
+
+
+## Versions
+
+Node: 20.6.1
+npm: 10.1.0
+Angular CLI: 16.2.4

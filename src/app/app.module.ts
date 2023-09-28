@@ -47,12 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CheckoutModule,
     ProductModule,
     ShopModule,
-<<<<<<< HEAD
-   
-    
-=======
     ReactiveFormsModule
->>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent],

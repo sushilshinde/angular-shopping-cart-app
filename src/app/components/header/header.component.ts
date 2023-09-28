@@ -3,11 +3,6 @@ import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-<<<<<<< HEAD
-import { ProductSearchService } from '../../core/services/product-search.service';
-
-=======
->>>>>>> main
 
 
 @Component({

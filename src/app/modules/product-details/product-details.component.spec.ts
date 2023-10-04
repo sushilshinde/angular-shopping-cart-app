@@ -1,3 +1,4 @@
+// Import necessary modules and components for testing
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -15,47 +16,55 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
+// Describe the test suite for ProductDetailsComponent
 describe('ProductDetailsComponent', () => {
-let component: ProductDetailsComponent;
- let fixture: ComponentFixture<ProductDetailsComponent>;
- let mockShopService;
- let mockStore;
+  let component: ProductDetailsComponent;
+  let fixture: ComponentFixture<ProductDetailsComponent>;
+  let mockShopService;
+  let mockStore;
 
- const mockProductData = {
- _id: 1,
-title: 'Product Title',
- // ... other properties
- };
+  // Mock data for a product
+  const mockProductData = {
+    _id: 1,
+    title: 'Product Title',
+    // ... other properties
+  };
 
-beforeEach(() => {
- mockShopService = jasmine.createSpyObj(['getProductById']);
- mockShopService.getProductById.and.returnValue(of({ data: mockProductData }));
+  // Set up before each test
+  beforeEach(() => {
+    // Create a spy object for the ShopService
+    mockShopService = jasmine.createSpyObj(['getProductById']);
+    mockShopService.getProductById.and.returnValue(of({ data: mockProductData }));
 
- mockStore = {
- select: jasmine.createSpy('select').and.returnValue(of({ auth: { userData: {} }, cart: { cartItem: [] } })),
- dispatch: jasmine.createSpy('dispatch')
- };
+    // Create a mock object for the Store
+    mockStore = {
+      select: jasmine.createSpy('select').and.returnValue(of({ auth: { userData: {} }, cart: { cartItem: [] } })),
+      dispatch: jasmine.createSpy('dispatch')
+    };
 
- TestBed.configureTestingModule({
- declarations: [ProductDetailsComponent,TitlebBarComponent,RatingComponent,ColorsComponent,SizeComponent],
- imports:[NgbCarouselModule,StoreModule.forRoot({}),MatIconModule,MatTabsModule,RouterTestingModule,NoopAnimationsModule],
- providers: [
- { provide: ActivatedRoute, useValue: { params: of(convertToParamMap({ id: '1' })) } },
- { provide: ShopService, useValue: mockShopService },
- { provide: Store, useValue: mockStore }
- ],
- 
- });
+    // Configure the testing module
+    TestBed.configureTestingModule({
+      declarations: [ProductDetailsComponent, TitlebBarComponent, RatingComponent, ColorsComponent, SizeComponent],
+      imports: [NgbCarouselModule, StoreModule.forRoot({}), MatIconModule, MatTabsModule, RouterTestingModule, NoopAnimationsModule],
+      providers: [
+        // Provide mock values for ActivatedRoute, ShopService, and Store
+        { provide: ActivatedRoute, useValue: { params: of(convertToParamMap({ id: '1' })) } },
+        { provide: ShopService, useValue: mockShopService },
+        { provide: Store, useValue: mockStore }
+      ],
+    });
 
-fixture = TestBed.createComponent(ProductDetailsComponent);
-component = fixture.componentInstance;
-fixture.detectChanges();
- });
+    // Create a component fixture
+    fixture = TestBed.createComponent(ProductDetailsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges(); // Trigger change detection
+  });
 
- it('should create', () => {
- expect(component).toBeTruthy();
- });
+  // Test case: Check if the component is created successfully
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
 });
+
+

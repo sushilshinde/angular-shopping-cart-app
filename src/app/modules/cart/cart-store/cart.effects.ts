@@ -1,12 +1,14 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
 import { CartService } from "../../../core/services/cart.service";
-import * as CartActions from "./cart.action"
-import { Injectable } from "@angular/core"
+import * as CartActions from "./cart.action";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class CartEffects {
     constructor(private action$: Actions, private cartService: CartService) { }
+
+    // Effect to load cart data
     loadCart$ = createEffect(() =>
         this.action$.pipe(
             ofType(CartActions.loadCart),
@@ -17,6 +19,7 @@ export class CartEffects {
             })
         ))
 
+    // Effect to add an item to the cart
     addItem$ = createEffect(() =>
         this.action$.pipe(
             ofType(CartActions.addItem),
@@ -29,6 +32,7 @@ export class CartEffects {
             })
         ))
 
+    // Effect to remove an item from the cart
     removeItem$ = createEffect(() =>
         this.action$.pipe(
             ofType(CartActions.removeItem),
@@ -41,6 +45,7 @@ export class CartEffects {
             })
         ))
 
+    // Effect to remove a quantity of an item from the cart
     removeQuantity$ = createEffect(() =>
         this.action$.pipe(
             ofType(CartActions.removeQuantity),
@@ -52,6 +57,8 @@ export class CartEffects {
                 )
             })
         ))
+
+    // Effect to add a quantity of an item to the cart
     addQuantity$ = createEffect(() =>
         this.action$.pipe(
             ofType(CartActions.addQuantity),

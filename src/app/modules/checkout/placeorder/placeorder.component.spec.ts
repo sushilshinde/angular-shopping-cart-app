@@ -10,6 +10,7 @@ describe('PlaceorderComponent', () => {
   let mockCheckoutDataService: Partial<CheckoutDataService>;
 
   beforeEach(() => {
+    // Mock data for CheckoutDataService
     mockCheckoutDataService = {
       getFormData: () => ({ firstName: 'John', lastName: 'Doe' }),
       cartList: [
@@ -19,7 +20,7 @@ describe('PlaceorderComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [PlaceorderComponent,TotalPipe],
+      declarations: [PlaceorderComponent, TotalPipe],
       imports: [MatCardModule],
       providers: [{ provide: CheckoutDataService, useValue: mockCheckoutDataService }]
     }).compileComponents();
@@ -39,7 +40,7 @@ describe('PlaceorderComponent', () => {
     // Set up the test data and component state
     component.formData = { firstName: 'John', lastName: 'Doe' };
     component.cartList = [
-      {title: 'iPhone 9', id: 1, price: 549, quantity: 1}];
+      { title: 'iPhone 9', id: 1, price: 549, quantity: 1 }];
   
     // Trigger change detection to update the view
     fixture.detectChanges();
@@ -50,23 +51,19 @@ describe('PlaceorderComponent', () => {
     const priceElement = element.querySelectorAll('h3')[1];
     expect(userNameElement.textContent).toContain('John Doe');
     expect(priceElement.textContent).toContain('TotalPrice: $549'); // Adjust this line
-  
-    
   });
   
-
-  // it('should display "No Items In The Cart..." message when cartList is empty', () => {
-  //   component.cartList = [];
-  //   fixture.detectChanges();
+  it('should display "No Items In The Cart..." message when cartList is empty', () => {
+    component.cartList = [];
+    fixture.detectChanges();
   
-  //   const orderCard = fixture.nativeElement.querySelector('.bg-primary');
-  //   const noItemsMessage = fixture.nativeElement.querySelector('h2');
+    const orderCard = fixture.nativeElement.querySelector('.bg-primary');
+    const noItemsMessage = fixture.nativeElement.querySelector('h2');
   
-  //   expect(orderCard).toBeFalsy();
-  //   expect(noItemsMessage).toBeTruthy();
+    expect(orderCard).toBeFalsy();
+    expect(noItemsMessage).toBeTruthy();
   
-  //   const messageText = noItemsMessage.textContent.trim(); // Trim whitespace
-  //   expect(messageText).toContain('No Items In The Cart...');
-  // });
-  
+    const messageText = noItemsMessage.textContent.trim(); // Trim whitespace
+    expect(messageText).toContain('No Items In The Cart...');
+  });
 });

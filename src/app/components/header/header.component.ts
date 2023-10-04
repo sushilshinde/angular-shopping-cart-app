@@ -1,15 +1,18 @@
-import { Component,DoCheck } from '@angular/core';
+// Importing necessary modules and classes from Angular
+import { Component, DoCheck } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
-
+// Component decorator to define metadata for the component
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-header', // Selector used to embed the component in HTML
+  templateUrl: './header.component.html', // Path to the component's HTML template
+  styleUrls: ['./header.component.css'], // Array of stylesheet files for the component
 })
+
+// HeaderComponent class implementing DoCheck interface for custom change detection
 export class HeaderComponent implements DoCheck {
   // Properties to hold cart products, search string, header visibility, cart visibility, and authentication status
   cartProducts: Array<any> = [];
@@ -20,18 +23,17 @@ export class HeaderComponent implements DoCheck {
   storeSubscription: Subscription;
   routerSubscription: Subscription;
 
+  // Constructor to inject dependencies
   constructor(
     public router: Router,
     private authService: AuthenticationService,
     private store: Store<any>,
-   
-  ) { }
+  ) {}
 
   // Function to handle the search action
   onSearch() {
-      this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
+    this.router.navigate(['/product-search'], { queryParams: { q: this.search } });
   }
- 
 
   // Lifecycle hook called after the component is initialized
   ngOnInit() {
@@ -47,7 +49,6 @@ export class HeaderComponent implements DoCheck {
       }
     );
     
-
     // Subscribe to router events to manage header and cart visibility based on route changes
     this.routerSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof ActivationEnd) {
@@ -64,6 +65,8 @@ export class HeaderComponent implements DoCheck {
       }
     });
   }
+
+  // Lifecycle hook called during every change detection run
   ngDoCheck() {
     // Update the authentication status based on the latest data
     this.store.select((state: any) => state.auth.userData).subscribe(userData => {
@@ -71,6 +74,7 @@ export class HeaderComponent implements DoCheck {
     });
   }
 
+  // Lifecycle hook called before the component is destroyed
   ngOnDestroy() {
     this.routerSubscription.unsubscribe();
     this.storeSubscription.unsubscribe();

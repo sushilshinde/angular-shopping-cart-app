@@ -1,9 +1,12 @@
+// Import necessary modules from Angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// Import components used in the routing configuration
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductSearchComponent } from './modules/product-search/product-search.component';
 import { ShopComponent } from './modules/shop/shop.component';
-import { AuthGaurd } from './core/gaurds/auth-gaurd.service';
+import { AuthGuard } from './core/gaurds/auth-gaurd.service';
 import { RestrictAuth } from './core/gaurds/authentication-gaurd.service';
 import { AuthenticationComponent } from './modules/authentication/authentication.component';
 import { CartComponent } from './modules/cart/cart.component';
@@ -13,6 +16,7 @@ import { PlaceorderComponent } from './modules/checkout/placeorder/placeorder.co
 import { HomeComponent } from './modules/home/home.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 
+// Define the routes for the application
 const routes: Routes = [
   {
     path: 'home',
@@ -26,12 +30,12 @@ const routes: Routes = [
   {
     path: 'auth/login',
     component: AuthenticationComponent,
-    canActivate: [RestrictAuth]
+    canActivate: [RestrictAuth] // Use the authentication guard for login
   },
   {
     path: 'auth/register',
     component: AuthenticationComponent,
-    canActivate: [RestrictAuth]
+    canActivate: [RestrictAuth] // Use the authentication guard for registration
   },
   {
     path: '',
@@ -45,12 +49,12 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthGaurd],
+    canActivate: [AuthGuard], // Use the authentication guard for accessing the cart
     data: {
       showCart: false,
     },
-
-  }, {
+  },
+  {
     path: 'details/:id',
     component: ProductDetailsComponent,
   },
@@ -61,7 +65,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    canActivate: [AuthGaurd]
+    canActivate: [AuthGuard] // Use the authentication guard for accessing the checkout
   },
   {
     path: 'order',
@@ -71,9 +75,9 @@ const routes: Routes = [
     path: '**',
     component: NotFoundComponent
   },
-
 ];
 
+// Define the routing module
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],

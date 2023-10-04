@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 
-
+// Enum for cart actions
 export enum CartActions {
     LOAD_CART = '[CART] LOAD_CART',
     LOAD_CART_SUCCESS = '[CART] LOAD_CART_SUCCESS',
@@ -17,16 +17,41 @@ export enum CartActions {
     EMPTY_CART = '[CART] EMPTY_CART'
 }
 
-export const loadCart = createAction(CartActions.LOAD_CART)
-export const loadCartsuccess = createAction(CartActions.LOAD_CART_SUCCESS, props<{ cartData }>())
-export const removeItem = createAction(CartActions.REMOVE_ITEM, props<{ id }>())
-export const removeItemSuccess = createAction(CartActions.REMOVE_ITEM_SUCCESS, props<{ cartData }>())
-export const addItem = createAction(CartActions.ADD_ITEM, props<{ item }>())
-export const addItemSuccess = createAction(CartActions.ADD_ITEM_SUCCESS, props<{ cartData }>())
-export const addQuantity = createAction(CartActions.ADD_QUANTITY, props<{ id }>())
-export const addQuantitySuccess = createAction(CartActions.ADD_QUANTITY_SUCCESS, props<{ cartData }>())
-export const removeQuantity = createAction(CartActions.REMOVE_QUANTITY, props<{ id }>())
-export const removeQuantitySuccess = createAction(CartActions.REMOVE_QUANTITY_SUCCESS, props<{ cartData }>())
-export const clearCart = createAction(CartActions.CLEAR_CART, props<{ id }>())
-export const clearCartSuccess = createAction(CartActions.CLEAR_CART_SUCCESS, props<{ cartData }>())
-export const emptyCart = createAction(CartActions.EMPTY_CART)
+// Action to load cart data
+export const loadCart = createAction(CartActions.LOAD_CART);
+
+// Action on successful loading of cart data
+export const loadCartsuccess = createAction(CartActions.LOAD_CART_SUCCESS, props<{ cartData }>());
+
+// Action to remove an item from the cart
+export const removeItem = createAction(CartActions.REMOVE_ITEM, props<{ id }>());
+
+// Action on successful removal of an item from the cart
+export const removeItemSuccess = createAction(CartActions.REMOVE_ITEM_SUCCESS, props<{ cartData }>());
+
+// Action to add an item to the cart
+export const addItem = createAction(CartActions.ADD_ITEM, props<{ item }>());
+
+// Action on successful addition of an item to the cart
+export const addItemSuccess = createAction(CartActions.ADD_ITEM_SUCCESS, props<{ cartData }>());
+
+// Action to add a quantity of an item to the cart
+export const addQuantity = createAction(CartActions.ADD_QUANTITY, props<{ id }>());
+
+// Action on successful addition of a quantity to the cart
+export const addQuantitySuccess = createAction(CartActions.ADD_QUANTITY_SUCCESS, props<{ cartData }>());
+
+// Action to remove a quantity of an item from the cart
+export const removeQuantity = createAction(CartActions.REMOVE_QUANTITY, props<{ id }>());
+
+// Action on successful removal of a quantity from the cart
+export const removeQuantitySuccess = createAction(CartActions.REMOVE_QUANTITY_SUCCESS, props<{ cartData }>());
+
+// Action to clear the entire cart
+export const clearCart = createAction(CartActions.CLEAR_CART, props<{ id }>());
+
+// Action on successful clearing of the entire cart
+export const clearCartSuccess = createAction(CartActions.CLEAR_CART_SUCCESS, props<{ cartData }>());
+
+// Action to empty the cart
+export const emptyCart = createAction(CartActions.EMPTY_CART);

@@ -1,24 +1,36 @@
+<!-- Cart List Component Template -->
+
+
 <div class="p-4 divide-y divide-solid">
+
+  <!-- Header section with "Cart Item" and "View Cart" link -->
   <div class="flex justify-between pb-2">
     <span>Cart Item</span>
     <a routerLink='/cart'>View Cart</a>
   </div>
+
+  <!-- Cart items list section with ngFor loop -->
   <div class="py-3">
     <mat-list *ngFor="let item of cartData" class="flex justify-between py-3">
-      <span class="truncate w-[50%]">{{ item.product.title | uppercase }} -
-        {{ item.product.price | currency }}</span>
+      <!-- Displaying product title, price, quantity, and total price -->
+      <span class="truncate w-[50%]">{{ item.product.title | uppercase }} - {{ item.product.price | currency }}</span>
       <span class="mx-[10px]"> x {{ item.quantity }}</span>
-      <span>{{
-        item.product.price * item.quantity | currency
-        }}</span>
+      <span>{{ item.product.price * item.quantity | currency }}</span>
     </mat-list>
   </div>
+
+  <!-- Footer section with "Clear Cart" and "Buy Now" buttons -->
   <div class="flex justify-between pt-3">
+    <!-- Clear Cart button with remove_shopping_cart icon -->
     <button title="Clear Cart" class="bg-rose-600 rounded-full text-white w-9 h-9" (click)="clearCart()">
       <mat-icon color="white">remove_shopping_cart</mat-icon>
     </button>
-    <button routerLink="/checkout" title="Buy Now" class="bg-green-600 rounded-full text-white w-9 h-9" class="checkout-button">
+
+    <!-- Buy Now button with shopping_cart icon and routerLink to "/checkout" -->
+    <button routerLink="/checkout" title="Buy Now" class="bg-green-600 rounded-full text-white w-9 h-9 checkout-button">
       <mat-icon color="white">shopping_cart</mat-icon>
     </button>
   </div>
 </div>
+
+

@@ -1,13 +1,16 @@
-import { Component  } from '@angular/core';
+// Import necessary Angular modules and dependencies
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+// Component decorator with selector, template, and styles
 @Component({
-  selector: 'app-product-carousel',
-  templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.css']
+  selector: 'app-product-carousel', // Selector for the component
+  templateUrl: './product-carousel.component.html', // Template file path
+  styleUrls: ['./product-carousel.component.css'] // Styles file path
 })
-export class ProductCarouselComponent {
+export class ProductCarouselComponent implements OnInit {
+  // Owl Carousel configuration options
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -34,27 +37,30 @@ export class ProductCarouselComponent {
     },
     nav: true
   };
-  
-  products: any[];
 
+  products: any[]; // Array to store fetched products
+
+  // Constructor with HttpClient injection
   constructor(private http: HttpClient) {
-    this.products = [];
+    this.products = []; // Initialize products array
   }
 
+  // Lifecycle hook - ngOnInit
   ngOnInit() {
-    this.fetchProducts();
+    this.fetchProducts(); // Fetch products when the component initializes
   }
 
+  // Method to fetch products from the API
   fetchProducts(): void {
-    const apiUrl = 'https://fakestoreapi.com/products';
+    const apiUrl = 'https://fakestoreapi.com/products'; // API endpoint
+    // Subscribe to the HTTP GET request
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
-        this.products = data;
+        this.products = data; // Assign fetched products to the component's products array
       },
       (error) => {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error); // Log an error if fetching fails
       }
     );
   }
-
 }

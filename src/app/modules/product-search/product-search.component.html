@@ -1,10 +1,23 @@
+<!-- Container for the product display, adding padding at the top -->
 <div class="container pt-5">
-    <div class="w-full justify-center min-h-[56vh] flex">
-      <div class="flex flex-wrap w-[92%] gap-x-[5vw] xl:gap-x-[8%] gap-y-[5vh] justify-around">
-        <h2 *ngIf="products.length < 1">No Products Found...</h2>
-        <app-product-card class="w-[100%] lg:w-[45%] xl:w-[27%]" [name]="item.title" [price]="item.price"
-          [itemId]="item.id" [discount]="item['discountPercentage']" [thumbnail]="item['thumbnail']"
-          *ngFor="let item of products" cardData="item"></app-product-card>
-      </div>
+  <!-- Flex container to horizontally center and vertically align content -->
+  <div class="w-full justify-center min-h-[56vh] flex">
+    <!-- Nested flex container with flex-wrap and justified content spacing -->
+    <div class="flex flex-wrap w-[92%] gap-x-[5vw] xl:gap-x-[8%] gap-y-[5vh] justify-around">
+      
+      <!-- Display a message if there are no products available -->
+      <h2 *ngIf="products.length < 1">No Products Found...</h2>
+      
+      <!-- Angular ngFor loop to iterate over products and generate product cards -->
+      <app-product-card 
+        class="w-[100%] lg:w-[45%] xl:w-[27%]" 
+        [name]="item.title"  <!-- Bind product title to the 'name' property -->
+        [price]="item.price" <!-- Bind product price to the 'price' property -->
+        [itemId]="item.id"   <!-- Bind product ID to the 'itemId' property -->
+        [discount]="item['discountPercentage']" <!-- Bind discount percentage to the 'discount' property -->
+        [thumbnail]="item['thumbnail']"          <!-- Bind product thumbnail to the 'thumbnail' property -->
+        *ngFor="let item of products" cardData="item"> <!-- Iterate over products and pass data to the product card component -->
+      </app-product-card>
     </div>
   </div>
+</div>

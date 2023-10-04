@@ -1,30 +1,46 @@
+<!-- Title bar component with dynamic page title -->
 <app-title-bar [pageTitle]="query" subTitle="Category Page"></app-title-bar>
+
+<!-- Main content area -->
 <div class="flex justify-center mt-[5vh] min-h-[75vh]">
     <div class="w-[95%] flex justify-between">
+        
+        <!-- Filter card section -->
         <div class="hidden sm:block sm:w-[21%] h-[20vh] grid gap-y-4">
-
-            <!-- Filter card -->
-            
             <app-filter-card cardTitle="Filter By Price" [filterList]="priceArray"
                 (handleOutput)="handlePriceArray($event)"></app-filter-card>
             <mat-divider></mat-divider>
         </div>
+
+        <!-- Product display and search section -->
         <div class="w-full sm:w-[77%] p-1">
             <div class="mb-[5vh] flex relative">
+                <!-- Search input -->
                 <input placeholder="Search By Name..." class="p-3 border-1 outline-none" [(ngModel)]="searchQuery" />
+                
+                <!-- Search button -->
                 <button mat-icon-button class="border-1 flex-center px-3 text-[#d19c97]" (click)="handleFilter()">
                     <mat-icon>search</mat-icon>
                 </button>
+                
+                <!-- Clear search button (visible when searchQuery is not empty) -->
                 <button *ngIf="searchQuery !== ''" (click)="clearQuery()"
                     class="p-3 px-4 bg-[orange] text-[white] rounded-lg ml-[10px]">Clear</button>
+                
+                <!-- Sort dropdown -->
                 <select [(ngModel)]="sortby" class="border-1 absolute right-[2vw] p-4" placeholder="Sort By"
                     ngDefaultControl="select" (change)="handleFilter()">
                     <option disabled value="select">Sort By</option>
                     <option *ngFor="let item of sortbyOptions" [value]="item.value">{{item.name}}</option>
                 </select>
             </div>
+
+            <!-- Product display section -->
             <div class="flex flex-wrap w-[100%] gap-x-[5vw] xl:gap-x-[4%] gap-y-[3vh]" *ngIf="!isLoading; else loader">
+                <!-- Message for no products found -->
                 <h2 *ngIf="product.length === 0">No Products Found...</h2>
+
+                <!-- Product card components for each item in the product array -->
                 <app-product-card class="w-[100%] lg:w-[45%] xl:w-[30%]" [item]="item" [name]="item.title" [price]="item.price" [itemId]="item.id"
                     [discount]="item.discountPercentage" [thumbnail]="item.thumbnail" *ngFor="let item of product"
                     cardData="item"></app-product-card>
@@ -32,6 +48,8 @@
         </div>
     </div>
 </div>
+
+<!-- Loader template -->
 <ng-template #loader>
     <div class="w-full h-[60vh] flex-center">
         <mat-spinner></mat-spinner>

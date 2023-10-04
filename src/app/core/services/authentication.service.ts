@@ -1,3 +1,4 @@
+// Importing necessary modules from Angular and RxJS
 import {
   HttpClient,
   HttpErrorResponse,
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError, of, exhaustMap, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LocalUser, User } from '../../shared/authentication/auth.model';
+
+// Constant for setting up HTTP headers
 const headerDict = {
   'Content-Type': 'application/json',
 };
@@ -16,14 +19,21 @@ const requestOptions = {
   headers: new HttpHeaders(headerDict),
 };
 
+// Injectable decorator to declare that this service should be provided at the root level
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+  // BehaviorSubject to store the authenticated user information
   user = new BehaviorSubject<User | null>(null);
+
   constructor(private http: HttpClient, private router: Router) { }
+
+  // Property to store the token expiration timer
   private tokenExpiration: any;
 
+  // API base URL from environment
   private api = environment.apiURL;
 
+  // Function to handle user logout
   handleLogout() {
     this.user.next(null);
     localStorage.removeItem('userData');
@@ -34,6 +44,7 @@ export class AuthenticationService {
     this.tokenExpiration = null;
   }
 
+  // Function to set up an automatic logout timer
   autoLogout(expirationTime: number) {
     this.tokenExpiration = setTimeout(
       () => this.handleLogout(),
@@ -41,6 +52,7 @@ export class AuthenticationService {
     );
   }
 
+  // Function to automatically log in the user from local storage
   autoLogin() {
     const user = localStorage.getItem('userData');
     const parsedUser = user && JSON.parse(user);
@@ -61,6 +73,7 @@ export class AuthenticationService {
     }
   }
 
+  // Function to handle authentication for login and registration
   handleAuth(email: string, password: string, mode: string) {
     return this.http
       .post(
@@ -84,6 +97,7 @@ export class AuthenticationService {
       );
   }
 
+  // Function to handle HTTP error responses
   handleError(err: HttpErrorResponse) {
     let errMsg = 'Something went wrong';
     if (err.error.error) {
@@ -92,6 +106,7 @@ export class AuthenticationService {
     return throwError(errMsg);
   }
 
+  // Function to handle user authentication and store user data
   handleAuthentication(email: string, id: number, token: string, exp: Date) {
     const expDate = new Date(new Date().getTime() + +exp);
     const user = new User(email, id, token, expDate);
@@ -100,37 +115,7 @@ export class AuthenticationService {
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
-  // handleLocalAuth(email, password, mode) {
-  //   if (mode === 'register') {
-  //     return this.http.get(`${this.api}/users?email=${email}`).pipe(
-  //       exhaustMap(
-  //         (user: any) => {
-  //           if (user.length) return throwError({ message: "Email Already Exists" })
-  //           return this.http
-  //             .post(this.api, {
-  //               email,
-  //               password,
-  //               cart: [],
-  //             })
-  //         }
-  //       ),
-  //       tap((data: any) => this.handleLocalAuthSuccess(data.id, data.email)),
-  //       catchError((err) => throwError(err.message))
-  //     )
-  //   }
-  //   return this.http.get(`${this.api}/users?email=${email}`).pipe(
-  //     tap((data: any) => {
-  //       if (!data.length) throw new Error('Invalid Username/Password');
-  //       if (data[0].password === password) {
-  //         this.handleLocalAuthSuccess(data[0].id, data[0].email);
-  //       } else {
-  //         throw new Error('Invalid Username/Password');
-  //       }
-  //     }),
-  //     catchError((err) => throwError(err.message))
-  //   );
-  // }
-
+  // Function to handle local authentication for login and registration
   handleLocalAuth(email, password, mode) {
     let path = '/auth/login'
     if (mode === 'register') {
@@ -146,18 +131,21 @@ export class AuthenticationService {
     )
   }
 
+  // Function to handle success after local authentication
   handleLocalAuthSuccess(data) {
     localStorage.setItem('local_user', JSON.stringify(data));
     this.router.navigate(['/home'])
     window.location.reload()
   }
 
+  // Function to automatically log in the user from local storage
   localAutoLogin() {
     const user = localStorage.getItem('local_user');
     const parsedUser = user && JSON.parse(user);
     if (!parsedUser) return;
   }
 
+  // Function to handle local logout
   localLogout() {
     localStorage.removeItem('local_user');
     this.router.navigate['/home'];

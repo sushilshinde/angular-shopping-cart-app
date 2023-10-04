@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed,tick,fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { CheckoutComponent } from './checkout.component';
@@ -23,8 +23,8 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CheckoutComponent,TitlebBarComponent,TotalPipe],
-      imports: [RouterTestingModule,MatDividerModule,FormsModule],
+      declarations: [CheckoutComponent, TitlebBarComponent, TotalPipe],
+      imports: [RouterTestingModule, MatDividerModule, FormsModule],
       providers: [
         provideMockStore({ initialState }),
         // Provide a mock for CheckoutDataService
@@ -32,7 +32,6 @@ describe('CheckoutComponent', () => {
           provide: CheckoutDataService,
           useValue: jasmine.createSpyObj('CheckoutDataService', ['setFormData']),
         },
-        
       ],
     }).compileComponents();
   });
@@ -47,15 +46,15 @@ describe('CheckoutComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
-    it('should set default form data', () => {
+
+  it('should set default form data', () => {
     expect(component.formData.firstName).toBe('Kanchugatla');
     expect(component.formData.lastName).toBe('Divya');
     expect(component.formData.country).toBe('india');
   });
 
- 
   it('should set the form data and cart list on placeOrder()', () => {
-      // Mock navigation
+    // Mock navigation
     const router = TestBed.inject(Router);
     const navigateSpy = spyOn(router, 'navigate');
 
@@ -67,5 +66,3 @@ describe('CheckoutComponent', () => {
     expect(navigateSpy).toHaveBeenCalledWith(['/order']);
   });
 });
- 
-

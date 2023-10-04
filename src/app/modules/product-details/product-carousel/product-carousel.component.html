@@ -1,30 +1,45 @@
-<h2 class="text-center text-3xl fw-500 tracking-wide mt-[9vh] mb-[6vh]"><span>You May Also Like</span></h2>
+<!-- Heading for the section, centered and styled -->
+<h2 class="text-center text-3xl fw-500 tracking-wide mt-[9vh] mb-[6vh]">
+  <span>You May Also Like</span>
+</h2>
 
+<!-- Owl Carousel component with custom options -->
 <owl-carousel-o [options]="customOptions">
+  <!-- Loop through products and create a carousel slide for each -->
   <ng-container *ngFor="let product of products">
+    <!-- Carousel slide with product details -->
     <ng-template carouselSlide [id]="product.id">
+      <!-- Material Card container for each product -->
       <mat-card class="border p-2 product-container ">
-        <div class=" d-flex justify-content-center align-items-center image-container overflow-hidden group">
+        <!-- Image container with hover effect -->
+        <div class="d-flex justify-content-center align-items-center image-container overflow-hidden group">
           <img mat-card-image class="img-fluid w-50 h-75 transition-transform transform group-hover:scale-110"
             [src]="product.image" [alt]="product.title" />
         </div>
+        <!-- Divider between image and content -->
         <mat-divider></mat-divider>
+        <!-- Card content section -->
         <mat-card-content>
+          <!-- Text content for the product -->
           <div class="text-center pt-4 pb-3">
             <h6 class="text-truncate mb-3 text-lg">${{ product.title }}</h6>
+            <!-- Price details -->
             <div class="d-flex justify-content-center">
               <h6 class="text-sm">${{ (product.price - (product.price * 0.09)).toString() | slice:0:4}}</h6>
               <h6 class="text-muted ml-3 text-sm"><del>${{ product.price }}</del></h6>
             </div>
           </div>
         </mat-card-content>
+        <!-- Card footer with actions -->
         <mat-card-footer>
+          <!-- View Detail link -->
           <div class="d-flex justify-content-between">
             <a style="text-decoration:none" class="linkText d-flex align-items-center p-1">
               <mat-icon class="text-custom-color">visibility</mat-icon>
               <span class="pl-1 text-sm text-dark cursor-pointer">View Detail</span>
             </a>
-            <button class="text-dark d-flex align-items-center p-1 ">
+            <!-- Add to Cart button -->
+            <button class="text-dark d-flex align-items-center p-1">
               <mat-icon class="text-custom-color">add_shopping_cart</mat-icon>
               <span class="pl-1 text-sm text-dark">Add To Cart</span>
             </button>

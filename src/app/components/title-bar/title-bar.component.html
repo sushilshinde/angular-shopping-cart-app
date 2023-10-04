@@ -1,7 +1,15 @@
+<!-- Container with minimum height, background color, and flex properties -->
 <div class="min-h-[45vh] mt-[1vh] sm:mt-[0vh] sm:min-h-[55vh] bg-[#EDF1FF] flex-center flex-col gap-y-[2vh]">
+    <!-- Heading element with custom styles -->
     <h1 class="font-[800] text-[35px] font-serif">
+        <!-- Displaying the page title in uppercase -->
         {{ pageTitle | uppercase }}
     </h1>
-    <p><a class="text-[16px] font-sans font-[600] text-[#D19C97]" [routerLink]="['/home']"> Home - </a><span
-            class="text-[gray]">{{subTitle}}</span></p>
+    <!-- Paragraph element containing a link and a subtitle -->
+    <p>
+        <!-- Link to the Home page with custom styles and routerLink directive -->
+        <a class="text-[16px] font-sans font-[600] text-[#D19C97]" [routerLink]="['/home']"> Home - </a>
+        <!-- Displaying the subtitle in gray -->
+        <span class="text-[gray]">{{subTitle}}</span>
+    </p>
 </div>

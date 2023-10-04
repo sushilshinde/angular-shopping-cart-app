@@ -1,6 +1,9 @@
+// Import necessary Angular modules and libraries
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+
+// Import action creators for handling cart-related actions
 import { addQuantity, removeItem, removeQuantity } from './cart-store/cart.action';
 
 @Component({
@@ -9,38 +12,37 @@ import { addQuantity, removeItem, removeQuantity } from './cart-store/cart.actio
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
+  // Properties to store cart items and total
+  cartList = [];
+  total;
 
-  cartList = []
-  total
-  constructor(private route: ActivatedRoute, private store: Store) {
-  }
+  constructor(private route: ActivatedRoute, private store: Store) {}
 
-  // cartTotal = () => {
-  //   console.log(this.cartList)
-  //   this.total = this.cartList.reduce((accumulator, currentValue) => {
-  //     return accumulator + (currentValue.price * currentValue.quantity)
-  //   }, 0)
-  // }
-
+  // Method to handle the removal of an item from the cart
   handleRemove(id) {
-    this.store.dispatch(removeItem({ id }))
+    this.store.dispatch(removeItem({ id }));
   }
 
-  handleQantity(mode, id) {
+  // Method to handle the adjustment of quantity (add or remove) for a cart item
+  handleQuantity(mode, id) {
     if (mode === 'remove') {
-      this.store.dispatch(removeQuantity({ id }))
-    }
-    else {
-      this.store.dispatch(addQuantity({ id }))
+      this.store.dispatch(removeQuantity({ id }));
+    } else {
+      this.store.dispatch(addQuantity({ id }));
     }
   }
 
+  // Lifecycle hook: ngOnInit is called after the component is initialized
   ngOnInit() {
+    // Subscribe to the cart state in the store to get updates
     this.store.select((state: any) => state.cart).subscribe(
-      data => {
-        this.cartList = data.cartItem
-        // this.cartTotal()
+      (data) => {
+        // Update the cartList property with the latest cart items
+        this.cartList = data.cartItem;
+        
+        // Uncomment the following line if a method for calculating total is needed
+        // this.cartTotal();
       }
-    )
+    );
   }
 }

@@ -1,15 +1,25 @@
 <app-title-bar pageTitle="Check Out" subTitle="Checkout"></app-title-bar>
+
 <div class="container mt-[11vh]">
     <div class="row" (ngSubmit)="onSubmit()">   
            
+          <!-- Billing Address Column -->
           <div class="col-4">
             <h2 class="text-2xl tracking-wide">Billing Address</h2>
+            
+            <!-- First Name -->
             <p class="tracking-wide text-custom-checkout-color">First Name</p>
             <input type="text" class="form-control" [(ngModel)]="formData.firstName" name="firstName"/>
+            
+            <!-- E-mail -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">E-mail</p>
             <input type="text" class="form-control" [(ngModel)]="formData.email" name="email"/>
+            
+            <!-- Address Line 1 -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">Address Line 1</p>
             <input type="text" class="form-control" [(ngModel)]="formData.addressLine1" name="addressLine1"/>
+            
+            <!-- Country -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">Country</p>
             <select class="form-control text-custom-checkout-color" [(ngModel)]="formData.country" name="country">
                <option value="india">India</option>
@@ -17,38 +27,59 @@
                <option value="albania">Albania</option>
                <option value="australia">Australia</option>
             </select>
+            
+            <!-- State -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">State</p>
             <input type="text" class="form-control" [(ngModel)]="formData.state" name="state"/>
+            
+            <!-- Account Creation Options -->
             <h3 class="mt-5"><input type="radio" class="mr-2 tracking-wide text-custom-checkout-color"/>Create an account</h3>
             <h3><input type="radio" class="mr-2 tracking-wide text-custom-checkout-color"/>Ship to different address</h3>
           </div>
+          
+          <!-- Shipping Address Column -->
           <div class="col-4 mt-[7vh]">
+            <!-- Last Name -->
             <p class="tracking-wide text-custom-checkout-color">Last Name</p>
             <input type="text" class="form-control" [(ngModel)]="formData.lastName" name="lastName"/>
+            
+            <!-- Mobile Number -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">Mobile No</p>
             <input type="text" class="form-control" [(ngModel)]="formData.mobileNo" name="mobileNo"/>
+            
+            <!-- Address Line 2 -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">Address Line 2</p>
             <input type="text" class="form-control" [(ngModel)]="formData.addressLine2" name="addressLine2"/>
+            
+            <!-- City -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">City</p>
             <input type="text" class="form-control" [(ngModel)]="formData.city" name="city"/>
+            
+            <!-- ZIP Code -->
             <p class="mt-[4vh] tracking-wide text-custom-checkout-color">ZIP Code</p>
             <input type="text" class="form-control" [(ngModel)]="formData.zipCode" name="zipCode"/>
           </div>
       
 
 
-        
+        <!-- Order Summary and Payment Column -->
         <div class="col-4">
+            <!-- Order Total Section -->
             <div class="border border-custom-color-gray">
                 <h1 class="text-3xl tracking-wide fw-bold p-4 bg-custom-color-gray">Order Total</h1>
+                
+                <!-- Product details in the order summary -->
                 <h2 class="pl-4 p-1 text-2xl">Products</h2>
                 <div *ngFor="let item of cartList">
-                <div class="px-4 d-flex justify-content-between">
-                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.title}}</h3>
-                    <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.price * item.quantity | currency}}</h3>
+                    <div class="px-4 d-flex justify-content-between">
+                        <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.title}}</h3>
+                        <h3 class="text-md tracking-wide text-custom-checkout-color">{{item.product.price * item.quantity | currency}}</h3>
+                    </div>
                 </div>
-                </div>
+                
                 <mat-divider [inset]="true"></mat-divider>
+                
+                <!-- Subtotal and Shipping details -->
                 <div class="px-4 d-flex justify-content-between pt-6">
                     <h2 class="text-lg">SubTotal</h2>
                     <h2 class="text-lg">${{cartList | cartTotal}}</h2>
@@ -58,22 +89,26 @@
                     <h2 class="text-lg">$0</h2>
                 </div>
                 <mat-divider [inset]="true"></mat-divider>
+                
+                <!-- Total Amount -->
                 <div class="px-4 py-4 d-flex justify-content-between">
                     <h2 class="text-md fw-bold tracking-wide">Total</h2>
                     <h2 class="text-md fw-bold tracking-wide">${{cartList | cartTotal}}</h2>
                 </div>
             </div>   
         
-        <div class="border border-custom-color-gray mt-[9vh]">
-            <h2 class="text-2xl tracking-wide fw-bold p-4 bg-custom-color-gray">Payment</h2>
-            <div class="px-4" *ngFor="let type of payment">
-                <h3 class="text-md tracking-wide text-custom-checkout-color">
-                <input type="radio" class="mr-2"/>{{type}}</h3>
+            <!-- Payment Section -->
+            <div class="border border-custom-color-gray mt-[9vh]">
+                <h2 class="text-2xl tracking-wide fw-bold p-4 bg-custom-color-gray">Payment</h2>
+                <div class="px-4" *ngFor="let type of payment">
+                    <h3 class="text-md tracking-wide text-custom-checkout-color">
+                        <input type="radio" class="mr-2"/>{{type}}</h3>
+                </div>
+                <mat-divider [inset]="true"></mat-divider>
+                
+                <!-- Place Order Button -->
+                <h3 class="bg-custom-color m-4 text-center text-lg p-3 fw-bold" (click)="placeOrder(cartList)" [routerLink]="['/order']" routerLinkActive="router-link-active">Place Order</h3>
             </div>
-            <mat-divider [inset]="true"></mat-divider>
-            <h3 class="bg-custom-color m-4 text-center text-lg p-3 fw-bold" (click)="placeOrder(cartList)" [routerLink]="['/order']" routerLinkActive="router-link-active">Place Order</h3>
         </div>
     </div>
-    </div>
 </div>
-  

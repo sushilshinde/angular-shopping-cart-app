@@ -1,22 +1,36 @@
+<!-- Main container with flex column layout -->
 <div class="flex flex-col">
+  <!-- Carousel section with dynamic dimensions and positioning -->
   <div class="h-[38vh] px-[2vw] w-full sm:w-[70vw] sm:h-[70vh] relative sm:left-[26vw]">
-    <app-carousel></app-carousel>
+    <app-carousel></app-carousel> <!-- Include CarouselComponent here -->
   </div>
+
+  <!-- Feature list grid with responsive styling -->
   <div class="grid gap-y-3 sm:flex sm:mt-[15vh] p-3 sm:justify-around sm:w-[95%] ml-[1.5vw] sm:ml-[2.5vw]">
+    <!-- Loop through featureList and display each feature item -->
     <div *ngFor="let item of featureList"
       class="border-[1px] px-[20px] w-full sm:w-[23%] p-5 sm:p-3 rounded-sm flex gap-x-[20px] sm:gap-x-[10px] items-center">
+      <!-- Material icon with dynamic size and styling -->
       <mat-icon
-        class="mat-icon-size rounded-lg text-[10vw] sm:text-[3vw] h-full text-[#D19C97] font-[800] flex items-center min-w-[10%] sm:min-w-[30%]">{{
-        item.icon }}</mat-icon>
+        class="mat-icon-size rounded-lg text-[10vw] sm:text-[3vw] h-full text-[#D19C97] font-[800] flex items-center min-w-[10%] sm:min-w-[30%]">
+        {{ item.icon }}
+      </mat-icon>
+      <!-- Feature item name -->
       <h1 class="font-[600] m-[0]">{{ item.name }}</h1>
     </div>
   </div>
+
+  <!-- Categories section with responsive styling -->
   <div class="flex mt-[5vh] sm:mt-[10vh] justify-around flex-wrap gap-y-[5vh] p-3">
+    <!-- Loop through categories and create a link for each category -->
     <a [routerLink]="['/shop',item.link]" *ngFor="let item of categories; let i = index" class="w-[95%] sm:w-[27%]">
-      <app-cat-card [item]="item" [ind]="i"></app-cat-card>
+      <app-cat-card [item]="item" [ind]="i"></app-cat-card> <!-- Include CatCardComponent here -->
     </a>
   </div>
+
+  <!-- Offer section card component -->
   <app-offersection-card></app-offersection-card>
+
+  <!-- Trandy component -->
   <app-trandy></app-trandy>
 </div>
-

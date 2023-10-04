@@ -1,8 +1,8 @@
 <app-title-bar pageTitle="Shop Details" subTitle="Shop Details"></app-title-bar>
 
-
 <div class="grid sm:flex mt-[5vh] gap-x-[1vw] ml-[2vw] details-carousel">
- 
+
+  <!-- Image Carousel -->
   <div class="sm:max-w-[30vw]">
     <ngb-carousel [interval]="0" [showNavigationIndicators]="false">
       <ng-template ngbSlide *ngFor="let item of productData?.images">
@@ -13,6 +13,7 @@
     </ngb-carousel>
   </div>
 
+  <!-- Product Details Section -->
   <div class="col-lg-7 pb-2 d-flex flex-column ml-[4vw] sm:ml-[5vw] justify-center">
     <h3 class="font-weight-semi-bold">{{productData?.title}}</h3>
     <div class="d-flex mb-3">
@@ -23,9 +24,8 @@
     <p class="mb-4">{{productData?.description}}</p>
     <p><b>Brand : </b>{{productData?.brand}}</p>
     <p><b>Stocks Available : </b>{{productData?.stock}}</p>
-    <!-- <app-size></app-size>
-    <app-colors></app-colors> -->
 
+    <!-- Quantity Control and Add to Cart Button -->
     <div class="d-flex align-items-center">
       <div class="d-flex justify-content-center align-items-center">
         <button [disabled]="count <= 1" (click)="handleCount('remove')"
@@ -35,136 +35,62 @@
       </div>
       <button [disabled]="existInCart" (click)="addItemToCart()"
         class="font-[500] m-5 px-4 py-2 bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
-        <mat-icon>shopping_cart</mat-icon>{{ existInCart
-        ? 'Added':'Add'}} To Cart</button>
+        <mat-icon>shopping_cart</mat-icon>{{ existInCart ? 'Added':'Add'}} To Cart
+      </button>
     </div>
-    <button
-      class="font-[500] px-4 py-2 w-[7vw] bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
+
+    <!-- Buy Now Button -->
+    <button class="font-[500] px-4 py-2 w-[7vw] bg-custom-color text-dark border-none text-md d-flex align-items-center hover:text-white">
       Buy Now
     </button>
-
   </div>
 </div>
+
+<!-- Description, Information, and Reviews Tabs -->
 <div class="row px-xl-5 mt-[11vh]" *ngIf="!isLoading">
   <div class="col tab-container">
     <mat-tab-group>
+
+      <!-- Description Tab -->
       <mat-tab label="Description" class="description-label">
         <div class="mt-[6vh] p-3">
           <h4 class="mb-3 heading-description">Product Description</h4>
-          <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea.
-            Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum
-            eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam
-            stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam
-            consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos
-            consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea
-            invidunt.</p>
-          <p class="paragraph-description mt-4">Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum.
-            Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita
-            clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et
-            diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+          <p class="paragraph-description mt-5"> <!-- Description content goes here --></p>
+          <!-- More description content -->
         </div>
       </mat-tab>
+
       <!-- Information Tab -->
       <mat-tab label="Information">
         <div class="p-3">
           <h4 class="mb-3 heading-description mt-[6vh]">Additional Information</h4>
-          <p class="paragraph-description mt-5">Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea.
-            Consetetur
-            vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod
-            consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet
-            rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur
-            duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur
-            at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.
-          </p>
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0 paragraph-description">
-                  Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0 paragraph-description">
-                  Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                </li>
-                <li class="list-group-item px-0 paragraph-description">
-                  Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                </li>
-              </ul>
-            </div>
-          </div>
+          <p class="paragraph-description mt-5"> <!-- Information content goes here --></p>
+          <!-- More information content -->
         </div>
       </mat-tab>
+
       <!-- Reviews Tab -->
       <mat-tab label="Reviews(0)">
         <div class="row mt-[6vh] p-3">
           <div class="col-md-6">
             <h4 class="mb-4 heading-description">Reviews for this Product</h4>
-            <div class="media mb-4 d-flex">
-              <img src="https://m.media-amazon.com/images/I/81PEBDVcoOL._SL1500_.jpg" alt="" class="img-fluid mr-3 mt-1"
-                style="width: 70px;" />
-              <div class="media-body">
-                <h6 class="text-sm">Divya.K</h6>
-                <p>2/08/2023</p>
-                <app-rating rating="4.00"></app-rating>
-                <p class="paragraph-description">Good</p>
-              </div>
-            </div>
+            <!-- Review content goes here -->
           </div>
           <div class="col-md-6">
             <h4 class="mb-4 heading-description">Leave Review</h4>
-            <small class="paragraph-description">Your email address will not be published. Required fields are marked
-              *</small>
-            <form>
-              <div class="d-flex my-3">
-                <p class="mb-0 mr-2 paragraph-description">Your Rating</p>
-                <div class="text-primary">
-                  <input type="text" class="form-control" ref="myRating" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="message" class="paragraph-description">Your Review </label>
-                <textarea id="message" cols="30" rows="5" class="form-control" ref="myReview"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="name" class="paragraph-description">Your Name</label>
-                <input type="text" class="form-control" id="name" ref="myName" />
-              </div>
-              <div class="form-group">
-                <label for="email" class="paragraph-description">Your Email</label>
-                <input type="email" class="form-control" id="email" />
-              </div>
-              <div class="form-group mb-0 mt-4">
-                <button type="submit" class="border-none review-button px-3 Paragraph-description">Leave Your
-                  Review</button>
-              </div>
-            </form>
+            <!-- Review form goes here -->
           </div>
         </div>
       </mat-tab>
+
     </mat-tab-group>
   </div>
 </div>
+
+<!-- Loading Spinner -->
 <div class="h-[50vh] w-full flex-center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
-
+<!-- Product Carousel  -->
 <!-- <app-product-carousel></app-product-carousel> -->

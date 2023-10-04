@@ -1,3 +1,4 @@
+// Import necessary modules from Angular and third-party libraries
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +24,7 @@ import { TotalPipe } from '../custom-pipes/total.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from 'src/app/components/loading-spinner/loading-spinner.component';
 
+// Define an array of shared imports used in multiple modules
 const sharedImports = [
   MatTableModule,
   MatToolbarModule,
@@ -43,13 +45,24 @@ const sharedImports = [
   MatTabsModule,
   CarouselModule,
   HttpClientModule,
-]
+];
 
+// Define the shared module
 @NgModule({
-  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective,TotalPipe,LoadingSpinnerComponent],
+  // Declare components, directives, and pipes in the shared module
+  declarations: [TitlebBarComponent, ProductCardComponent, HighlightDirective, TotalPipe, LoadingSpinnerComponent],
+
+  // Import shared modules
   imports: sharedImports,
+
+  // Export components, directives, pipes, and shared modules for use in other modules
   exports: [
-    ...sharedImports, TitlebBarComponent, ProductCardComponent, HighlightDirective,TotalPipe,LoadingSpinnerComponent
+    ...sharedImports,
+    TitlebBarComponent,
+    ProductCardComponent,
+    HighlightDirective,
+    TotalPipe,
+    LoadingSpinnerComponent,
   ],
 })
-export class SharedModules { }
+export class SharedModules {}

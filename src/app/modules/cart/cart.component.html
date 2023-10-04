@@ -1,9 +1,14 @@
+<!-- Title bar component displaying "Shopping Cart" as the page title -->
 <app-title-bar pageTitle="Shopping Cart" subTitle="Shopping Cart"></app-title-bar>
 
+<!-- Main container for the shopping cart content -->
 <div class="flex-center mt-[10vh]">
+    <!-- Left section: Cart items table -->
     <div class="flex w-[93%] justify-between">
         <div class="w-[72%]">
+            <!-- Table displaying cart items -->
             <table class="table border-1">
+                <!-- Table header with column names -->
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -13,64 +18,72 @@
                         <th>Remove</th>
                     </tr>
                 </thead>
+                <!-- Table body with cart items -->
                 <tbody *ngIf="cartList.length">
                     <tr *ngFor="let item of cartList">
+                        <!-- Column: Product Name with link to details page -->
                         <td class="truncate max-w-[10vw]">
-                            <a [routerLink]="['/details',item.product.id]">
+                            <a [routerLink]="['/details', item.product.id]">
                                 {{ item.product.title }}
                             </a>
                         </td>
-                        <td>{{item.product.price | currency}}</td>
+                        <!-- Column: Price -->
+                        <td>{{ item.product.price | currency }}</td>
+                        <!-- Column: Quantity with buttons to add/remove items -->
                         <td>
                             <div class="flex-center">
-                                <button (click)="handleQantity('remove',item._id)"
+                                <button (click)="handleQantity('remove', item._id)"
                                     class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
                                     [disabled]="item?.quantity < 2">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
                                 </button>
-                                <span>{{item?.quantity}}</span>
-                                <button (click)="handleQantity('add',item._id)"
+                                <span>{{ item?.quantity }}</span>
+                                <button (click)="handleQantity('add', item._id)"
                                     class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
                                 </button>
                             </div>
                         </td>
-                        <td>{{item.product.price * item.quantity | currency}}</td>
+                        <!-- Column: Total price for the item -->
+                        <td>{{ item.product.price * item.quantity | currency }}</td>
+                        <!-- Column: Remove button -->
                         <td (click)="handleRemove(item._id)" class="flex-center"><button
                                 class="bg-[#ff3030b3] rounded-lg text-[white] p-1 flex-center px-2">
                                 Remove
                             </button></td>
                     </tr>
                 </tbody>
+                <!-- Row: Displayed when the cart is empty -->
                 <tr *ngIf="!cartList.length" class="flex-center w-full">
                     <td>No Items Found</td>
                 </tr>
             </table>
         </div>
+        
+        <!-- Right section: Cart summary -->
         <div class="grid w-[25%] border-1 p-3" *ngIf="cartList.length">
             <h3 class="text-[#d19c97]">
                 <b>
                     Cart Summary
                 </b>
             </h3>
+            <!-- List displaying subtotal, shipping, and total -->
             <ul class="font-bold">
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">SubTotal</p>
-                    <!-- <p class="m-[0]">- </p> -->
-                    <p class="m-[0]">{{cartList | cartTotal | currency}}</p>
+                    <p class="m-[0]">{{ cartList | cartTotal | currency }}</p>
                 </li>
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Shipping</p>
-                    <!-- <p class="m-[0]">- </p> -->
-                    <p class="m-[0]"> {{0 | currency}}</p>
+                    <p class="m-[0]">{{ 0 | currency }}</p>
                 </li>
                 <mat-divider></mat-divider>
                 <li class="flex justify-around p-3">
                     <p class="m-[0]">Total</p>
-                    <!-- <p class="m-[0]"> - </p> -->
-                    <p class="m-[0]"> {{cartList | cartTotal | currency}}</p>
+                    <p class="m-[0]">{{ cartList | cartTotal | currency }}</p>
                 </li>
             </ul>
+            <!-- Button to proceed to payment -->
             <a class="bg-[#d19c97] h-[50px] p-3 text-[white] font-[600] text-center">
                 Proceed to Pay
             </a>

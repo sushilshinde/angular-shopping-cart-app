@@ -1,3 +1,4 @@
+// Import necessary Angular testing modules and libraries
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -14,10 +15,10 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CartComponent,TitlebBarComponent],
-      imports:[RouterTestingModule,MatCardModule],
+      declarations: [CartComponent, TitlebBarComponent],
+      imports: [RouterTestingModule, MatCardModule],
       providers: [
-        provideMockStore(),
+        provideMockStore(), // Provide a mock store for testing
         {
           provide: ActivatedRoute,
           useValue: {
@@ -33,7 +34,7 @@ describe('CartComponent', () => {
     component = fixture.componentInstance;
     store = TestBed.inject(MockStore);
     fixture.detectChanges();
-    spyOn(store, 'dispatch');
+    spyOn(store, 'dispatch'); // Spy on the dispatch method of the mock store
   });
 
   it('should create', () => {
@@ -44,8 +45,10 @@ describe('CartComponent', () => {
     const itemId = 'someItemId';
     const removeItemAction = removeItem({ id: itemId });
 
+    // Call the method under test
     component.handleRemove(itemId);
 
+    // Expect that the dispatch method of the mock store was called with the correct action
     expect(store.dispatch).toHaveBeenCalledWith(removeItemAction);
   });
 
@@ -53,8 +56,10 @@ describe('CartComponent', () => {
     const itemId = 'someItemId';
     const removeQuantityAction = removeQuantity({ id: itemId });
 
-    component.handleQantity('remove', itemId);
+    // Call the method under test
+    component.handleQuantity('remove', itemId);
 
+    // Expect that the dispatch method of the mock store was called with the correct action
     expect(store.dispatch).toHaveBeenCalledWith(removeQuantityAction);
   });
 
@@ -62,10 +67,10 @@ describe('CartComponent', () => {
     const itemId = 'someItemId';
     const addQuantityAction = addQuantity({ id: itemId });
 
-    component.handleQantity('add', itemId);
+    // Call the method under test
+    component.handleQuantity('add', itemId);
 
+    // Expect that the dispatch method of the mock store was called with the correct action
     expect(store.dispatch).toHaveBeenCalledWith(addQuantityAction);
   });
-
- 
 });

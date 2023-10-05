@@ -32,13 +32,13 @@
                         <!-- Column: Quantity with buttons to add/remove items -->
                         <td>
                             <div class="flex-center">
-                                <button (click)="handleQantity('remove', item._id)"
+                                <button (click)="handleQuantity('remove', item._id)"
                                     class="bg-[#ff3030b3] p-1 mr-[10px] rounded-lg text-[white]"
                                     [disabled]="item?.quantity < 2">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">remove</mat-icon>
                                 </button>
                                 <span>{{ item?.quantity }}</span>
-                                <button (click)="handleQantity('add', item._id)"
+                                <button (click)="handleQuantity('add', item._id)"
                                     class="bg-[#3fb13fed] p-1 ml-[10px] rounded-lg text-[white]">
                                     <mat-icon class="text-[17px] font-[800] flex h-[17px] w-[17px]">add</mat-icon>
                                 </button>

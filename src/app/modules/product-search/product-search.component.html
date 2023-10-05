@@ -11,11 +11,11 @@
       <!-- Angular ngFor loop to iterate over products and generate product cards -->
       <app-product-card 
         class="w-[100%] lg:w-[45%] xl:w-[27%]" 
-        [name]="item.title"  <!-- Bind product title to the 'name' property -->
-        [price]="item.price" <!-- Bind product price to the 'price' property -->
-        [itemId]="item.id"   <!-- Bind product ID to the 'itemId' property -->
-        [discount]="item['discountPercentage']" <!-- Bind discount percentage to the 'discount' property -->
-        [thumbnail]="item['thumbnail']"          <!-- Bind product thumbnail to the 'thumbnail' property -->
+        [name]="item.title" 
+        [price]="item.price"
+        [itemId]="item.id"  
+        [discount]="item['discountPercentage']"
+        [thumbnail]="item['thumbnail']"         
         *ngFor="let item of products" cardData="item"> <!-- Iterate over products and pass data to the product card component -->
       </app-product-card>
     </div>
